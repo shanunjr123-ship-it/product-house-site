@@ -19,6 +19,28 @@ type Ctx = {
 };
 
 const KEY = "ph-quote-v1";
+const MAX_LINES = 100; // keeps the WhatsApp link below the length browsers and wa.me accept
+
+/** Anything read back from browser storage is untrusted (it can be edited): keep only well-formed lines. */
+function clean(x: unknown): QItem[] {
+  if (!Array.isArray(x)) return [];
+  const seen = new Set<string>();
+  const out: QItem[] = [];
+  for (const r of x) {
+    if (!r || typeof r !== "object") continue;
+    const { code, name, nameAr, qty } = r as Record<string, unknown>;
+    if (typeof code !== "string" || !/^[\w.-]{1,30}$/.test(code) || seen.has(code)) continue;
+    seen.add(code);
+    out.push({
+      code,
+      name: typeof name === "string" ? name.slice(0, 120) : code,
+      nameAr: typeof nameAr === "string" ? nameAr.slice(0, 120) : "",
+      qty: Math.max(1, Math.min(9999, Math.floor(Number(qty)) || 1)),
+    });
+    if (out.length === MAX_LINES) break;
+  }
+  return out;
+}
 const QuoteCtx = createContext<Ctx | null>(null);
 
 export function QuoteProvider({ children, lang }: { children: ReactNode; lang: Lang }) {
@@ -42,7 +64,7 @@ export function QuoteProvider({ children, lang }: { children: ReactNode; lang: L
   useEffect(() => {
     try {
       const raw = localStorage.getItem(KEY);
-      if (raw) setItems(JSON.parse(raw));
+      if (raw) setItems(clean(JSON.parse(raw)));
     } catch {}
   }, []);
   const persist = useCallback((next: QItem[]) => {
@@ -58,7 +80,7 @@ export function QuoteProvider({ children, lang }: { children: ReactNode; lang: L
       count: items.reduce((n, i) => n + i.qty, 0),
       has: (code) => items.some((i) => i.code === code),
       add: (it) => {
-        if (items.some((i) => i.code === it.code)) return;
+        if (items.some((i) => i.code === it.code) || items.length >= MAX_LINES) return;
         persist([...items, { ...it, qty: 1 }]);
         setToast((x) => ({ n: (x?.n ?? 0) + 1, out: false }));
       },

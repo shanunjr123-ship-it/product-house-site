@@ -3,6 +3,7 @@ import WhatsAppIcon from "@/components/WhatsAppIcon";
 import "../app/globals.css";
 
 import type { ReactNode } from "react";
+import { preload } from "react-dom";
 import type { Lang } from "@/config/site";
 import { DICT } from "@/i18n/dict";
 import { telLink, waLink } from "@/lib/links";
@@ -15,6 +16,11 @@ import TabBar from "./TabBar";
 
 export default function Shell({ lang, children }: { lang: Lang; children: ReactNode }) {
   const d = DICT[lang];
+  // The fonts every first paint needs start downloading with the HTML, not after the stylesheet is parsed.
+  const font = (f: string) => preload(`/fonts/${f}.woff2`, { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  if (lang === "ar") font("ElMessiri-var");
+  font("SFProDisplay-400");
+  font("SFProDisplay-700");
   return (
     <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
       <body>

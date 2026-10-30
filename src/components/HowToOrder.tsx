@@ -106,7 +106,7 @@ function ChatVisual({ lang, label }: { lang: Lang; label: string }) {
     <div role="img" aria-label={label} className="how-chat">
       <div className="how-chat-head">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/img/logo.png" alt="" width={46} height={37} className="size-6 rounded-full bg-white object-contain p-0.5" />
+        <img src="/img/logo-sm.webp" alt="" width={46} height={37} className="size-6 rounded-full bg-white object-contain p-0.5" />
         <span className="min-w-0 leading-tight">
           <span className="block truncate text-[0.75rem] font-semibold text-white">{lang === "ar" ? "بيت المنتج" : "Product House"}</span>
           <span className="block text-[0.625rem] text-white/80">{lang === "ar" ? "متصل" : "online"}</span>

@@ -38,7 +38,7 @@ function SectionHead({ title, to, lang }: { title: string; to: string; lang: Lan
   return (
     <div className="reveal flex items-end justify-between gap-4">
       <h2 className="h-display text-[clamp(1.6rem,3.6vw,2.4rem)]">{title}</h2>
-      <Link href={href(lang, to)} className="link-arrow shrink-0 pb-1 text-base text-brand">
+      <Link href={href(lang, to)} prefetch={false} className="link-arrow shrink-0 pb-1 text-base text-brand">
         {d.viewAll}
       </Link>
     </div>

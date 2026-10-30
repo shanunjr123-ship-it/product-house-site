@@ -66,6 +66,7 @@ export default function QuoteList({ lang }: { lang: Lang }) {
                   </button>
                   <input
                     inputMode="numeric"
+                    maxLength={4}
                     aria-label={d.qty}
                     value={i.qty}
                     onChange={(e) => q.setQty(i.code, parseInt(e.target.value.replace(/\D/g, ""), 10))}
@@ -93,12 +94,12 @@ export default function QuoteList({ lang }: { lang: Lang }) {
             ).map(([k, lbl]) => (
               <label key={k} className="grid gap-1.5 text-sm text-steel">
                 {lbl}
-                <input value={who[k]} onChange={(e) => setWho({ ...who, [k]: e.target.value })} className={field} />
+                <input value={who[k]} maxLength={k === "company" ? 80 : 60} autoComplete={k === "name" ? "name" : k === "company" ? "organization" : "address-level2"} onChange={(e) => setWho({ ...who, [k]: e.target.value })} className={field} />
               </label>
             ))}
             <label className="grid gap-1.5 text-sm text-steel">
               {d.fNotes}
-              <textarea rows={3} value={who.notes} onChange={(e) => setWho({ ...who, notes: e.target.value })} className={`${field} h-auto py-3`} />
+              <textarea rows={3} maxLength={500} value={who.notes} onChange={(e) => setWho({ ...who, notes: e.target.value })} className={`${field} h-auto py-3`} />
             </label>
           </div>
           <a href={link} target="_blank" rel="noopener noreferrer" className="btn btn-wa mt-5 w-full !min-h-14 text-[1.0625rem]">

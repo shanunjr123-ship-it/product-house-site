@@ -2,10 +2,10 @@
 
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { CaretDown, MagnifyingGlass } from "@phosphor-icons/react";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Lang } from "@/config/site";
 import { DICT, fmt } from "@/i18n/dict";
-import { CATEGORIES, TAGS, catBySlug, label, type Row } from "@/lib/catalog";
+import { CATEGORIES, TAGS, catBySlug, label, type Row } from "@/lib/taxonomy";
 import { href, productPath, waLink } from "@/lib/links";
 import { norm, squash } from "@/lib/search";
 import AddButton from "./AddButton";
@@ -24,14 +24,32 @@ function RowThumb({ img, name, cat }: { img: string | null; name: string; cat: s
   return <PartIcon name={name} cat={cat} size={26} />;
 }
 
-type Props = { lang: Lang; rows: Row[]; flat?: boolean; filters?: boolean; searchOnly?: boolean; catSlugs?: string[]; tagSlugs?: string[] };
+/**
+ * `rows` is what the server rendered. With `moreFrom` + `total`, `rows` is only the first page of a long list
+ * (the catalog): the full list is one static file, fetched the first time someone searches, filters or asks for more.
+ */
+type Props = { lang: Lang; rows: Row[]; flat?: boolean; filters?: boolean; searchOnly?: boolean; catSlugs?: string[]; tagSlugs?: string[]; moreFrom?: string; total?: number };
 
-export default function Ledger({ lang, rows, flat = false, filters = false, searchOnly = false, catSlugs, tagSlugs }: Props) {
+export default function Ledger({ lang, rows: firstRows, flat = false, filters = false, searchOnly = false, catSlugs, tagSlugs, moreFrom, total }: Props) {
   const d = DICT[lang];
   const [q, setQ] = useState("");
   const [cat, setCat] = useState("");
   const [tag, setTag] = useState("");
   const [limit, setLimit] = useState(PAGE);
+  const [rows, setRows] = useState(firstRows);
+  const [full, setFull] = useState(!moreFrom);
+  const [failed, setFailed] = useState(false);
+
+  const loadAll = useCallback(() => {
+    if (full || !moreFrom) return;
+    fetch(moreFrom)
+      .then((r) => (r.ok ? (r.json() as Promise<Row[]>) : Promise.reject(new Error(String(r.status)))))
+      .then((all) => {
+        setRows(all);
+        setFull(true);
+      })
+      .catch(() => setFailed(true));
+  }, [full, moreFrom]);
 
   // The home-page search box sends people here as /catalog/?q=...
   useEffect(() => {
@@ -40,6 +58,10 @@ export default function Ledger({ lang, rows, flat = false, filters = false, sear
     if (p.get("cat")) setCat(p.get("cat")!);
     if (p.get("tag")) setTag(p.get("tag")!);
   }, []);
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    if (p.get("q") || p.get("cat") || p.get("tag")) loadAll();
+  }, [loadAll]);
   useEffect(() => setLimit(PAGE), [q, cat, tag]);
 
   const hay = useMemo(
@@ -92,7 +114,11 @@ export default function Ledger({ lang, rows, flat = false, filters = false, sear
             <input
               type="search"
               value={q}
-              onChange={(e) => setQ(e.target.value)}
+              onFocus={loadAll}
+              onChange={(e) => {
+                loadAll();
+                setQ(e.target.value);
+              }}
               placeholder={d.searchPlaceholder}
               className="h-11 w-full rounded-full bg-white/80 ps-11 pe-4 text-base outline-none ring-1 ring-inset ring-brand/10 placeholder:text-steel/80 focus:ring-2 focus:ring-brand-bright"
             />
@@ -100,7 +126,10 @@ export default function Ledger({ lang, rows, flat = false, filters = false, sear
           {!searchOnly && (
             <>
               <label className="relative block">
-                <select aria-label={d.category} value={cat} onChange={(e) => setCat(e.target.value)} className={sel}>
+                <select aria-label={d.category} value={cat} onChange={(e) => {
+                    loadAll();
+                    setCat(e.target.value);
+                  }} className={sel}>
                   <option value="">{d.allCats}</option>
                   {cats.map((c) => (
                     <option key={c.slug} value={c.slug}>
@@ -111,7 +140,10 @@ export default function Ledger({ lang, rows, flat = false, filters = false, sear
                 <CaretDown size={16} aria-hidden className={caret} />
               </label>
               <label className="relative block">
-                <select aria-label={d.machineBrand} value={tag} onChange={(e) => setTag(e.target.value)} className={sel}>
+                <select aria-label={d.machineBrand} value={tag} onChange={(e) => {
+                    loadAll();
+                    setTag(e.target.value);
+                  }} className={sel}>
                   <option value="">{d.allTags}</option>
                   {tags.map((t) => (
                     <option key={t.slug} value={t.slug}>
@@ -127,7 +159,7 @@ export default function Ledger({ lang, rows, flat = false, filters = false, sear
       )}
 
       <p className="t-num px-2 py-3 text-sm text-steel" aria-live="polite">
-        {fmt(d.found, { n: list.length })}
+        {fmt(d.found, { n: full ? list.length : (total ?? list.length) })}
       </p>
 
       {list.length === 0 ? (
@@ -163,9 +195,16 @@ export default function Ledger({ lang, rows, flat = false, filters = false, sear
         </div>
       )}
 
-      {list.length > limit && (
+      {(list.length > limit || (!full && !failed && (total ?? 0) > list.length)) && (
         <div className="pt-5 text-center">
-          <button type="button" onClick={() => setLimit((l) => l + PAGE)} className="btn btn-line">
+          <button
+            type="button"
+            onClick={() => {
+              loadAll();
+              setLimit((l) => l + PAGE);
+            }}
+            className="btn btn-line"
+          >
             {d.showMore}
           </button>
         </div>

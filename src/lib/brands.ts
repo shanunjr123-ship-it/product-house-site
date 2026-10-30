@@ -14,7 +14,7 @@ export const BRAND_LOGOS = [
   { file: "sany.svg", en: "Sany", ar: "ساني" },
   { file: "zoomlion.svg", en: "Zoomlion", ar: "زومليون", tile: "#a4ce4e" },
   { file: "everdigm.webp", en: "Everdigm", ar: "إيفرديجم" },
-  { file: "sicoma.png", en: "Sicoma", ar: "سيكوما" },
+  { file: "sicoma.webp", en: "Sicoma", ar: "سيكوما" },
   { file: "teka.webp", en: "Teka", ar: "تيكا" },
   { file: "atlas.svg", en: "Atlas Cranes & Excavators", ar: "أطلس للرافعات والحفّارات", tile: "#df5f32" },
   { file: "rexroth.svg", en: "Rexroth", ar: "ريكسروث" },
@@ -36,11 +36,11 @@ const EXTRA_LOGOS = [
   { file: "caterpillar.svg", slug: "caterpillar" },
   { file: "skf.svg", slug: "skf" },
   { file: "nsk.svg", slug: "nsk" },
-  { file: "zenith.png", slug: "zenith" }, // from zenithbrickmachine.com (ZENITH half of the QGM | ZENITH header logo)
-  { file: "fag.png", slug: "fag" }, // from the Schaeffler web shop (FAG_logo.png)
-  { file: "koyo.png", slug: "koyo" }, // supplied by the owner (banner cropped, background removed)
-  { file: "junjin.png", slug: "junjin" }, // supplied by the owner
-  { file: "oli.png", slug: "oli" }, // supplied by the owner
+  { file: "zenith.webp", slug: "zenith" }, // from zenithbrickmachine.com (ZENITH half of the QGM | ZENITH header logo)
+  { file: "fag.webp", slug: "fag" }, // from the Schaeffler web shop (FAG_logo.png)
+  { file: "koyo.webp", slug: "koyo" }, // supplied by the owner (banner cropped, background removed)
+  { file: "junjin.webp", slug: "junjin" }, // supplied by the owner
+  { file: "oli.webp", slug: "oli" }, // supplied by the owner
 ];
 
 export const logoForTag = (slug: string): { file: string; tile?: string } | undefined =>

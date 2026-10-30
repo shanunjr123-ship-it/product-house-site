@@ -90,7 +90,7 @@ export default function Footer({ lang }: { lang: Lang }) {
           <div className="flex items-center gap-3">
             <span className="surface grid size-11 shrink-0 place-items-center rounded-2xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/img/logo.png" alt="" width={46} height={37} className="h-6 w-auto" />
+              <img src="/img/logo-sm.webp" alt="" width={46} height={37} className="h-6 w-auto" />
             </span>
             <p className="h-display text-lg leading-snug text-ink">{lang === "ar" ? SITE.nameAr : SITE.nameEn}</p>
           </div>
@@ -128,7 +128,7 @@ export default function Footer({ lang }: { lang: Lang }) {
           <ul className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1.5 md:grid-cols-1">
             {links.map(([t, p]) => (
               <li key={p}>
-                <Link className={a} href={href(lang, p)}>
+                <Link className={a} href={href(lang, p)} prefetch={false}>
                   {t}
                 </Link>
               </li>
@@ -146,7 +146,7 @@ export default function Footer({ lang }: { lang: Lang }) {
         </span>
       </div>
 
-      <p className="wrap pb-2 text-xs text-steel/70">{d.brandsNote}</p>
+      <p className="wrap pb-2 text-xs text-steel">{d.brandsNote}</p>
 
       {/* Giant outline name, fading out at the bottom edge. Real text (not the logo image) so it stays sharp at any size. */}
       <div id="foot-brand" aria-hidden dir="ltr" className="wrap mt-6 overflow-hidden">

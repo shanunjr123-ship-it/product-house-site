@@ -10,7 +10,7 @@ Needs Python 3 with `openpyxl` and `Pillow` (`pip install openpyxl pillow`).
 python scripts/import_catalog.py "path/to/catalogue.xlsx"
 ```
 
-This rewrites `data/products.json` and `public/data/catalog.json` (the browser search data), and extracts photos into `public/products/`. Then read `data/review.txt`: it lists parts the importer could not categorise, parts with no photo, and rows it skipped. Fix those in the Excel file and run the import again.
+This rewrites `data/products.json` and extracts photos into `public/products/`. Then read `data/review.txt`: it lists parts the importer could not categorise, parts with no photo, and rows it skipped. Fix those in the Excel file and run the import again.
 
 Photos: the importer reads pictures placed on top of cells. Pictures set to "Place in cell" are not read yet; test with sheet 2 before relying on it.
 

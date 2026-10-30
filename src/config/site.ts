@@ -3,7 +3,7 @@
 
 export const SITE = {
   // Replace with the real domain once it is bought (set NEXT_PUBLIC_SITE_URL in Cloudflare Pages).
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://product-house.pages.dev",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://product-house-site.pages.dev",
 
   nameAr: "مؤسسة بيت المنتج للتجارة", // Product House Trading Est.
   nameEn: "Product House Trading Est.",

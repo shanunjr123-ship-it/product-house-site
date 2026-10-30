@@ -71,7 +71,7 @@ function AboutBody({ lang }: { lang: Lang }) {
       </div>
       <div className="bezel reveal self-start" style={{ ["--d" as string]: 2 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/img/storefront.webp" alt={lang === "ar" ? SITE.nameAr : SITE.nameEn} width={2528} height={1696} className="plate aspect-[3/2] w-full object-cover" loading="lazy" />
+        <img src="/img/storefront.webp" alt={lang === "ar" ? SITE.nameAr : SITE.nameEn} width={1400} height={939} className="plate aspect-[3/2] w-full object-cover" loading="lazy" />
       </div>
     </div>
   );

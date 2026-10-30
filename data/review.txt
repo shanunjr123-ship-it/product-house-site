@@ -1,6 +1,0 @@
-Parts: 1659 (new 816 + existing 843)  | with image: 809  | indexable: 809
-Per category: seals=188, other=177, pipes=168, bearings=166, electrical=159, gears=117, wear=100, valves=90, rubber=82, pistons=77, pumps=62, filters=54, chains=53, mixer=42, hardware=40, hoses=30, vibrators=26, cooling=17, wheels=11
-
-LATIN-IN-ARABIC 201010-124: 'zx/zx'  (Elbow 6" Zx/zx – Putzmeister)
-LATIN-IN-ARABIC 201010-776: 'omp/bmp'  (Hydraulic Motor Omp/bmp 160 – Putzmeister)
-LATIN-IN-ARABIC 201010-879: 'm/female'  (Welding Flange ZX M/female With Oring – Putzmeister)

@@ -6,7 +6,7 @@ import WhatsAppIcon from "@/components/WhatsAppIcon";
 import type { Lang } from "@/config/site";
 import { DICT } from "@/i18n/dict";
 import { logoForTag } from "@/lib/brands";
-import { label, type Named } from "@/lib/catalog";
+import { label, type Named } from "@/lib/taxonomy";
 import { href, waLink } from "@/lib/links";
 
 type Counted = Named & { count: number };
@@ -15,7 +15,7 @@ type Counted = Named & { count: number };
 export function CatCard({ lang, c }: { lang: Lang; c: Counted }) {
   const d = DICT[lang];
   return (
-    <Link href={href(lang, `/category/${c.slug}/`)} className="card">
+    <Link href={href(lang, `/category/${c.slug}/`)} prefetch={false} className="card">
       <span className="flex items-start justify-between gap-2">
         <span className="tile-icon">
           <CatIcon slug={c.slug} />
@@ -36,7 +36,7 @@ const mono = (en: string) => (en.length <= 7 ? en : en.slice(0, 1).toUpperCase()
 export function BrandCard({ lang, t }: { lang: Lang; t: Counted }) {
   const logo = logoForTag(t.slug);
   return (
-    <Link href={href(lang, `/machines/${t.slug}/`)} className="card">
+    <Link href={href(lang, `/machines/${t.slug}/`)} prefetch={false} className="card">
       <span className="flex items-start">
         {t.slug === "forklift" ? (
           <span className="brand-tile" aria-hidden>

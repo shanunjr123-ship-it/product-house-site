@@ -68,7 +68,7 @@ export function CatalogView({ lang }: { lang: Lang }) {
         )}
       />
       <div className="mt-5">
-        <Ledger lang={lang} rows={PRODUCTS.map(toRow)} flat filters catSlugs={categoryCounts().map((c) => c.slug)} tagSlugs={tagCounts().map((t) => t.slug)} />
+        <Ledger lang={lang} rows={PRODUCTS.slice(0, 60).map(toRow)} total={PRODUCTS.length} moreFrom="/data/rows.json" flat filters catSlugs={categoryCounts().map((c) => c.slug)} tagSlugs={tagCounts().map((t) => t.slug)} />
       </div>
     </div>
   );

@@ -8,7 +8,6 @@ Reads the sheet (header row is found by looking for 'Part Code' and 'Part Name')
 extracts embedded pictures, classifies parts using data/taxonomy.json, and writes:
 
   data/products.json          full records (used at build time)
-  public/data/catalog.json    slim records (used by the browser search)
   public/products/<code>.webp one optimised picture per part that has one
   data/review.txt             what the importer could not classify / skipped
 
@@ -163,10 +162,7 @@ def main(xlsx: str):
         p["indexable"] = bool(p["image"] and (p["descAr"] or p["descEn"]))
 
     (ROOT / "data").mkdir(exist_ok=True)
-    (ROOT / "public" / "data").mkdir(parents=True, exist_ok=True)
     (ROOT / "data" / "products.json").write_text(json.dumps(products, ensure_ascii=False, indent=0), encoding="utf-8")
-    slim = [[p["code"], p["name"], p["nameAr"] or "", p["cat"], ",".join(p["tags"]), 1 if p["image"] else 0] for p in products]
-    (ROOT / "public" / "data" / "catalog.json").write_text(json.dumps(slim, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     if business:
         (ROOT / "data" / "business-from-sheet.json").write_text(json.dumps(business), encoding="utf-8")
 
