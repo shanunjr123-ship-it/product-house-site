@@ -1,0 +1,290 @@
+{
+  "_note": "Editable. Categories are matched top to bottom against the lowercase English part name; first match wins. Replace by a real Category column once the client's catalogue sheet has one. Arabic names are drafts for the business to verify.",
+  "categories": [
+    {
+      "slug": "bearings",
+      "ar": "المحامل (رولمان)",
+      "en": "Bearings",
+      "rx": "bearin|\\bucp?\\b|\\bucf\\b|\\buct\\b|\\buc ?2|\\bnsk\\b|\\bskf\\b|\\bkoyo\\b|\\bfag\\b|\\bnj ?2"
+    },
+    {
+      "slug": "filters",
+      "ar": "الفلاتر",
+      "en": "Filters",
+      "rx": "filter"
+    },
+    {
+      "slug": "seals",
+      "ar": "الأختام وأطقم الإصلاح",
+      "en": "Seals & repair kits",
+      "rx": "seal ?kit|repair kit|o-ring|\\bseal|gasket|packing"
+    },
+    {
+      "slug": "vibrators",
+      "ar": "الهزّازات الصناعية",
+      "en": "Industrial vibrators",
+      "rx": "vibrator"
+    },
+    {
+      "slug": "valves",
+      "ar": "الصمامات والمشغّلات",
+      "en": "Valves & actuators",
+      "rx": "valve|valave|\\bbulf|butter ?fly|actuator|solenoid|shut off"
+    },
+    {
+      "slug": "pistons",
+      "ar": "المكابس والأسطوانات",
+      "en": "Pistons & cylinders",
+      "rx": "piston|cylinder|\\bcylo\\b|\\bram \\d"
+    },
+    {
+      "slug": "pumps",
+      "ar": "المضخات والمحركات",
+      "en": "Pumps & motors",
+      "rx": "pump|thurumba|\\bmotor|dynamo|dianamo|alternator|starter"
+    },
+    {
+      "slug": "cooling",
+      "ar": "التبريد والمراوح",
+      "en": "Cooling & fans",
+      "rx": "\\bfan\\b|cooler|radi|cooling"
+    },
+    {
+      "slug": "hoses",
+      "ar": "الخراطيم",
+      "en": "Hoses",
+      "rx": "hose"
+    },
+    {
+      "slug": "electrical",
+      "ar": "الكهرباء والعدادات والتحكم",
+      "en": "Electrical, meters & controls",
+      "rx": "switch|contactor|meter|gauge|sensor|timer|relay|breaker|panel|transformer|push button|\\bled\\b|limit|ampier|volt|hertz|load cell|karaba|\\bfish|cable|remote|busconnector|toggle|el distrib|control unit"
+    },
+    {
+      "slug": "gears",
+      "ar": "التروس والأعمدة والوصلات",
+      "en": "Gears, shafts & couplings",
+      "rx": "gear|theras|theres|coupling|shaft|reducer|\\bpto\\b|cross joint|\\bbush|sprocket|spline"
+    },
+    {
+      "slug": "chains",
+      "ar": "السلاسل والسيور والبكرات",
+      "en": "Chains, belts & rollers",
+      "rx": "chain|belt|roller|rope wire|conveyor"
+    },
+    {
+      "slug": "wheels",
+      "ar": "العجلات والإطارات",
+      "en": "Wheels & tyres",
+      "rx": "wheel|tyre|tire|caster|tube fork"
+    },
+    {
+      "slug": "rubber",
+      "ar": "المطاط والبولي يوريثان",
+      "en": "Rubber & PU parts",
+      "rx": "rubber|\\bpu\\b|silicon|teflon|washer|sponge"
+    },
+    {
+      "slug": "mixer",
+      "ar": "قطع الخلاطات والمحطات",
+      "en": "Mixer & batching-plant parts",
+      "rx": "mixer|paddle|mixing|crusher|\\bjaw\\b|floor tile|vianova|impact plate"
+    },
+    {
+      "slug": "wear",
+      "ar": "قطع التآكل وصمام S",
+      "en": "Wear parts & S-valve",
+      "rx": "spectacle|wear plate|cutting ring|wear ring|thrust ring"
+    },
+    {
+      "slug": "pipes",
+      "ar": "أنابيب الضخ والأكواع والوصلات",
+      "en": "Delivery pipes, elbows & couplings",
+      "rx": "pipe|elbow|flange|tapered|clamp|nipple|manifold|coupling"
+    },
+    {
+      "slug": "hardware",
+      "ar": "المسامير والصواميل",
+      "en": "Bolts, nuts & screws",
+      "rx": "\\bbolt|\\bnut\\b|screw|washer"
+    },
+    {
+      "slug": "other",
+      "ar": "قطع أخرى",
+      "en": "Other parts",
+      "rx": ""
+    }
+  ],
+  "tags": [
+    {
+      "slug": "atlas",
+      "ar": "أطلس",
+      "en": "Atlas",
+      "rx": "atlas"
+    },
+    {
+      "slug": "schwing",
+      "ar": "شوينج",
+      "en": "Schwing",
+      "rx": "schwing|shwing"
+    },
+    {
+      "slug": "putzmeister",
+      "ar": "بوتزمايستر",
+      "en": "Putzmeister",
+      "rx": "putzmeister"
+    },
+    {
+      "slug": "cifa",
+      "ar": "سيفا",
+      "en": "CIFA",
+      "rx": "\\bcifa\\b"
+    },
+    {
+      "slug": "sicoma",
+      "ar": "سيكوما",
+      "en": "Sicoma",
+      "rx": "sicoma|secoma"
+    },
+    {
+      "slug": "zenith",
+      "ar": "زينيث",
+      "en": "Zenith",
+      "rx": "zenith|zeenath|zeneth|genith|genth"
+    },
+    {
+      "slug": "vianova",
+      "ar": "فيانوفا",
+      "en": "Vianova",
+      "rx": "vianova"
+    },
+    {
+      "slug": "parker",
+      "ar": "باركر",
+      "en": "Parker",
+      "rx": "parker|parkaer"
+    },
+    {
+      "slug": "forklift",
+      "ar": "الرافعات الشوكية",
+      "en": "Forklifts",
+      "rx": "fork ?lift|f lift|klift"
+    },
+    {
+      "slug": "toyota",
+      "ar": "تويوتا",
+      "en": "Toyota",
+      "rx": "toyota|toyotta"
+    },
+    {
+      "slug": "mitsubishi",
+      "ar": "ميتسوبيشي",
+      "en": "Mitsubishi",
+      "rx": "mistibushi|mitsubishi"
+    },
+    {
+      "slug": "komatsu",
+      "ar": "كوماتسو",
+      "en": "Komatsu",
+      "rx": "komatzu|komatsu"
+    },
+    {
+      "slug": "doosan",
+      "ar": "دوسان",
+      "en": "Doosan",
+      "rx": "dosan|doosan"
+    },
+    {
+      "slug": "caterpillar",
+      "ar": "كاتربلر",
+      "en": "Caterpillar",
+      "rx": "caterpiller|catpeler|cater piller|\\bcat\\b|226b"
+    },
+    {
+      "slug": "isuzu",
+      "ar": "إيسوزو",
+      "en": "Isuzu",
+      "rx": "isuzu|izuzu|izusu"
+    },
+    {
+      "slug": "oli",
+      "ar": "أولي",
+      "en": "OLI",
+      "rx": "\\boli\\b"
+    },
+    {
+      "slug": "skf",
+      "ar": "إس كي إف",
+      "en": "SKF",
+      "rx": "\\bskf\\b|s\\.k\\.f"
+    },
+    {
+      "slug": "nsk",
+      "ar": "إن إس كي",
+      "en": "NSK",
+      "rx": "\\bnsk\\b|n\\.s\\.k|n s k"
+    },
+    {
+      "slug": "koyo",
+      "ar": "كويو",
+      "en": "Koyo",
+      "rx": "\\bkoyo\\b"
+    },
+    {
+      "slug": "fag",
+      "ar": "إف إيه جي",
+      "en": "FAG",
+      "rx": "\\bfag\\b"
+    },
+    {
+      "slug": "hydac",
+      "ar": "هيداك",
+      "en": "Hydac",
+      "rx": "hydac"
+    },
+    {
+      "slug": "rexroth",
+      "ar": "ريكسروث",
+      "en": "Rexroth",
+      "rx": "rexroth"
+    },
+    {
+      "slug": "siemens",
+      "ar": "سيمنس",
+      "en": "Siemens",
+      "rx": "siemens"
+    },
+    {
+      "slug": "sany",
+      "ar": "ساني",
+      "en": "Sany",
+      "rx": "sany"
+    },
+    {
+      "slug": "zoomlion",
+      "ar": "زومليون",
+      "en": "Zoomlion",
+      "rx": "zoomlion"
+    },
+    {
+      "slug": "everdigm",
+      "ar": "إيفرديجم",
+      "en": "Everdigm",
+      "rx": "everdigm"
+    },
+    {
+      "slug": "junjin",
+      "ar": "جونجين",
+      "en": "Junjin",
+      "rx": "junjin"
+    },
+    {
+      "slug": "bosch",
+      "ar": "بوش",
+      "en": "Bosch",
+      "rx": "bosch"
+    }
+  ],
+  "minTagCount": 3
+}
