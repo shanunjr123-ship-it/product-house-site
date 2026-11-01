@@ -5,7 +5,7 @@ import PhoneIcon from "@/components/PhoneIcon";
 import Link from "next/link";
 import { BrandCard, CatCard, MissingCard } from "@/components/Cards";
 import HowToOrder from "@/components/HowToOrder";
-import PumpDiagram from "@/components/PumpDiagram";
+import HeroGallery from "@/components/HeroGallery";
 import SearchBox from "@/components/SearchBox";
 import GoogleMapsIcon from "@/components/GoogleMapsIcon";
 import Faq from "@/components/Faq";
@@ -56,7 +56,7 @@ export default function Home({ lang }: { lang: Lang }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(storeJsonLd(lang))} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(websiteJsonLd(lang))} />
 
-      {/* Hero: copy, search and two direct actions on the left; a tappable pump diagram on the right (below on phones). */}
+      {/* Hero: copy, search and two direct actions on the left; machine photos on the right (below on phones). The old tappable pump diagram (PumpDiagram.tsx) was removed at the client's request; file kept. */}
       <section className="relative isolate overflow-hidden pt-6 sm:pt-10 lg:pt-14">
         <div className="wrap relative grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:items-center lg:gap-12">
           <div className="min-w-0">
@@ -91,20 +91,7 @@ export default function Home({ lang }: { lang: Lang }) {
           </ul>
           </div>
           <div className="rise min-w-0" style={{ ["--d" as string]: 2 }}>
-            <PumpDiagram
-              parts={cats.map((c) => ({
-                slug: c.slug,
-                name: label(c, lang),
-                count: c.count,
-                href: href(lang, `/category/${c.slug}/`),
-                thumbs: PRODUCTS.filter((p) => p.cat === c.slug && p.image).slice(0, 2).map((p) => p.image as string),
-              }))}
-              rtl={lang === "ar"}
-              itemsWord={d.itemsWord}
-              browse={d.browse}
-              hint={d.pumpHint}
-              alt={d.pumpAlt}
-            />
+            <HeroGallery lang={lang} />
           </div>
         </div>
       </section>
