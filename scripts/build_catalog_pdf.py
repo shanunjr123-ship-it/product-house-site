@@ -21,8 +21,8 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "public" / "downloads" / "product-house-parts-catalog.pdf"
 
 PHONE_LOCAL = "059 211 2782"
-ADDR_EN = "Al Kharj Road, Industrial Area, Al Khalidiyyah, Riyadh"
-ADDR_AR = "طريق الخرج، المنطقة الصناعية، حي الخالدية، الرياض"
+ADDR_EN = "Old Industrial Area, Al Owaidah, Riyadh"
+ADDR_AR = "الصناعية القديمة، العويدة، الرياض"
 NAME_EN, NAME_AR = "Product House Trading Est.", "مؤسسة بيت المنتج للتجارة"
 CR, VAT = "1010380995", "310703724100003"
 
@@ -35,6 +35,21 @@ esc = html.escape
 tmp = Path(tempfile.mkdtemp(prefix="catpdf-"))
 thumbs = tmp / "t"
 thumbs.mkdir()
+
+# Cover background, baked into one image. A CSS "colour -> transparent" gradient is written into the PDF as a
+# soft mask + PostScript function, which Edge's viewer and the Claude app draw differently (no glow / wrong tint).
+# A plain image looks the same in every viewer.
+import numpy as np
+
+_w, _h = 827, 1170  # A4 at 100 dpi
+_y, _x = np.mgrid[0:_h, 0:_w].astype("float32")
+_k =(_y / (_h - 1))[..., None]
+_base = np.array([255, 255, 255], "float32") * (1 - _k) + np.array([238, 241, 255], "float32") * _k  # #fff -> #eef1ff
+_cx, _cy = 0.85 * _w, -0.05 * _h
+_t = np.sqrt(((_x - _cx) / (900 / 794 * _w)) ** 2 + ((_y - _cy) / (600 / 1123 * _h)) ** 2)
+_a = np.clip(1 - _t / 0.6, 0, 1)[..., None]  # #dfe6ff fading to nothing at 60%
+_img = _base * (1 - _a) + np.array([223, 230, 255], "float32") * _a
+Image.fromarray(_img.round().astype("uint8")).save(tmp / "cover-bg.jpg", quality=95)
 
 
 def thumb(code: str, rel: str | None) -> str | None:
@@ -71,7 +86,7 @@ html {{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }}
 body {{ margin: 0; font: 400 9.4pt/1.35 "SF", "Messiri", sans-serif; color: #141f6b; }}
 .ar {{ font-family: "Messiri", "SF", sans-serif; direction: rtl; unicode-bidi: isolate; }}
 .cover {{ height: 297mm; width: 210mm; padding: 22mm 18mm; display: flex; flex-direction: column; break-after: page;
-  background: radial-gradient(900px 600px at 85% -5%, #dfe6ff 0%, transparent 60%), linear-gradient(180deg, #fff, #eef1ff); }}
+  background: #fff url("{(tmp / 'cover-bg.jpg').as_uri()}") 0 0 / 100% 100% no-repeat; }}
 .cover img.logo {{ height: 20mm; width: auto; align-self: flex-start; }}
 .cover h1 {{ font-size: 40pt; line-height: 1.02; margin: 26mm 0 0; letter-spacing: -0.03em; font-weight: 700; }}
 .cover h1.ar {{ font-size: 36pt; margin-top: 6mm; letter-spacing: 0; line-height: 1.25; }}

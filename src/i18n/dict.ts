@@ -22,7 +22,7 @@ const ar = {
   browse: "تصفّح", // Browse
   searchPlaceholder: "رقم القطعة أو اسمها", // Part number or name
   searchBtn: "بحث", // Search
-  shelfCaption: "رفوف المحل في الخالدية، الرياض", // Shop shelves, Al Khalidiyyah, Riyadh
+  shelfCaption: "رفوف المحل في الصناعية القديمة، الرياض", // Shop shelves, Old Industrial Area, Riyadh
   catsTitle: "ابحث عن القطعة التي تحتاجها", // Find the part you need
   itemsWord: "صنف", // item(s)
   machinesTitle: "ابدأ من آلتك", // Start with your machine
@@ -123,7 +123,7 @@ const ar = {
   openMapShort: "الموقع على الخريطة", // Location on the map
   searchTry: "جرّب:", // Try:
   addMid: "أضف للطلب", // Add to request
-  trustShop: "زورونا في محلنا بالخالدية، الرياض", // Visit us at our shop in Al Khalidiyyah, Riyadh
+  trustShop: "زورونا في محلنا بالصناعية القديمة، الرياض", // Visit us at our shop in the Old Industrial Area, Riyadh
   sendPhotoShort: "أرسل صورة القطعة", // Send a photo of the part
   sendPhotoSub: "نتعرّف عليها ونرد بالسعر", // We identify it and reply with the price
   callSub: "اتصال مباشر", // Direct call
@@ -171,7 +171,7 @@ const en: Dict = {
   browse: "Browse",
   searchPlaceholder: "Part number or name",
   searchBtn: "Search",
-  shelfCaption: "Shop shelves, Al Khalidiyyah, Riyadh",
+  shelfCaption: "Shop shelves, Old Industrial Area, Riyadh",
   catsTitle: "Find the part you need",
   itemsWord: "items",
   machinesTitle: "Start with your machine",
@@ -272,7 +272,7 @@ const en: Dict = {
   openMapShort: "Open in Maps",
   searchTry: "Try:",
   addMid: "Add to request",
-  trustShop: "Visit our shop in Al Khalidiyyah, Riyadh",
+  trustShop: "Visit our shop in the Old Industrial Area, Riyadh",
   sendPhotoShort: "Send a part photo",
   sendPhotoSub: "We identify it and reply with the price",
   callSub: "Direct call",

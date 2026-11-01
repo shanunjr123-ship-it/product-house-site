@@ -84,7 +84,7 @@ export function storeJsonLd(lang: Lang) {
     ],
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Al Kharj Road, Industrial Area, Al Khalidiyyah",
+      streetAddress: "Old Industrial Area, Al Owaidah",
       addressLocality: "Riyadh",
       addressRegion: "Riyadh",
       addressCountry: "SA",
