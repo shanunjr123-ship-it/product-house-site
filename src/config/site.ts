@@ -15,6 +15,7 @@ export const SITE = {
   email: "sales@producthousetrading.com", // Existing Google Workspace mailbox, confirmed working.
   instagram: "product_house_trading_est",
   mapUrl: "https://maps.app.goo.gl/76URraF3QemUgAk8A",
+  gaId: "G-XYP5LWH4RW", // Google Analytics 4 Measurement ID (G-XXXXXXXXXX). Empty = analytics off.
   geo: { lat: 24.6288804, lng: 46.7597082 }, // from the Google Maps listing
 
   // Address sent by the client (Nov 1 2026): Old Industrial Area, Al Owaidah. CONFIRM the Arabic spelling with the client.

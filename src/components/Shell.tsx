@@ -7,6 +7,7 @@ import { preload } from "react-dom";
 import type { Lang } from "@/config/site";
 import { DICT } from "@/i18n/dict";
 import { telLink, waLink } from "@/lib/links";
+import Analytics from "./Analytics";
 import Footer from "./Footer";
 import Header from "./Header";
 import { QuoteProvider } from "./QuoteProvider";
@@ -42,6 +43,7 @@ export default function Shell({ lang, children }: { lang: Lang; children: ReactN
           <TabBar lang={lang} />
           <RevealObserver />
           <ScrollState />
+          <Analytics />
         </QuoteProvider>
       </body>
     </html>
