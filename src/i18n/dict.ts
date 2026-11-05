@@ -5,6 +5,7 @@ const ar = {
   brandLine: "قطع غيار مضخات الخرسانة والخلاطات", // Spare parts for concrete pumps and mixers
   navCatalog: "الكتالوج", // Catalog
   navMachines: "الآلات والعلامات", // Machines & brands
+  navHeavy: "قطع غيار معدات ثقيلة", // Heavy equipment parts
   tabMachines: "الآلات", // Machines
   toastAdded: "أُضيفت إلى طلب السعر", // Added to the price request
   toastView: "عرض", // View
@@ -154,6 +155,7 @@ const en: Dict = {
   brandLine: "Spare parts for concrete pumps and mixers",
   navCatalog: "Catalog",
   navMachines: "Machines & brands",
+  navHeavy: "Heavy equipment parts",
   tabMachines: "Machines",
   toastAdded: "Added to price request",
   toastView: "View",

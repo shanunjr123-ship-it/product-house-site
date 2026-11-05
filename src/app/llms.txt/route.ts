@@ -28,6 +28,7 @@ export function GET() {
 - [Home (Arabic)](${abs("ar", "/")}) / [Home (English)](${abs("en", "/")})
 - [Spare parts catalogue](${abs("en", "/catalog/")}) ([Arabic](${abs("ar", "/catalog/")})): search by part number or name
 - [Parts by machine brand](${abs("en", "/machines/")}) ([Arabic](${abs("ar", "/machines/")}))
+- [Heavy equipment spare parts in Riyadh](${abs("en", "/heavy-equipment-parts/")}) ([Arabic](${abs("ar", "/heavy-equipment-parts/")})): concrete pumps, mixers, batching plants, Atlas cranes, forklifts
 - [Contact and location](${abs("en", "/contact/")}) ([Arabic](${abs("ar", "/contact/")}))
 - [About](${abs("en", "/about/")}) ([Arabic](${abs("ar", "/about/")}))
 - [Full catalogue as PDF](${SITE.url}/downloads/product-house-parts-catalog.pdf)

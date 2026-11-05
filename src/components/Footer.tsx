@@ -43,6 +43,7 @@ export default function Footer({ lang }: { lang: Lang }) {
   const links = [
     [d.navCatalog, "/catalog/"],
     [d.navMachines, "/machines/"],
+    [d.navHeavy, "/heavy-equipment-parts/"],
     [d.navAbout, "/about/"],
     [d.navContact, "/contact/"],
     [d.navQuote, "/quote/"],

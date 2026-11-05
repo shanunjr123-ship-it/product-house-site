@@ -6,10 +6,10 @@ export const dynamic = "force-static";
 
 // lastmod = date the catalogue content last changed. Update this by hand when the catalogue changes;
 // a build-time value would move on every deploy and teach Google to ignore it.
-const MODIFIED = "2026-10-30";
+const MODIFIED = "2026-11-05";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const top = ["/", "/catalog/", "/machines/", "/about/", "/contact/"];
+  const top = ["/", "/catalog/", "/machines/", "/heavy-equipment-parts/", "/about/", "/contact/"];
   const paths = [
     ...top,
     ...categoryCounts().map((c) => `/category/${c.slug}/`),
