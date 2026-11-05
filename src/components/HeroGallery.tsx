@@ -17,7 +17,7 @@ function Photo({ im, lang, size, eager = false }: { im: HeroImage; lang: Lang; s
       sizes={size === "thumb" ? undefined : SIZES}
       width={im.wLg}
       height={im.hLg}
-      alt={size === "thumb" ? "" : im.label[lang]}
+      alt={size === "thumb" ? "" : (im.alt ?? im.label)[lang]}
       loading={eager ? "eager" : "lazy"}
       fetchPriority={eager ? "high" : undefined}
       decoding="async"
@@ -87,7 +87,7 @@ export default function HeroGallery({ lang }: { lang: Lang }) {
           ))}
           <p className="hg-cap">{HERO_IMAGES[active].label[lang]}</p>
         </div>
-        <ul className="hg-thumbs">
+        <ul className="hg-thumbs" style={{ gridTemplateColumns: `repeat(${others.length}, minmax(0, 1fr))` }}>
           {others.map(({ im, i }) => (
             <li key={im.id}>
               <button type="button" className="hg-thumb" onClick={() => setActive(i)} aria-label={im.label[lang]}>

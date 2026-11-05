@@ -11,6 +11,8 @@ export type HeroImage = {
   hLg: number;
   wSm: number;
   label: { ar: string; en: string };
+  /** Longer description for screen readers and search engines; falls back to the label. */
+  alt?: { ar: string; en: string };
 };
 
 export const HERO_IMAGES: readonly HeroImage[] = [
@@ -26,13 +28,25 @@ export const HERO_IMAGES: readonly HeroImage[] = [
   },
   {
     id: "crane",
-    fit: "cover",
+    fit: "contain",
     lg: "/img/hero/crane-lg.webp",
     sm: "/img/hero/crane-sm.webp",
-    wLg: 1024,
-    hLg: 768,
-    wSm: 640,
+    wLg: 958,
+    hLg: 565,
+    wSm: 560,
     label: { ar: "رافعة على شاحنة", en: "Truck-mounted crane" }, // Truck-mounted crane
+    alt: { ar: "رافعة أطلس 250CS مركّبة على شاحنة", en: "Atlas 250CS truck-mounted crane" }, // Atlas 250CS crane mounted on a truck
+  },
+  {
+    id: "crane2",
+    fit: "contain",
+    lg: "/img/hero/crane2-lg.webp",
+    sm: "/img/hero/crane2-sm.webp",
+    wLg: 1000,
+    hLg: 789,
+    wSm: 560,
+    label: { ar: "الرافعة عن قرب", en: "Crane close-up" }, // The crane up close
+    alt: { ar: "رافعة أطلس 250CS عن قرب", en: "Atlas 250CS crane boom and mounting, close-up" }, // Atlas 250CS crane up close
   },
   {
     id: "block",
