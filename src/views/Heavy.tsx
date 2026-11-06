@@ -20,7 +20,7 @@ export const heavyMeta = (lang: Lang) =>
     description:
       lang === "ar"
         ? "قطع غيار معدات ثقيلة في الرياض: مضخات الخرسانة والخلاطات ومحطات الخلط ورافعات أطلس والرافعات الشوكية. محامل وأختام وفلاتر وصمامات. السعر عند الطلب عبر واتساب." // Heavy equipment spare parts in Riyadh: concrete pumps, mixers, batching plants, Atlas cranes and forklifts. Bearings, seals, filters and valves. Price on request via WhatsApp.
-        : "Heavy equipment spare parts in Riyadh: concrete pumps, mixers, batching plants, Atlas cranes and forklifts. Bearings, seals, filters and valves. Price on request via WhatsApp.",
+        : "Heavy equipment spare parts in Riyadh for concrete pumps, mixers, batching plants, Atlas cranes and forklifts. Price on request via WhatsApp.",
   });
 
 const n = (x: number, lang: Lang) => x.toLocaleString(lang === "ar" ? "ar-SA-u-nu-latn" : "en-US");

@@ -47,16 +47,23 @@ export function tagCounts() {
     .sort((a, b) => b.count - a.count);
 }
 
+/** Brand pages exist only for brands with MIN_TAG_COUNT parts or more. Anything linking to /machines/{slug}/ must check this first. */
+const TAG_PAGES = new Set(tagCounts().map((t) => t.slug));
+export const hasTagPage = (slug: string) => TAG_PAGES.has(slug);
+
 export const byCategory = (slug: string) => PRODUCTS.filter((p) => p.cat === slug);
 export const byTag = (slug: string) => PRODUCTS.filter((p) => p.tags.includes(slug));
 export const byCode = (code: string) => PRODUCTS.find((p) => p.code === code);
 export function similar(p: Product, n = 6) {
-  // Same category first; among those, parts for the same machine brand come first.
-  const pool = PRODUCTS.filter((x) => x.cat === p.cat && x.code !== p.code);
+  // Same category; parts for the same machine brand first, then the nearest neighbours in the catalogue order.
+  // Neighbours (not "the first six of the category") so every part is linked from the parts next to it:
+  // otherwise parts deep in a long category get a single inbound link. Indexable parts only link to indexable parts.
+  // The four nearest parts always come first (two on each side), so the link is mutual and every part gets inbound links
+  // whatever its tags; the remaining slots go to parts for the same machine brand.
+  const cat = PRODUCTS.filter((x) => x.cat === p.cat && (!p.indexable || x.indexable || x.code === p.code));
+  const at = cat.findIndex((x) => x.code === p.code);
   const shared = (x: Product) => x.tags.filter((t) => p.tags.includes(t)).length;
-  return pool
-    .map((x, i) => ({ x, i, s: shared(x) }))
-    .sort((a, b) => b.s - a.s || a.i - b.i)
-    .slice(0, n)
-    .map((o) => o.x);
+  const near = cat.map((x, i) => ({ x, d: Math.abs(i - at) })).filter((o) => o.x.code !== p.code).sort((a, b) => a.d - b.d);
+  const rest = near.slice(4).sort((a, b) => shared(b.x) - shared(a.x) || a.d - b.d);
+  return [...near.slice(0, 4), ...rest].slice(0, n).map((o) => o.x);
 }

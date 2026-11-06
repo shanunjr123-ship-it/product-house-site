@@ -1,17 +1,19 @@
 import type { MetadataRoute } from "next";
 import { PRODUCTS, categoryCounts, tagCounts } from "@/lib/catalog";
+import { GUIDES } from "@/config/guides";
 import { abs, productPath } from "@/lib/links";
 
 export const dynamic = "force-static";
 
 // lastmod = date the catalogue content last changed. Update this by hand when the catalogue changes;
 // a build-time value would move on every deploy and teach Google to ignore it.
-const MODIFIED = "2026-11-05";
+const MODIFIED = "2026-11-06";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const top = ["/", "/catalog/", "/machines/", "/heavy-equipment-parts/", "/about/", "/contact/"];
+  const top = ["/", "/catalog/", "/machines/", "/heavy-equipment-parts/", "/guides/", "/about/", "/contact/"];
   const paths = [
     ...top,
+    ...GUIDES.map((g) => `/guides/${g.slug}/`),
     ...categoryCounts().map((c) => `/category/${c.slug}/`),
     ...tagCounts().map((t) => `/machines/${t.slug}/`),
     // Only parts with a photo and a description are offered to Google.

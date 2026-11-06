@@ -8,7 +8,7 @@ import { CATEGORIES, PRODUCTS, TAGS, byCategory, byTag, catBySlug, categoryCount
 import { abs, href, productPath } from "@/lib/links";
 import { isMachineOem } from "@/lib/brands";
 import { breadcrumbJsonLd, collectionJsonLd, jsonLdScript, pageMeta, titled } from "@/lib/seo";
-import { catalogIntro, categoryIntro, machineIntro, machinesIntro } from "@/lib/intro";
+import { catalogIntro, categoryIntro, categoryMetaText, machineIntro, machineMetaText, machinesIntro } from "@/lib/intro";
 
 function Crumbs({ lang, trail }: { lang: Lang; trail: { name: string; path?: string }[] }) {
   const d = DICT[lang];
@@ -84,10 +84,7 @@ export function categoryMeta(lang: Lang, slug: string) {
     lang,
     path: `/category/${slug}/`,
     title: titled(lang, lang === "ar" ? `${c.ar} لمضخات الخرسانة والخلاطات` : `${c.en} for Concrete Pumps & Mixers`), // {category} for concrete pumps and mixers
-    description:
-      lang === "ar"
-        ? `${c.ar} لمضخات الخرسانة والخلاطات. أرسل رقم القطعة أو صورتها على واتساب ويصلك السعر من الرياض.` // {category} for concrete pumps and mixers. Send the part number or a photo on WhatsApp and get the price from Riyadh.
-        : `${c.en} for concrete pumps and mixers. Send the part number or a photo on WhatsApp and get the price from Riyadh.`,
+    description: categoryMetaText(lang, slug),
   });
 }
 
@@ -129,7 +126,9 @@ export const machinesMeta = (lang: Lang) =>
     path: "/machines/",
     title: titled(lang, lang === "ar" ? "قطع الغيار حسب الآلة أو العلامة" : "Spare Parts by Machine or Brand"), // Spare parts by machine or brand
     description:
-      lang === "ar" ? "اختر آلتك أو علامتك: بوتزمايستر، شوينغ، زينيث، سَني، سيفا وغيرها، وشاهد قطع غيارها." : "Pick your machine or brand, Putzmeister, Schwing, Zenith, Sany, CIFA and more, and see its spare parts.", // Pick your machine or brand ... and see its spare parts.
+      lang === "ar"
+        ? "اختر آلتك أو علامتك: بوتزمايستر، شوينغ، زينيث، سَني، سيفا وغيرها، وشاهد قطع غيارها في الرياض. السعر عند الطلب عبر واتساب." // Pick your machine or brand: Putzmeister, Schwing, Zenith, Sany, CIFA and more, and see its spare parts in Riyadh. Price on request via WhatsApp.
+        : "Pick your machine or brand, Putzmeister, Schwing, Zenith, Sany, CIFA and more, and see its spare parts in Riyadh. Price on request via WhatsApp.",
   });
 
 export function MachinesIndexView({ lang }: { lang: Lang }) {
@@ -173,10 +172,7 @@ export function machineMeta(lang: Lang, slug: string) {
     lang,
     path: `/machines/${slug}/`,
     title: titled(lang, lang === "ar" ? `قطع غيار ${t.ar} في الرياض` : `${t.en} Spare Parts in Riyadh`), // {brand} spare parts in Riyadh
-    description:
-      lang === "ar"
-        ? `قطع غيار ${t.ar}. أرسل رقم القطعة أو صورتها على واتساب ونرد عليك بالسعر.` // {brand} spare parts. Send the part number or a photo on WhatsApp and we reply with the price.
-        : `Spare parts for ${t.en}. Send the part number or a photo on WhatsApp and we reply with the price.`,
+    description: machineMetaText(lang, slug),
   });
 }
 

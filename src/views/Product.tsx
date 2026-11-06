@@ -7,7 +7,7 @@ import AddButton from "@/components/AddButton";
 import PartIcon from "@/components/PartIcon";
 import { type Lang } from "@/config/site";
 import { DICT } from "@/i18n/dict";
-import { PRODUCTS, byCode, catBySlug, label, pname, similar, tagBySlug } from "@/lib/catalog";
+import { PRODUCTS, byCode, catBySlug, hasTagPage, label, pname, similar, tagBySlug } from "@/lib/catalog";
 import { abs, href, partMessage, productPath, telLink, waLink } from "@/lib/links";
 import { SITE } from "@/config/site";
 import { BRAND, jsonLdScript, pageMeta } from "@/lib/seo";
@@ -22,6 +22,16 @@ const clip = (t: string, max: number) => {
   return `${cut.slice(0, Math.max(cut.lastIndexOf(" "), 80)).replace(/[\s,.;:،-]+$/, "")}…`;
 };
 
+/** Meta description: name and part number first, then what it is, then the price line. Aims for 110 to 155 characters. */
+function snippet(lang: Lang, name: string, code: string, desc: string, ask: string) {
+  const from = lang === "ar" ? "من بيت المنتج في الرياض." : "From Product House, Riyadh."; // From Product House in Riyadh.
+  const kind = lang === "ar" ? "قطع غيار مضخات الخرسانة والخلاطات." : "Concrete pump and mixer spare parts."; // Concrete pump and mixer spare parts.
+  let s = `${name} (${code}). ${desc} ${ask}`;
+  if (s.length < 110) s = `${s} ${from}`;
+  if (s.length < 105) s = `${s} ${kind}`;
+  return clip(s, 155);
+}
+
 export function productMeta(lang: Lang, code: string) {
   const p = byCode(code);
   if (!p) notFound();
@@ -34,7 +44,7 @@ export function productMeta(lang: Lang, code: string) {
     path: productPath(code),
     title: `${name} (${p.code}) | ${BRAND[lang]}`,
     description:
-      clip(desc.length + ask.length < 155 ? `${desc} ${ask}` : desc, 155) ||
+      (desc && snippet(lang, name, p.code, desc, ask)) ||
       (lang === "ar"
         ? `${name}، رقم القطعة ${p.code}، من قسم ${label(c, lang)}. اطلب السعر والتوفر عبر واتساب.`
         : `${name}, part number ${p.code}, in ${label(c, lang)}. Ask for price and availability on WhatsApp.`),
@@ -117,11 +127,15 @@ export function ProductView({ lang, code }: { lang: Lang; code: string }) {
               <div className="row px-5 py-4">
                 <dt className="text-sm text-steel">{d.machineBrand}</dt>
                 <dd className="flex flex-wrap gap-x-4">
-                  {tags.map((t) => (
-                    <Link key={t!.slug} className="text-brand hover:underline" href={href(lang, `/machines/${t!.slug}/`)}>
-                      {label(t, lang)}
-                    </Link>
-                  ))}
+                  {tags.map((t) =>
+                    hasTagPage(t!.slug) ? (
+                      <Link key={t!.slug} className="text-brand hover:underline" href={href(lang, `/machines/${t!.slug}/`)}>
+                        {label(t, lang)}
+                      </Link>
+                    ) : (
+                      <span key={t!.slug}>{label(t, lang)}</span>
+                    ),
+                  )}
                 </dd>
               </div>
             )}

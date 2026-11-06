@@ -6,6 +6,7 @@ const ar = {
   navCatalog: "الكتالوج", // Catalog
   navMachines: "الآلات والعلامات", // Machines & brands
   navHeavy: "قطع غيار معدات ثقيلة", // Heavy equipment parts
+  navGuides: "أدلة الشراء", // Buying guides
   tabMachines: "الآلات", // Machines
   toastAdded: "أُضيفت إلى طلب السعر", // Added to the price request
   toastView: "عرض", // View
@@ -156,6 +157,7 @@ const en: Dict = {
   navCatalog: "Catalog",
   navMachines: "Machines & brands",
   navHeavy: "Heavy equipment parts",
+  navGuides: "Buying guides",
   tabMachines: "Machines",
   toastAdded: "Added to price request",
   toastView: "View",

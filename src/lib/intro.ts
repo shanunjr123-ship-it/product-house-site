@@ -65,15 +65,52 @@ export function categoryIntro(lang: Lang, slug: string) {
     .join(" ");
 }
 
-export function machineIntro(lang: Lang, slug: string) {
-  const t = tagBySlug(slug)!;
+/** The categories this machine brand has the most parts in (without "other"). */
+function machineCats(lang: Lang, slug: string, max: number) {
   const items = byTag(slug);
-  const cats = categoryCounts()
+  return categoryCounts()
     .map((c) => ({ c, k: items.filter((p) => p.cat === c.slug).length }))
     .filter((x) => x.k && x.c.slug !== "other")
     .sort((a, b) => b.k - a.k)
-    .slice(0, 4)
+    .slice(0, max)
     .map((x) => label(x.c, lang));
+}
+
+/** Meta description for a machine brand page: up to three categories, fewer if the text would pass 155 characters. */
+export function machineMetaText(lang: Lang, slug: string) {
+  const t = tagBySlug(slug)!;
+  const build = (k: number) => {
+    const cats = machineCats(lang, slug, k);
+    if (lang === "ar") {
+      // {brand} spare parts in Riyadh: {categories}. Send the part number or a photo on WhatsApp and we reply with the price.
+      return `قطع غيار ${t.ar} في الرياض${cats.length ? `: ${list(cats, lang)}` : ""}. أرسل رقم القطعة أو صورتها على واتساب ونرد عليك بالسعر.`;
+    }
+    return `${t.en} spare parts in Riyadh${cats.length ? `: ${list(cats, lang).toLowerCase()}` : ""}. Send the part number or a photo on WhatsApp and we reply with the price.`;
+  };
+  let k = 3;
+  let text = build(k);
+  while (text.length > 155 && k > 0) text = build(--k);
+  // Too short (a brand with one category): add the supplier.
+  if (text.length < 105) text += lang === "ar" ? " من مؤسسة بيت المنتج." : " From Product House."; // From Product House Trading Est.
+  return text;
+}
+
+/** Meta description for a category page. */
+export function categoryMetaText(lang: Lang, slug: string) {
+  const c = catBySlug(slug)!;
+  const k = n(byCategory(slug).length, lang);
+  if (lang === "ar") {
+    // {k} parts in "{category}" for concrete pumps and mixers in Riyadh. Send the part number or a photo on WhatsApp and get the price.
+    return `${k} قطعة ضمن «${c.ar}» لمضخات الخرسانة والخلاطات في الرياض. أرسل رقم القطعة أو صورتها على واتساب ويصلك السعر.`;
+  }
+  const full = `${k} parts in “${c.en}” for concrete pumps and mixers in Riyadh. Send the part number or a photo on WhatsApp for the price.`;
+  return full.length <= 155 ? full : `${k} parts in “${c.en}” in Riyadh. Send the part number or a photo on WhatsApp for the price.`;
+}
+
+export function machineIntro(lang: Lang, slug: string) {
+  const t = tagBySlug(slug)!;
+  const items = byTag(slug);
+  const cats = machineCats(lang, slug, 4);
   if (lang === "ar") {
     // {count} spare parts for {brand}, in categories such as ..., supplied from Riyadh. {ask}
     return [

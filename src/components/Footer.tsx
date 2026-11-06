@@ -44,6 +44,7 @@ export default function Footer({ lang }: { lang: Lang }) {
     [d.navCatalog, "/catalog/"],
     [d.navMachines, "/machines/"],
     [d.navHeavy, "/heavy-equipment-parts/"],
+    [d.navGuides, "/guides/"],
     [d.navAbout, "/about/"],
     [d.navContact, "/contact/"],
     [d.navQuote, "/quote/"],
