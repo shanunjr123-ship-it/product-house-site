@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { BrandCard, CatCard, MissingCard } from "@/components/Cards";
+import { BrandCard, CatCard, CtaTile, MachinePhotoCard, MissingCard } from "@/components/Cards";
+import { HEAVY_PHOTO } from "@/config/photos";
 import type { Lang } from "@/config/site";
 import { PRODUCTS, byTag, categoryCounts, tagBySlug, tagCounts } from "@/lib/catalog";
 import { isMachineOem } from "@/lib/brands";
@@ -39,23 +40,23 @@ export function HeavyView({ lang }: { lang: Lang }) {
     ? `تورّد مؤسسة بيت المنتج للتجارة من الرياض ${n(PRODUCTS.length, lang)} قطعة غيار لمعدات الخرسانة والمعدات الثقيلة: مضخات الخرسانة، شاحنات الخلاطات، محطات الخلط، الرافعات المركّبة على الشاحنات (أطلس) والرافعات الشوكية. موزّع معتمد لبوتزمايستر. أرسل رقم القطعة أو صورتها على واتساب ويصلك السعر.` // Product House Trading Est. supplies N spare parts for concrete and heavy equipment from Riyadh: concrete pumps, truck mixers, batching plants, truck-mounted cranes (Atlas) and forklifts. Authorised Putzmeister distributor. Send the part number or a photo on WhatsApp and get the price.
     : `Product House Trading Est. supplies ${n(PRODUCTS.length, lang)} spare parts for concrete and heavy equipment from Riyadh: concrete pumps, truck mixers, batching plants, truck-mounted cranes (Atlas) and forklifts. Authorised Putzmeister distributor. Send the part number or a photo on WhatsApp for the price.`;
 
-  const covered: { name: string; note: string; to?: string }[] = ar
+  const covered: { key: string; name: string; note: string; to: string }[] = ar
     ? [
-        { name: "مضخات الخرسانة", note: `${pumpList} وغيرها.` }, // Concrete pumps: Putzmeister, Schwing, Cifa, Sany, Zoomlion and others.
-        { name: "شاحنات الخلاطات ومحطات الخلط", note: "خلاطات ومحركات وجيربوكسات وصمامات هوائية." }, // Truck mixers and batching plants: mixers, motors, gearboxes, pneumatic valves.
-        { name: "رافعات أطلس المركّبة على الشاحنات", note: `${n(atlas, lang)} قطعة: أطقم سيلات وصمامات وفلاتر.`, to: "/machines/atlas/" }, // Atlas truck-mounted cranes: N parts: seal kits, valves, filters.
-        { name: "الرافعات الشوكية", note: `${n(forklift, lang)} قطعة.`, to: "/machines/forklift/" }, // Forklifts: N parts.
-        { name: "قطع هيدروليك عامة", note: "محامل وأختام وفلاتر ووصلات وخراطيم تناسب أكثر من علامة." }, // General hydraulic parts: bearings, seals, filters, couplings and hoses that fit more than one make.
+        { key: "pumps", name: "مضخات الخرسانة", note: `${pumpList} وغيرها.`, to: "/machines/" }, // Concrete pumps: Putzmeister, Schwing, Cifa, Sany, Zoomlion and others.
+        { key: "plants", name: "شاحنات الخلاطات ومحطات الخلط", note: "خلاطات ومحركات وجيربوكسات وصمامات هوائية.", to: "/category/mixer/" }, // Truck mixers and batching plants: mixers, motors, gearboxes, pneumatic valves.
+        { key: "cranes", name: "رافعات أطلس المركّبة على الشاحنات", note: `${n(atlas, lang)} قطعة: أطقم سيلات وصمامات وفلاتر.`, to: "/machines/atlas/" }, // Atlas truck-mounted cranes: N parts: seal kits, valves, filters.
+        { key: "forklifts", name: "الرافعات الشوكية", note: `${n(forklift, lang)} قطعة.`, to: "/machines/forklift/" }, // Forklifts: N parts.
+        { key: "hydraulic", name: "قطع هيدروليك عامة", note: "محامل وأختام وفلاتر ووصلات وخراطيم تناسب أكثر من علامة.", to: "/category/pumps/" }, // General hydraulic parts: bearings, seals, filters, couplings and hoses that fit more than one make.
       ]
     : [
-        { name: "Concrete pumps", note: `${pumpList} and others.` },
-        { name: "Truck mixers and batching plants", note: "Mixers, motors, gearboxes and pneumatic valves." },
-        { name: "Atlas truck-mounted cranes", note: `${n(atlas, lang)} parts: seal kits, valves and filters.`, to: "/machines/atlas/" },
-        { name: "Forklifts", note: `${n(forklift, lang)} parts.`, to: "/machines/forklift/" },
-        { name: "General hydraulic parts", note: "Bearings, seals, filters, couplings and hoses that fit more than one make." },
+        { key: "pumps", name: "Concrete pumps", note: `${pumpList} and others.`, to: "/machines/" },
+        { key: "plants", name: "Truck mixers and batching plants", note: "Mixers, motors, gearboxes and pneumatic valves.", to: "/category/mixer/" },
+        { key: "cranes", name: "Atlas truck-mounted cranes", note: `${n(atlas, lang)} parts: seal kits, valves and filters.`, to: "/machines/atlas/" },
+        { key: "forklifts", name: "Forklifts", note: `${n(forklift, lang)} parts.`, to: "/machines/forklift/" },
+        { key: "hydraulic", name: "General hydraulic parts", note: "Bearings, seals, filters, couplings and hoses that fit more than one make.", to: "/category/pumps/" },
       ];
 
-  const items = [...covered.map((c) => ({ name: c.name, path: c.to ?? "/catalog/" })), ...brands.slice(0, 12).map((t) => ({ name: t[lang], path: `/machines/${t.slug}/` }))];
+  const items = [...covered.map((c) => ({ name: c.name, path: c.to })), ...brands.slice(0, 12).map((t) => ({ name: t[lang], path: `/machines/${t.slug}/` }))];
 
   return (
     <div className="wrap pb-6 pt-4">
@@ -73,19 +74,11 @@ export function HeavyView({ lang }: { lang: Lang }) {
         <h2 id="hv-cover" className="h-display text-[clamp(1.5rem,3.4vw,2.2rem)]">
           {ar ? "الآلات التي نوفّر لها قطع الغيار" : "Machines we supply parts for"}
         </h2>
-        <ul className="mt-4 grid gap-3 md:grid-cols-2 lg:gap-4">
-          {covered.map((c) => (
-            <li key={c.name} className="surface rounded-[1.25rem] px-5 py-4 text-start">
-              <p className="text-lg font-medium">
-                {c.to ? (
-                  <Link href={href(lang, c.to)} className="text-brand hover:underline">
-                    {c.name}
-                  </Link>
-                ) : (
-                  c.name
-                )}
-              </p>
-              <p className="mt-0.5 text-[0.95rem] text-steel">{c.note}</p>
+        {/* Phones: first card full width, then 2 x 2. From tablet up: 6 columns, two cards of 3 then three cards of 2. */}
+        <ul className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-6 lg:gap-6">
+          {covered.map((c, i) => (
+            <li key={c.key} className={`reveal ${i === 0 ? "col-span-2 md:col-span-3" : i === 1 ? "md:col-span-3" : "md:col-span-2"}`} style={{ ["--d" as string]: i % 3 }}>
+              <MachinePhotoCard lang={lang} photoId={HEAVY_PHOTO[c.key]} name={c.name} note={c.note} to={c.to} />
             </li>
           ))}
         </ul>
@@ -119,6 +112,10 @@ export function HeavyView({ lang }: { lang: Lang }) {
               <CatCard lang={lang} c={c} />
             </li>
           ))}
+          {/* 18 types fill 6 rows of 3 and 9 of 2; on desktop (4 columns) this tile takes the last two places, so the final row is full. */}
+          <li className="hidden lg:block lg:col-span-2">
+            <CtaTile lang={lang} kind="catalog" total={PRODUCTS.length} />
+          </li>
         </ul>
       </section>
 

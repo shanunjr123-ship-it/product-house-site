@@ -1,7 +1,10 @@
 import Link from "next/link";
 import FaqList from "@/components/FaqList";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
+import CatIcon from "@/components/CatIcon";
 import { MissingCard } from "@/components/Cards";
+import { CAPTION, HeadFigure, PageHead, Pic } from "@/components/PhotoBits";
+import { GUIDE_PHOTO, STOREFRONT, photo, type Photo } from "@/config/photos";
 import { SITE, type Lang } from "@/config/site";
 import { GUIDES, guideBySlug, type Block } from "@/config/guides";
 import { DICT } from "@/i18n/dict";
@@ -44,6 +47,9 @@ const T = {
   },
 } as const;
 
+/** Guide slug -> its photo. "How to order" uses the real shop-front photo; the others use catalogue-type photos. */
+const guidePhoto = (slug: string): Photo | undefined => (slug === "how-to-order" ? STOREFRONT : photo(GUIDE_PHOTO[slug]));
+
 const date = (iso: string, lang: Lang) =>
   new Date(iso).toLocaleDateString(lang === "ar" ? "ar-SA-u-nu-latn-ca-gregory" : "en-GB", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
 
@@ -79,10 +85,17 @@ export function GuidesIndexView({ lang }: { lang: Lang }) {
       <ul className="mt-8 grid gap-4 md:grid-cols-2 lg:gap-6">
         {GUIDES.map((g) => (
           <li key={g.slug} className="grid">
-            <Link href={href(lang, `/guides/${g.slug}/`)} className="card text-start">
-              <span className="text-xl font-medium leading-snug">{g.title[lang]}</span>
-              <span className="text-[0.95rem] text-steel">{g.desc[lang]}</span>
-              <span className="mt-1 text-sm text-brand">{t.read}</span>
+            <Link href={href(lang, `/guides/${g.slug}/`)} className={`card text-start ${guidePhoto(g.slug) ? "photo-card" : ""}`}>
+              {guidePhoto(g.slug) && (
+                <span className="photo-card-img">
+                  <Pic p={guidePhoto(g.slug)!} lang={lang} sizes="(min-width: 1024px) 560px, (min-width: 768px) 46vw, 92vw" />
+                </span>
+              )}
+              <span className={guidePhoto(g.slug) ? "photo-card-body" : "contents"}>
+                <span className="text-xl font-medium leading-snug">{g.title[lang]}</span>
+                <span className="text-[0.95rem] text-steel">{g.desc[lang]}</span>
+                <span className="mt-1 text-sm text-brand">{t.read}</span>
+              </span>
             </Link>
           </li>
         ))}
@@ -140,17 +153,20 @@ export function GuideView({ lang, slug }: { lang: Lang; slug: string }) {
   const others = GUIDES.filter((x) => x.slug !== g.slug);
   const url = abs(lang, `/guides/${g.slug}/`);
   const faq = g.faq.map((f) => ({ q: f.q[lang], a: f.a[lang] }));
+  const shot = guidePhoto(g.slug);
 
   return (
     <article className="wrap pb-6 pt-4">
       <Crumbs lang={lang} trail={[{ name: t.index, path: "/guides/" }, { name: g.title[lang] }]} />
-      <h1 className="h-display rise mt-2 max-w-[24ch] text-[clamp(1.9rem,4.6vw,3rem)] leading-tight">{g.title[lang]}</h1>
-      <p className="rise mt-3 max-w-[66ch] text-lg text-steel" style={{ ["--d" as string]: 2 }}>
-        {g.intro[lang]}
-      </p>
-      <p className="mt-2 text-sm text-steel">
-        {t.published} <time dateTime={g.date}>{date(g.date, lang)}</time>
-      </p>
+      <PageHead figure={shot && <HeadFigure p={shot} lang={lang} caption={g.slug === "how-to-order" ? "" : CAPTION.parts[lang]} ratio={g.slug === "how-to-order" ? "16/10" : "4/3"} />}>
+        <h1 className="h-display rise mt-2 max-w-[24ch] text-[clamp(1.9rem,4.6vw,3rem)] leading-tight">{g.title[lang]}</h1>
+        <p className="rise mt-3 max-w-[66ch] text-lg text-steel" style={{ ["--d" as string]: 2 }}>
+          {g.intro[lang]}
+        </p>
+        <p className="mt-2 text-sm text-steel">
+          {t.published} <time dateTime={g.date}>{date(g.date, lang)}</time>
+        </p>
+      </PageHead>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLdScript({
@@ -164,7 +180,7 @@ export function GuideView({ lang, slug }: { lang: Lang; slug: string }) {
           mainEntityOfPage: url,
           author: { "@type": "Organization", name: lang === "ar" ? SITE.nameAr : SITE.nameEn, url: SITE.url },
           publisher: { "@type": "Organization", name: lang === "ar" ? SITE.nameAr : SITE.nameEn, logo: { "@type": "ImageObject", url: `${SITE.url}/img/logo.png` } },
-          image: `${SITE.url}/img/og.jpg`,
+          image: shot ? `${SITE.url}${shot.lg}` : `${SITE.url}/img/og.jpg`,
         })}
       />
 
@@ -194,11 +210,21 @@ export function GuideView({ lang, slug }: { lang: Lang; slug: string }) {
           <ul className="mt-4 grid gap-3 text-start md:grid-cols-2">
             {parts.map((p) => (
               <li key={p.code} className="grid">
-                <Link href={href(lang, productPath(p.code))} className="card">
-                  <span className="t-num text-sm text-steel">
-                    <bdi dir="ltr">{p.code}</bdi>
+                <Link href={href(lang, productPath(p.code))} className="card card-row !gap-3.5 !p-2.5">
+                  <span className="grid size-[4.5rem] shrink-0 place-items-center overflow-hidden rounded-[0.9rem] bg-white text-brand ring-1 ring-[color:var(--color-line)]">
+                    {p.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={p.image} alt={pname(p, lang)} width={p.iw ?? 72} height={p.ih ?? 72} loading="lazy" decoding="async" className="size-full object-contain p-1" />
+                    ) : (
+                      <CatIcon slug={p.cat} />
+                    )}
                   </span>
-                  <span className="text-[1.0625rem] leading-snug">{pname(p, lang)}</span>
+                  <span className="grid gap-0.5">
+                    <span className="t-num text-sm text-steel">
+                      <bdi dir="ltr">{p.code}</bdi>
+                    </span>
+                    <span className="text-[1.0625rem] leading-snug">{pname(p, lang)}</span>
+                  </span>
                 </Link>
               </li>
             ))}

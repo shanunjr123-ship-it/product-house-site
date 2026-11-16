@@ -3,7 +3,7 @@ import { CalendarCheck, ChatCircleText, Check, Package, UsersThree } from "@phos
 import MapEmbed, { directionsUrl } from "@/components/MapEmbed";
 import PhoneIcon from "@/components/PhoneIcon";
 import Link from "next/link";
-import { BrandCard, CatCard, MissingCard } from "@/components/Cards";
+import { BrandCard, CatCard, MissingCard, CtaTile } from "@/components/Cards";
 import HowToOrder from "@/components/HowToOrder";
 import HeroGallery from "@/components/HeroGallery";
 import SearchBox from "@/components/SearchBox";
@@ -124,6 +124,10 @@ export default function Home({ lang }: { lang: Lang }) {
               <CatCard lang={lang} c={c} />
             </li>
           ))}
+          {/* 19 categories + this tile = 20 (5 full rows of 4 on desktop, 10 of 2 on phones); on tablets it spans 2 of 3 columns so the last row is full too. */}
+          <li className="reveal md:col-span-2 lg:col-span-1" style={{ ["--d" as string]: 3 }}>
+            <CtaTile lang={lang} kind="wa" />
+          </li>
         </ul>
       </section>
 

@@ -130,7 +130,7 @@ export function websiteJsonLd(lang: Lang) {
 }
 
 /** A category / brand / catalog page: a named collection with its first parts listed. */
-export function collectionJsonLd(o: { lang: Lang; path: string; name: string; description: string; items: { name: string; path: string }[] }) {
+export function collectionJsonLd(o: { lang: Lang; path: string; name: string; description: string; items: { name: string; path: string }[]; image?: string }) {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -138,6 +138,7 @@ export function collectionJsonLd(o: { lang: Lang; path: string; name: string; de
     description: o.description,
     url: abs(o.lang, o.path),
     inLanguage: o.lang,
+    ...(o.image ? { primaryImageOfPage: { "@type": "ImageObject", url: `${SITE.url}${o.image}` } } : {}),
     isPartOf: { "@id": ID.site },
     about: { "@id": ID.business },
     mainEntity: {

@@ -2,6 +2,8 @@ import Link from "next/link";
 import { BrandCard } from "@/components/Cards";
 import { notFound } from "next/navigation";
 import Ledger from "@/components/Ledger";
+import { CAPTION, HeadFigure, PageHead, PhotoStrip } from "@/components/PhotoBits";
+import { CAT_GALLERY, MACHINE_PHOTO, catCover, catOg, machineOg, photo } from "@/config/photos";
 import { type Lang } from "@/config/site";
 import { DICT, fmt } from "@/i18n/dict";
 import { CATEGORIES, PRODUCTS, TAGS, byCategory, byTag, catBySlug, categoryCounts, label, pname, tagBySlug, tagCounts, toRow } from "@/lib/catalog";
@@ -85,6 +87,9 @@ export function categoryMeta(lang: Lang, slug: string) {
     path: `/category/${slug}/`,
     title: titled(lang, lang === "ar" ? `${c.ar} لمضخات الخرسانة والخلاطات` : `${c.en} for Concrete Pumps & Mixers`), // {category} for concrete pumps and mixers
     description: categoryMetaText(lang, slug),
+    image: catOg(slug),
+    imageSize: { w: 1200, h: 630 },
+    imageAlt: catCover(slug)?.alt[lang],
   });
 }
 
@@ -93,13 +98,17 @@ export function CategoryView({ lang, slug }: { lang: Lang; slug: string }) {
   const c = catBySlug(slug);
   if (!c) notFound();
   const items = byCategory(slug);
+  const cover = catCover(slug);
+  const more = (CAT_GALLERY[slug] ?? []).map((id) => photo(id)).filter((p): p is NonNullable<typeof p> => !!p);
   return (
     <div className="wrap pb-6 pt-4">
       <Crumbs lang={lang} trail={[{ name: d.navCatalog, path: "/catalog/" }, { name: label(c, lang) }]} />
-      <h1 className="h-display rise mt-2 text-[clamp(1.9rem,5vw,3.25rem)]">{label(c, lang)}</h1>
-      <p className="rise mt-2 max-w-[62ch] text-steel" style={{ ["--d" as string]: 2 }}>
-        {categoryIntro(lang, slug)}
-      </p>
+      <PageHead figure={cover && <HeadFigure p={cover} lang={lang} caption={CAPTION.parts[lang]} desktopOnly />}>
+        <h1 className="h-display rise mt-2 text-[clamp(1.9rem,5vw,3.25rem)]">{label(c, lang)}</h1>
+        <p className="rise mt-2 max-w-[62ch] text-steel" style={{ ["--d" as string]: 2 }}>
+          {categoryIntro(lang, slug)}
+        </p>
+      </PageHead>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLdScript(
@@ -108,10 +117,13 @@ export function CategoryView({ lang, slug }: { lang: Lang; slug: string }) {
             path: `/category/${slug}/`,
             name: label(c, lang),
             description: categoryIntro(lang, slug),
+            image: catOg(slug),
             items: items.filter((p) => p.indexable).slice(0, 24).map((p) => ({ name: pname(p, lang), path: productPath(p.code) })),
           }),
         )}
       />
+      <PhotoStrip lang={lang} cover={cover} more={more} />
+      {cover && <p className="mt-2 text-xs text-steel lg:hidden">{CAPTION.parts[lang]}</p>}
       <div className="mt-5">
         <Ledger lang={lang} rows={items.map(toRow)} filters searchOnly />
       </div>
@@ -173,6 +185,9 @@ export function machineMeta(lang: Lang, slug: string) {
     path: `/machines/${slug}/`,
     title: titled(lang, lang === "ar" ? `قطع غيار ${t.ar} في الرياض` : `${t.en} Spare Parts in Riyadh`), // {brand} spare parts in Riyadh
     description: machineMetaText(lang, slug),
+    image: machineOg(slug),
+    imageSize: { w: 1200, h: 630 },
+    imageAlt: photo(MACHINE_PHOTO[slug])?.alt[lang],
   });
 }
 
@@ -181,13 +196,16 @@ export function MachineView({ lang, slug }: { lang: Lang; slug: string }) {
   const t = tagBySlug(slug);
   if (!t) notFound();
   const items = byTag(slug);
+  const shot = photo(MACHINE_PHOTO[slug]);
   return (
     <div className="wrap pb-6 pt-4">
       <Crumbs lang={lang} trail={[{ name: d.navMachines, path: "/machines/" }, { name: label(t, lang) }]} />
-      <h1 className="h-display rise mt-2 text-[clamp(1.9rem,5vw,3.25rem)]">{fmt(d.partsFor, { name: label(t, lang) })}</h1>
-      <p className="rise mt-2 max-w-[62ch] text-steel" style={{ ["--d" as string]: 2 }}>
-        {machineIntro(lang, slug)}
-      </p>
+      <PageHead figure={shot && <HeadFigure p={shot} lang={lang} caption={CAPTION.machine[lang]} ratio="16/10" />}>
+        <h1 className="h-display rise mt-2 text-[clamp(1.9rem,5vw,3.25rem)]">{fmt(d.partsFor, { name: label(t, lang) })}</h1>
+        <p className="rise mt-2 max-w-[62ch] text-steel" style={{ ["--d" as string]: 2 }}>
+          {machineIntro(lang, slug)}
+        </p>
+      </PageHead>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLdScript(
@@ -196,6 +214,7 @@ export function MachineView({ lang, slug }: { lang: Lang; slug: string }) {
             path: `/machines/${slug}/`,
             name: fmt(d.partsFor, { name: label(t, lang) }),
             description: machineIntro(lang, slug),
+            image: machineOg(slug),
             items: items.filter((p) => p.indexable).slice(0, 24).map((p) => ({ name: pname(p, lang), path: productPath(p.code) })),
           }),
         )}
