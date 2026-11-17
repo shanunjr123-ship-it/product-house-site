@@ -56,8 +56,8 @@ export default function Home({ lang }: { lang: Lang }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(storeJsonLd(lang))} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(websiteJsonLd(lang))} />
 
-      {/* Hero: copy, search and two direct actions on the left; one large photo that runs to the screen edge on the right (a band below the text on phones). The old tappable pump diagram (PumpDiagram.tsx) was removed at the client's request; file kept. */}
-      <section className="relative isolate overflow-hidden pt-6 sm:pt-10 lg:-mt-[77px] lg:pb-12 lg:pt-[calc(3.5rem+77px)]">
+      {/* Hero: copy, search and two direct actions on the left; one large photo that runs to the screen edge on the right (an edge-to-edge band above the text on phones). The old tappable pump diagram (PumpDiagram.tsx) was removed at the client's request; file kept. */}
+      <section className="relative isolate overflow-hidden pt-2 -mt-4 lg:-mt-[77px] lg:pb-12 lg:pt-[calc(3.5rem+77px)]">
         <div className="wrap grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:items-center lg:gap-12">
           <div className="relative z-10 min-w-0">
           <h1 className="h-display rise text-[clamp(2.15rem,6.4vw,3.9rem)] text-brand-deep lg:text-[clamp(2.7rem,4.1vw,3.9rem)]">{d.homeTitle}</h1>
@@ -90,7 +90,7 @@ export default function Home({ lang }: { lang: Lang }) {
             ))}
           </ul>
           </div>
-          <div className="rise hg-bleed min-w-0" style={{ ["--d" as string]: 2 }}>
+          <div className="rise hg-bleed order-first min-w-0 lg:order-none" style={{ ["--d" as string]: 2 }}>
             <HeroGallery lang={lang} />
           </div>
         </div>

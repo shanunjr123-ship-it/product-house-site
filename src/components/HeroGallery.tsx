@@ -10,7 +10,7 @@ const N = HERO_IMAGES.length;
 /**
  * Home hero photo. One large photo that cross-fades through the scenes; the caption and dots sit on it.
  * Large screens: it fills the whole hero behind the text and fades into the page on the text side (CSS .hg-bleed).
- * Phones and tablets: the same photo as a wide band under the text. Auto-advance stops while keyboard focus is on the dots, in background tabs, and for visitors who asked for reduced motion.
+ * Phones and tablets: the same photo as an edge-to-edge band above the text (the phone box crops to the machine; sizes picks the large file there). Auto-advance stops while keyboard focus is on the dots, in background tabs, and for visitors who asked for reduced motion.
  */
 export default function HeroGallery({ lang }: { lang: Lang }) {
   const [active, setActive] = useState(0);
@@ -41,7 +41,7 @@ export default function HeroGallery({ lang }: { lang: Lang }) {
             <img
               src={im.lg}
               srcSet={`${im.sm} ${im.wSm}w, ${im.lg} ${im.wLg}w`}
-              sizes="(min-width: 1024px) 92vw, 100vw"
+              sizes="(min-width: 1024px) 92vw, (min-width: 640px) 100vw, 180vw"
               width={im.wLg}
               height={im.hLg}
               alt={im.alt[lang]}

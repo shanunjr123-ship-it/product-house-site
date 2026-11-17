@@ -867,18 +867,28 @@
   .sec {
     padding-top: clamp(2.25rem, 5vw, 4rem);
   }
-  /* Hero photo. Phones and tablets: a 4:3 band under the text. From 1024px: a panel that runs from the hero's top to
-     its bottom and to the screen edge, fading into the page on the text side. */
+  /* Hero photo. Phones and tablets: edge-to-edge band above the text (the page edge to page edge, no card), its top and bottom
+     fading into the page so the heading starts on the faded ground. From 1024px: a panel that runs from the hero's top to its
+     bottom and to the screen edge, fading into the page on the text side. */
   .hg {
     position: relative;
+  }
+  .hg-bleed {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    margin-bottom: -3.25rem;
   }
   .hg-stage {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 4 / 3;
-    border-radius: 1.5rem;
-    background: #e9ecfa;
-    box-shadow: 0 18px 40px -26px rgba(20, 31, 107, 0.5);
+    aspect-ratio: 8 / 7;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 7%, #000 76%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 7%, #000 76%, transparent 100%);
+  }
+  @media (min-width: 640px) {
+    .hg-stage {
+      aspect-ratio: 16 / 10;
+    }
   }
   .hg-slide {
     position: absolute;
@@ -895,23 +905,20 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: 100% 50%;
     user-select: none;
   }
   .hg-bar {
+    position: absolute;
+    inset-inline: 1rem;
+    top: 0.75rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin-top: 0.6rem;
+    justify-content: flex-end;
+    margin: 0;
   }
   .hg-cap {
-    margin: 0;
-    padding: 0.35rem 0.85rem;
-    border-radius: 999px;
-    background: rgba(11, 18, 48, 0.78);
-    color: #fff;
-    font-size: 0.9rem;
-    line-height: 1.3;
+    display: none;
   }
   .hg-dots {
     display: flex;
@@ -927,21 +934,19 @@
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 50%;
-    background: rgba(28, 43, 142, 0.28);
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 0 0 1px rgba(11, 18, 48, 0.3);
     transition: width 0.4s var(--ease-spring), background 0.4s;
   }
   .hg-dots button[aria-current="true"]::before {
     width: 1.35rem;
     border-radius: 999px;
-    background: var(--color-brand);
+    background: #fff;
   }
   .hg-dots button:focus-visible {
     outline: 3px solid var(--color-brand-bright);
     outline-offset: -6px;
     border-radius: 999px;
-  }
-  .hg-slide img {
-    object-position: 100% 50%;
   }
   @media (min-width: 1024px) {
     /* The photo fills the hero behind the text. The box is a little narrower than the screen and runs past the end edge, so
@@ -950,6 +955,8 @@
     .hg-bleed {
       position: absolute;
       inset: 0;
+      width: auto;
+      margin: 0;
     }
     .hg {
       height: 100%;
@@ -961,9 +968,6 @@
       width: 92%;
       height: 100%;
       aspect-ratio: auto;
-      border-radius: 0;
-      background: transparent;
-      box-shadow: none;
       -webkit-mask-image: linear-gradient(to right, transparent 0, #000 26%), linear-gradient(to top, transparent 0, #000 16%);
       mask-image: linear-gradient(to right, transparent 0, #000 26%), linear-gradient(to top, transparent 0, #000 16%);
       -webkit-mask-composite: source-in;
@@ -976,21 +980,9 @@
       object-position: var(--pos, 100% 50%);
     }
     .hg-bar {
-      position: absolute;
       inset-inline: 1.5rem 5.5rem;
+      top: auto;
       bottom: 1.1rem;
-      margin: 0;
-      justify-content: flex-end;
-    }
-    .hg-cap {
-      display: none;
-    }
-    .hg-dots button::before {
-      background: rgba(255, 255, 255, 0.75);
-      box-shadow: 0 0 0 1px rgba(11, 18, 48, 0.3);
-    }
-    .hg-dots button[aria-current="true"]::before {
-      background: #fff;
     }
   }
   @media (prefers-reduced-motion: reduce) {
