@@ -1,17 +1,28 @@
 import { SITE, type Lang } from "./site";
+import { PUMP_GUIDES } from "./guides-pumps";
+import { MIXER_GUIDES } from "./guides-mixers";
+import { BRAND_GUIDES } from "./guides-brands";
 
 // Buying guides. Every fact is either general technical knowledge of concrete pumps or already stated on the site
-// (hours, address, delivery inside and outside Riyadh, prices on request). No warranty terms, delivery times,
-// prices or "genuine" claims about specific parts are made: those are for the owner to confirm first.
+// (hours, address, delivery, prices on request) and the facts the owner confirmed in faq.ts (all parts original, VAT invoices,
+// returns, payment, no minimum order). No fixed warranty length, delivery time or price is given: those depend on the part.
 
-type L = Record<Lang, string>;
-export type Block = { p?: L; ul?: L[]; ol?: L[] };
+export type L = Record<Lang, string>;
+/** Text may contain links written as [label](/path/). The path is site-relative, without the language prefix. */
+export type Table = { head: L[]; rows: L[][] };
+export type Block = { p?: L; ul?: L[]; ol?: L[]; table?: Table; note?: L };
 export type Section = { h: L; body: Block[] };
+export type Cluster = "pumps" | "mixers" | "brands" | "buying";
 export type Guide = {
   slug: string;
   date: string; // ISO date first published
+  /** ISO date of the last substantive edit; shown and sent as dateModified. Omit until the article is revised. */
+  updated?: string;
+  cluster: Cluster;
   title: L;
   desc: L; // meta description
+  /** The short answer to the question in the title: 40-60 words, self-contained. Shown in a box under the heading. */
+  answer: L;
   intro: L;
   sections: Section[];
   /** Real catalogue parts shown as examples under the guide. */
@@ -24,11 +35,12 @@ export type Guide = {
 
 const wa = SITE.phoneDisplay;
 
-export const GUIDES: Guide[] = [
+const BASE_GUIDES: Guide[] = [
   /* ------------------------------------------------------------------ 1 */
   {
     slug: "find-part-number",
     date: "2026-11-06",
+    cluster: "buying",
     title: {
       ar: "كيف تعرف رقم قطعة غيار مضخة الخرسانة", // How to find the part number of a concrete pump spare part
       en: "How to Find the Part Number of a Concrete Pump Spare Part",
@@ -36,6 +48,10 @@ export const GUIDES: Guide[] = [
     desc: {
       ar: "أين تجد رقم القطعة على مضخة الخرسانة والخلاطة، وكيف تقيسها إذا لم يكن عليها رقم، وماذا ترسل لنا على واتساب لنحدد القطعة المناسبة.", // Where to find the part number on a concrete pump or mixer, how to measure it if there is no number, and what to send us on WhatsApp so we identify the right part.
       en: "Where to find the part number on a concrete pump or mixer, how to measure a part that has none, and what to send us on WhatsApp.",
+    },
+    answer: {
+      ar: 'ابدأ بلوحة بيانات الآلة (الماركة والموديل والرقم التسلسلي)، ثم ابحث عن الرقم المنقوش على القطعة نفسها. إذا لم تجد رقمًا فقِس القطعة بالمليمتر وصوّرها من زاويتين وأرسل الصور إلى واتساب، ونحدد لك القطعة المناسبة.',
+      en: "Start with the machine's data plate (make, model and serial number), then look for the number stamped on the part itself. If there is none, measure the part in millimetres, photograph it from two angles and send the photos on WhatsApp so we can identify it.",
     },
     intro: {
       ar: "رقم القطعة الصحيح يوفّر عليك طلبًا خاطئًا ورحلة ثانية. هذا الدليل يوضح أين تبحث عن الرقم على مضخة الخرسانة أو شاحنة الخلاطة أو محطة الخلط، وماذا تفعل إذا لم تجده.", // The right part number saves you a wrong order and a second trip. This guide shows where to look for the number on a concrete pump, truck mixer or batching plant, and what to do if you cannot find it.
@@ -73,8 +89,8 @@ export const GUIDES: Guide[] = [
                 en: "Bearings: the series number is printed or stamped on the side face of the ring, next to the maker's mark.",
               },
               {
-                ar: "المضخات والمحركات الهيدروليكية: لوحة صغيرة على الجسم فيها رمز الطراز، مثل A4VTG90 على مضخة الشحن.", // Hydraulic pumps and motors: a small plate on the body carries the type code, such as A4VTG90 on a charge pump.
-                en: "Hydraulic pumps and motors: a small plate on the housing carries the type code, such as A4VTG90 on a charge pump.",
+                ar: "المضخات والمحركات الهيدروليكية: لوحة صغيرة على الجسم فيها رمز الطراز، مثل A10VO28 أو A4VTG90.", // Hydraulic pumps and motors: a small plate on the body carries the type code, such as A10VO28 or A4VTG90.
+                en: "Hydraulic pumps and motors: a small plate on the housing carries the type code, such as A10VO28 or A4VTG90.",
               },
               {
                 ar: "الفلاتر: الرقم على الغلاف أو على الملصق.", // Filters: the number is on the housing or on the label.
@@ -165,6 +181,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "pump-wear-parts",
     date: "2026-11-06",
+    cluster: "pumps",
     title: {
       ar: "قطع التآكل في مضخة الخرسانة: ماذا يتآكل ومتى تُستبدل", // Concrete pump wear parts: what wears out and when to replace it
       en: "Concrete Pump Wear Parts: What Wears Out and When to Replace It",
@@ -172,6 +189,10 @@ export const GUIDES: Guide[] = [
     desc: {
       ar: "أهم قطع التآكل في مضخة الخرسانة: لوحة النظارة وحلقة القطع وصمام S والمكابس والأنابيب والأكواع. علامات التآكل وما الذي يُستبدل معًا.", // The main wear parts of a concrete pump: spectacle plate, cutting ring, S-valve, pistons, pipes and elbows. Signs of wear and what is replaced together.
       en: "The main wear parts of a concrete pump: spectacle plate, cutting ring, S-valve, pistons, pipes and elbows. Signs of wear and what to replace together.",
+    },
+    answer: {
+      ar: 'أهم قطع التآكل في مضخة الخرسانة هي لوحة النظارة وحلقة القطع وصمام S ومكابس الضخ والأنابيب والأكواع. تتآكل لأن الخرسانة كاشطة، وتُستبدل عادةً عندما تظهر تسريبات أو ينخفض الأداء، وغالبًا لوحة النظارة مع حلقة القطع معًا.',
+      en: 'The main wear parts of a concrete pump are the spectacle plate, cutting ring, S-valve, delivery pistons, pipes and elbows. They wear because concrete is abrasive, and are replaced when leaks or lower output appear, usually the spectacle plate together with the cutting ring.',
     },
     intro: {
       ar: "الخرسانة مادة كاشطة، وبعض قطع المضخة تتآكل بحكم عملها. معرفة هذه القطع وعلامات تآكلها تساعدك على الاستبدال قبل أن تتوقف المضخة في الموقع.", // Concrete is abrasive, and some pump parts wear out by design. Knowing these parts and the signs of wear helps you replace them before the pump stops on site.
@@ -295,6 +316,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "original-vs-alternative-parts",
     date: "2026-11-06",
+    cluster: "buying",
     title: {
       ar: "قطع الغيار الأصلية والبديلة: ماذا تتأكد منه قبل الشراء", // Original and alternative spare parts: what to check before you buy
       en: "Original vs Alternative Spare Parts: What to Check Before You Buy",
@@ -302,6 +324,10 @@ export const GUIDES: Guide[] = [
     desc: {
       ar: "الفرق بين قطع الغيار الأصلية والبديلة لمعدات الخرسانة، وما تتأكد منه في الحالتين، ومتى يناسبك كل نوع.", // The difference between original and alternative spare parts for concrete equipment, what to check in both cases, and when each one suits you.
       en: "The difference between original and alternative spare parts for concrete equipment, what to check in both cases, and when each suits you.",
+    },
+    answer: {
+      ar: '«الأصلي» قطعة من الشركة المصنّعة للآلة، و«البديل» قطعة من مصنّع آخر لنفس الاستخدام. قبل الشراء تأكّد من رقم القطعة والمقاسات وتوافقها مع موديل الآلة، واسأل المورّد صراحةً عن نوع القطعة، لأن الاختيار يعتمد على القطعة وطبيعة العمل.',
+      en: "“Original” is a part from the machine's own maker; “alternative” is made by another maker for the same use. Before buying, confirm the part number, dimensions and fit for your model, and ask the supplier plainly which type it is. The right choice depends on the part and the job.",
     },
     intro: {
       ar: "عند شراء قطعة غيار لمعدات الخرسانة ستسمع كلمتي «أصلي» و«بديل». اختيار النوع المناسب يعتمد على القطعة وعلى طبيعة العمل. هذا الدليل يشرح المصطلحات وما يجب فحصه قبل الدفع، أيًّا كان البائع.", // When buying a spare part for concrete equipment you will hear the words "original" and "alternative". Choosing the right type depends on the part and the job. This guide explains the terms and what to check before you pay, whoever the seller is.
@@ -371,8 +397,8 @@ export const GUIDES: Guide[] = [
         body: [
           {
             p: {
-              ar: `اذكر في رسالتك هل تحتاج قطعة الشركة المصنّعة نفسها أم يكفيك بديل متوافق، وراجع في الرد ماركة القطعة وبلد صنعها قبل التأكيد. أرسل رقم القطعة أو صورتها على واتساب ${wa}.`, // In your message say whether you need the machine maker's own part or a compatible alternative is enough, and check the part's brand and country of manufacture in the reply before confirming. Send the part number or a photo on WhatsApp.
-              en: `In your message, say whether you need the machine maker's own part or whether a compatible alternative is enough, and check the part's brand and country of manufacture in the reply before you confirm. Send the part number or a photo on WhatsApp at ${wa}.`,
+              ar: `جميع القطع التي نبيعها أصلية. ومع أي مورّد آخر، اذكر في رسالتك هل تحتاج قطعة الشركة المصنّعة نفسها أم يكفيك بديل متوافق، وراجع في الرد ماركة القطعة وبلد صنعها قبل التأكيد. أرسل رقم القطعة أو صورتها على واتساب ${wa}.`, // In your message say whether you need the machine maker's own part or a compatible alternative is enough, and check the part's brand and country of manufacture in the reply before confirming. Send the part number or a photo on WhatsApp.
+              en: `All the parts we sell are original. With any other supplier, say in your message whether you need the machine maker's own part or whether a compatible alternative is enough, and check the part's brand and country of manufacture in the reply before you confirm. Send the part number or a photo on WhatsApp at ${wa}.`,
             },
           },
         ],
@@ -402,6 +428,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "how-to-order",
     date: "2026-11-06",
+    cluster: "buying",
     title: {
       ar: "كيف تطلب قطع الغيار من بيت المنتج في الرياض", // How to order spare parts from Product House in Riyadh
       en: "How to Order Spare Parts from Product House in Riyadh",
@@ -409,6 +436,10 @@ export const GUIDES: Guide[] = [
     desc: {
       ar: "خطوات طلب قطع غيار مضخات الخرسانة والخلاطات من مؤسسة بيت المنتج للتجارة في الرياض: السعر على واتساب، التوصيل، أوقات الدوام والموقع.", // Steps to order concrete pump and mixer spare parts from Product House Trading Est. in Riyadh: price on WhatsApp, delivery, opening hours and location.
       en: "How to order concrete pump and mixer spare parts from Product House Trading Est. in Riyadh: price on WhatsApp, delivery, opening hours and location.",
+    },
+    answer: {
+      ar: 'أرسل رقم القطعة أو صورتها إلى واتساب 0592112782، فنرد بالسعر والتوفر. الأسعار غير معروضة على الموقع. نوفّر التوصيل داخل الرياض وخارجها، والمحل في الصناعية القديمة بالعويدة من 8 صباحًا إلى 7 مساءً والجمعة إجازة.',
+      en: 'Send the part number or a photo on WhatsApp at 059 211 2782 and we reply with the price and availability. Prices are not shown on the site. We deliver inside and outside Riyadh; the shop is in the Old Industrial Area, Al Owaidah, open 8 AM to 7 PM, closed Friday.',
     },
     intro: {
       ar: "لا نعرض الأسعار على الموقع، ونرد بالسعر عند الطلب. هذه خطوات الطلب من أول رسالة إلى استلام القطعة.", // We do not show prices on the site; we reply with the price on request. These are the steps from your first message to receiving the part.
@@ -501,5 +532,8 @@ export const GUIDES: Guide[] = [
     ],
   },
 ];
+
+/** Every article, in the order shown on the Blog page (grouped by cluster there). New articles live in their own files. */
+export const GUIDES: Guide[] = [...BASE_GUIDES, ...PUMP_GUIDES, ...MIXER_GUIDES, ...BRAND_GUIDES];
 
 export const guideBySlug = (slug: string) => GUIDES.find((g) => g.slug === slug);

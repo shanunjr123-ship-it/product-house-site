@@ -1,8 +1,8 @@
 import { SITE, type Lang } from "./site";
 
 // FAQ shown on the home page and published as FAQPage structured data.
-// Only facts already on the site (address, hours, phone, delivery, how ordering works) are in FAQ.
-// DRAFT_FAQ holds questions that need the owner's answer first; they are NOT shown or marked up until moved into FAQ.
+// Every answer here is a fact confirmed by the owner. Where a fact depends on the part (warranty, delivery cost and time,
+// sourcing time) the answer says so instead of giving one figure.
 
 export type Faq = { q: Record<Lang, string>; a: (n: number) => Record<Lang, string> };
 
@@ -48,6 +48,78 @@ export const FAQ: Faq[] = [
     }),
   },
   {
+    q: { ar: "كم تكلفة التوصيل وكم يستغرق؟", /* How much does delivery cost and how long does it take? */ en: "How much does delivery cost and how long does it take?" },
+    a: () => ({
+      ar: "التكلفة والمدة تختلف حسب القطعة. أرسل لنا القطعة والمدينة على واتساب ونؤكدهما لك.",
+      // Cost and time depend on the part. Send us the part and the city on WhatsApp and we confirm both.
+      en: "Cost and time depend on the part. Send us the part and your city on WhatsApp and we confirm both.",
+    }),
+  },
+  {
+    q: { ar: "هل تشحنون إلى دول الخليج الأخرى؟", /* Do you ship to other GCC countries? */ en: "Do you ship to other GCC countries?" },
+    a: () => ({
+      ar: "لا، لا نشحن إلى دول الخليج الأخرى.",
+      // No, we do not ship to other GCC countries.
+      en: "No, we do not ship to other GCC countries.",
+    }),
+  },
+  {
+    q: { ar: "هل القطع أصلية؟", /* Are the parts original? */ en: "Are your parts original?" },
+    a: () => ({
+      ar: "نعم، جميع القطع التي نبيعها أصلية.",
+      // Yes, all the parts we sell are original.
+      en: "Yes, all the parts we sell are original.",
+    }),
+  },
+  {
+    q: { ar: "هل يوجد ضمان على القطع؟", /* Is there a warranty on the parts? */ en: "Is there a warranty on the parts?" },
+    a: () => ({
+      ar: "أغلب القطع عليها ضمان، ومدته وشروطه تختلف حسب القطعة. اسألنا عن قطعتك على واتساب.",
+      // Most parts carry a warranty; its length and terms depend on the part. Ask us about your part on WhatsApp.
+      en: "Most parts carry a warranty. Its length and terms depend on the part. Ask us about your part on WhatsApp.",
+    }),
+  },
+  {
+    q: { ar: "هل أقدر أرجّع القطعة أو أبدّلها إذا ما ناسبت؟", /* Can I return or exchange a part if it doesn't fit? */ en: "Can I return or exchange a part if it does not fit?" },
+    a: () => ({
+      ar: "نعم، يمكنك إرجاع القطعة أو استبدالها إذا لم تناسب آلتك.",
+      // Yes, you can return or exchange the part if it does not fit your machine.
+      en: "Yes, you can return or exchange the part if it does not fit your machine.",
+    }),
+  },
+  {
+    q: { ar: "ما طرق الدفع عندكم؟", /* What payment methods do you accept? */ en: "What payment methods do you accept?" },
+    a: () => ({
+      ar: "نقبل جميع طرق الدفع.",
+      // We accept all payment methods.
+      en: "We accept all payment methods.",
+    }),
+  },
+  {
+    q: { ar: "هل تصدرون فاتورة ضريبية؟", /* Do you issue VAT invoices? */ en: "Do you issue VAT invoices?" },
+    a: () => ({
+      ar: "نعم، نصدر فاتورة ضريبية.",
+      // Yes, we issue VAT invoices.
+      en: "Yes, we issue VAT invoices.",
+    }),
+  },
+  {
+    q: { ar: "هل يوجد حد أدنى للطلب؟", /* Is there a minimum order? */ en: "Is there a minimum order?" },
+    a: () => ({
+      ar: "لا، لا يوجد حد أدنى للطلب.",
+      // No, there is no minimum order.
+      en: "No, there is no minimum order.",
+    }),
+  },
+  {
+    q: { ar: "هل تجلبون قطعة غير موجودة في الكتالوج؟", /* Can you source a part that is not in the catalogue? */ en: "Can you source a part that is not in the catalog?" },
+    a: () => ({
+      ar: "نعم، نوفّر قطعًا غير موجودة في الكتالوج. المدة تختلف حسب القطعة، فأرسل لنا رقمها أو صورتها على واتساب.",
+      // Yes, we source parts that are not in the catalogue. The time depends on the part, so send us its number or a photo on WhatsApp.
+      en: "Yes, we source parts that are not in the catalog. The time depends on the part, so send us its number or a photo on WhatsApp.",
+    }),
+  },
+  {
     q: { ar: "أين موقعكم وما هي أوقات الدوام؟", /* Where are you and what are your opening hours? */ en: "Where are you located and what are your opening hours?" },
     a: () => ({
       ar: `${SITE.address.ar}. ${SITE.hours.ar}.`,
@@ -64,16 +136,3 @@ export const FAQ: Faq[] = [
   },
 ];
 
-// NOT PUBLISHED. Ask the owner, then move the confirmed ones into FAQ with his exact answer.
-export const DRAFT_FAQ: string[] = [
-  "Are the parts original (genuine), OEM or compatible? Which brands are genuine?", // CONFIRM
-  "Is there a warranty on parts? How long, and what does it cover?", // CONFIRM
-  "Can I return or exchange a part if it does not fit?", // CONFIRM
-  "What payment methods do you accept (cash, transfer, card, credit for companies)?", // CONFIRM
-  "Do you issue VAT invoices?", // CONFIRM
-  "How much does delivery cost and how long does it take (Riyadh, other cities)?", // CONFIRM
-  "Do you ship to other GCC countries?", // CONFIRM
-  "Is there a minimum order?", // CONFIRM
-  "Are you an authorised Putzmeister distributor? (needs the dealer certificate; the site currently says so)", // CONFIRM
-  "Can you source a part that is not in the catalog? How long does it take?", // CONFIRM
-];

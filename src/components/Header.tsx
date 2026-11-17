@@ -2,6 +2,7 @@ import HomeLink from "./HomeLink";
 import { SITE, type Lang } from "@/config/site";
 import { href } from "@/lib/links";
 import { CallLink, LangSwitch, NavLinks, QuoteLink } from "./HeaderBits";
+import MobileMenu from "./MobileMenu";
 
 /** Logo only on phones: the full company name does not fit, and the logo already carries it. */
 export default function Header({ lang }: { lang: Lang }) {
@@ -20,6 +21,7 @@ export default function Header({ lang }: { lang: Lang }) {
           <LangSwitch lang={lang} />
           <CallLink lang={lang} />
           <QuoteLink lang={lang} />
+          <MobileMenu lang={lang} />
         </div>
       </div>
     </header>

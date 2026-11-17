@@ -30,8 +30,8 @@ export function GET() {
 - [Spare parts catalogue](${abs("en", "/catalog/")}) ([Arabic](${abs("ar", "/catalog/")})): search by part number or name
 - [Parts by machine brand](${abs("en", "/machines/")}) ([Arabic](${abs("ar", "/machines/")}))
 - [Heavy equipment spare parts in Riyadh](${abs("en", "/heavy-equipment-parts/")}) ([Arabic](${abs("ar", "/heavy-equipment-parts/")})): concrete pumps, mixers, batching plants, Atlas cranes, forklifts
-- [Buying guides](${abs("en", "/guides/")}) ([Arabic](${abs("ar", "/guides/")})): how to find a part number, concrete pump wear parts, original vs alternative parts, how to order
-${GUIDES.map((g) => `  - [${g.title.en}](${abs("en", `/guides/${g.slug}/`)}) / ${g.title.ar}`).join("\n")}
+- [Blog: spare parts guides](${abs("en", "/guides/")}) ([Arabic](${abs("ar", "/guides/")})): ${GUIDES.length} plain-language articles on concrete pump parts, faults, maintenance, mixers, Putzmeister and Schwing parts, and how to order
+${GUIDES.map((g) => `  - [${g.title.en}](${abs("en", `/guides/${g.slug}/`)}) / ${g.title.ar}: ${g.answer.en.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")}`).join("\n")}
 - [Contact and location](${abs("en", "/contact/")}) ([Arabic](${abs("ar", "/contact/")}))
 - [About](${abs("en", "/about/")}) ([Arabic](${abs("ar", "/about/")}))
 - [Full catalogue as PDF](${SITE.url}/downloads/product-house-parts-catalog.pdf)

@@ -32,10 +32,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return path ? [`${SITE.url}${path}`] : undefined;
   };
   const isPart = (p: string) => !(top.includes(p) || p.startsWith("/guides/") || p.startsWith("/category/") || p.startsWith("/machines/"));
+  // Each article carries its own date; the blog index changes whenever the newest article does.
+  const guideDate = (p: string) => {
+    const slug = p.match(/^\/guides\/([^/]+)\/$/)?.[1];
+    if (slug) return GUIDES.find((g) => g.slug === slug)?.updated ?? GUIDES.find((g) => g.slug === slug)?.date;
+    return p === "/guides/" ? [...GUIDES].map((g) => g.updated ?? g.date).sort().at(-1) : undefined;
+  };
   return paths.flatMap((p) =>
     (["ar", "en"] as const).map((lang) => ({
       url: abs(lang, p),
-      lastModified: isPart(p) ? MODIFIED : PHOTOS_ADDED,
+      lastModified: isPart(p) ? MODIFIED : (guideDate(p) ?? PHOTOS_ADDED),
       images: imageFor(p),
       priority: rank(p),
       alternates: { languages: { ar: abs("ar", p), en: abs("en", p), "x-default": abs("ar", p) } },

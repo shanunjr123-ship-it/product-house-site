@@ -151,6 +151,18 @@ export const GUIDE_PHOTO: Record<string, string> = {
   "original-vs-alternative-parts": "seal-kit-coloured-rings",
   "find-part-number": "pressure-transducer",
   "pump-wear-parts": "wear-plate-and-cutting-ring-pair",
+  "concrete-pump-parts-names": "stationary-concrete-pump-trailer",
+  "spectacle-plate-cutting-ring": "red-spectacle-wear-plate",
+  "hydraulic-oil-overheating-concrete-pump": "hydraulic-oil-cooler-fan",
+  "concrete-pump-slow-weak-output": "concrete-pump-delivery-piston",
+  "concrete-pump-maintenance-checklist": "hydraulic-cylinder-seal-kit",
+  "hydraulic-filters-concrete-pump": "hydraulic-filter-element",
+  "delivery-pipes-elbows-couplings": "concrete-pump-90-degree-elbow",
+  "hydraulic-pump-motor-codes": "axial-piston-hydraulic-pump",
+  "truck-mixer-drum-rollers": "mixer-drum-roller-with-pin",
+  "batching-plant-spare-parts": "concrete-batching-plant",
+  "putzmeister-spare-parts-riyadh": "putzmeister-boom-pump-truck",
+  "schwing-spare-parts-riyadh": "schwing-s36x-pump-truck",
 };
 
 /** The real shop-front photo (not a stock or press image). Used on the "how to order" guide. */
