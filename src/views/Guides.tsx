@@ -3,7 +3,7 @@ import FaqList from "@/components/FaqList";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import CatIcon from "@/components/CatIcon";
 import { MissingCard } from "@/components/Cards";
-import { CAPTION, HeadFigure, PageHead, Pic } from "@/components/PhotoBits";
+import { HeadFigure, PageHead, Pic } from "@/components/PhotoBits";
 import { GUIDE_PHOTO, STOREFRONT, photo, type Photo } from "@/config/photos";
 import { SITE, type Lang } from "@/config/site";
 import { GUIDES, guideBySlug, type Block } from "@/config/guides";
@@ -64,7 +64,7 @@ export function GuidesIndexView({ lang }: { lang: Lang }) {
     <div className="wrap pb-6 pt-4">
       <Crumbs lang={lang} trail={[{ name: t.index }]} />
       <h1 className="h-display rise mt-2 text-[clamp(1.9rem,5vw,3.25rem)]">{t.indexH1}</h1>
-      <p className="rise mt-3 max-w-[66ch] text-lg text-steel" style={{ ["--d" as string]: 2 }}>
+      <p className="rise mt-5 max-w-[66ch] text-lg text-steel" style={{ ["--d" as string]: 2 }}>
         {t.indexLead}
       </p>
       <script
@@ -158,9 +158,9 @@ export function GuideView({ lang, slug }: { lang: Lang; slug: string }) {
   return (
     <article className="wrap pb-6 pt-4">
       <Crumbs lang={lang} trail={[{ name: t.index, path: "/guides/" }, { name: g.title[lang] }]} />
-      <PageHead figure={shot && <HeadFigure p={shot} lang={lang} caption={g.slug === "how-to-order" ? "" : CAPTION.parts[lang]} ratio={g.slug === "how-to-order" ? "16/10" : "4/3"} />}>
+      <PageHead figure={shot && <HeadFigure p={shot} lang={lang} ratio={g.slug === "how-to-order" ? "16/10" : "4/3"} />}>
         <h1 className="h-display rise mt-2 max-w-[24ch] text-[clamp(1.9rem,4.6vw,3rem)] leading-tight">{g.title[lang]}</h1>
-        <p className="rise mt-3 max-w-[66ch] text-lg text-steel" style={{ ["--d" as string]: 2 }}>
+        <p className="rise mt-5 max-w-[66ch] text-lg text-steel" style={{ ["--d" as string]: 2 }}>
           {g.intro[lang]}
         </p>
         <p className="mt-2 text-sm text-steel">

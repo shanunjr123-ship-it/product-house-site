@@ -102,7 +102,7 @@ export function ProductView({ lang, code }: { lang: Lang; code: string }) {
           <h1 className="h-display mt-3 text-[clamp(1.7rem,4vw,2.8rem)]">
             <bdi dir="auto">{name}</bdi>
           </h1>
-          {desc && <p className="mt-3 max-w-prose text-lg text-steel">{desc}</p>}
+          {desc && <p className="mt-4 max-w-prose text-lg text-steel">{desc}</p>}
 
           <dl className="surface mt-5 overflow-hidden lg:mt-7 rounded-[1.5rem] text-start">
             <div className="row px-5 py-4">

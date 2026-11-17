@@ -51,28 +51,42 @@ export const aboutMeta = (lang: Lang) =>
 function AboutBody({ lang }: { lang: Lang }) {
   const d = DICT[lang];
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:gap-10">
-      <div className="reveal max-w-prose text-lg text-start">
-        <p>{d.aboutBody}</p>
-        <p className="mt-4 text-steel">{d.aboutWho}</p>
-        <p className="mt-4 font-medium text-brand">{d.aboutAuth}</p>
-        <p className="mt-1">{d.aboutDelivery}</p>
-        <h2 className="h-display mt-8 text-[clamp(1.35rem,3vw,1.75rem)]">{d.aboutBrowse}</h2>
-        <ul className="mt-4 grid grid-cols-2 gap-3 lg:gap-6">
-          {categoryCounts()
-            .filter((c) => c.slug !== "other")
-            .slice(0, 8)
-            .map((c) => (
-              <li key={c.slug} className="grid">
-                <CatCard lang={lang} c={c} />
-              </li>
-            ))}
-        </ul>
+    <div>
+      {/* Text on one side, storefront on the other, centred against each other. Phones: text, then photo. */}
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-start lg:gap-12">
+        <div className="reveal max-w-prose text-lg text-start">
+          <p>{d.aboutBody}</p>
+          <p className="mt-4 text-steel">{d.aboutWho}</p>
+          <p className="mt-4 font-medium text-brand">{d.aboutAuth}</p>
+          <p className="mt-1">{d.aboutDelivery}</p>
+          <div className="mt-7 grid max-w-md gap-4 sm:grid-cols-[1.5fr_1fr]">
+            <a href={waLink(d.waPhoto)} target="_blank" rel="noopener noreferrer" className="hero-btn btn-wa">
+              <WhatsAppIcon size={26} />
+              {d.sendPhotoShort}
+            </a>
+            <a href={telLink()} className="hero-btn hero-call">
+              <PhoneIcon size={24} />
+              {d.call}
+            </a>
+          </div>
+        </div>
+        <div className="bezel reveal" style={{ ["--d" as string]: 2 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/img/storefront.webp" alt={lang === "ar" ? SITE.nameAr : SITE.nameEn} width={1400} height={939} className="plate aspect-[3/2] w-full object-cover" loading="lazy" />
+        </div>
       </div>
-      <div className="bezel reveal self-start" style={{ ["--d" as string]: 2 }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/img/storefront.webp" alt={lang === "ar" ? SITE.nameAr : SITE.nameEn} width={1400} height={939} className="plate aspect-[3/2] w-full object-cover" loading="lazy" />
-      </div>
+      {/* Full-width category grid: 8 tiles fill two rows of 4. */}
+      <h2 className="h-display mt-10 text-[clamp(1.35rem,3vw,1.75rem)]">{d.aboutBrowse}</h2>
+      <ul className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4 lg:gap-6">
+        {categoryCounts()
+          .filter((c) => c.slug !== "other")
+          .slice(0, 8)
+          .map((c, i) => (
+            <li key={c.slug} className="reveal grid" style={{ ["--d" as string]: i % 4 }}>
+              <CatCard lang={lang} c={c} />
+            </li>
+          ))}
+      </ul>
     </div>
   );
 }

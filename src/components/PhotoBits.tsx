@@ -2,19 +2,7 @@ import type { ReactNode } from "react";
 import type { Photo } from "@/config/photos";
 import type { Lang } from "@/config/site";
 
-// Shared pieces for the product and machine photos: the <img>, the page-header layout, the photo strip and the
-// "illustrative" caption. Photos are plain <img> tags (the site is a static export without next/image).
-
-export const CAPTION = {
-  parts: {
-    ar: "الصور للتوضيح؛ شكل القطعة يختلف حسب الرقم والمصنّع.", // Photos are illustrative; how a part looks varies by part number and make.
-    en: "Photos are illustrative. How a part looks varies by part number and make.",
-  },
-  machine: {
-    ar: "صورة توضيحية لنوع الآلة؛ القطع تختلف حسب الموديل وسنة الصنع.", // Illustrative photo of the machine type; parts differ by model and year.
-    en: "Illustrative photo of the machine type. Parts differ by model and year.",
-  },
-} as const;
+// Shared pieces for the product and machine photos: the <img>, the page-header layout and the photo strip. Photos are plain <img> tags (the site is a static export without next/image).
 
 /** One photo with a 400 / 720 px (or 560 / 1120 px) srcset. Width and height are set, so the page does not jump while it loads. */
 export function Pic({ p, lang, sizes, className, eager = false }: { p: Photo; lang: Lang; sizes: string; className?: string; eager?: boolean }) {
@@ -59,7 +47,7 @@ export function HeadFigure({
 }: {
   p: Photo;
   lang: Lang;
-  caption: string;
+  caption?: string;
   ratio?: "4/3" | "16/10";
   desktopOnly?: boolean;
 }) {

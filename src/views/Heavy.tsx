@@ -62,7 +62,7 @@ export function HeavyView({ lang }: { lang: Lang }) {
     <div className="wrap pb-6 pt-4">
       <Crumbs lang={lang} trail={[{ name: h1 }]} />
       <h1 className="h-display rise mt-2 text-[clamp(1.9rem,5vw,3.25rem)]">{h1}</h1>
-      <p className="rise mt-3 max-w-[66ch] text-lg text-steel" style={{ ["--d" as string]: 2 }}>
+      <p className="rise mt-5 max-w-[66ch] text-lg text-steel" style={{ ["--d" as string]: 2 }}>
         {intro}
       </p>
       <script
