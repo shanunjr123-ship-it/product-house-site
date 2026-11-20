@@ -18,10 +18,10 @@ function Crumbs({ lang, trail }: { lang: Lang; trail: { name: string; path?: str
   return (
     <>
       <nav aria-label="Breadcrumb" className="rise text-sm text-steel">
-        <ol className="flex items-center gap-x-2 overflow-hidden whitespace-nowrap">
+        <ol className="-my-2 flex items-center gap-x-2 overflow-hidden whitespace-nowrap">
           {all.map((c, i) => (
             <li key={c.name} className={`flex shrink-0 gap-2 ${i === all.length - 1 ? "max-sm:hidden" : ""}`}>
-              {c.path && i < all.length - 1 ? <Link href={href(lang, c.path)} className="transition-colors duration-300 hover:text-brand">{c.name}</Link> : <bdi dir="auto" className="truncate" aria-current={i === all.length - 1 ? "page" : undefined}>{c.name}</bdi>}
+              {c.path && i < all.length - 1 ? <Link href={href(lang, c.path)} className="inline-flex min-h-[44px] min-w-[44px] items-center transition-colors duration-300 hover:text-brand">{c.name}</Link> : <bdi dir="auto" className="truncate" aria-current={i === all.length - 1 ? "page" : undefined}>{c.name}</bdi>}
               {i < all.length - 1 && <span aria-hidden className={i === all.length - 2 ? "max-sm:hidden" : ""}>/</span>}
             </li>
           ))}
@@ -41,11 +41,11 @@ export const catalogMeta = (lang: Lang) =>
   pageMeta({
     lang,
     path: "/catalog/",
-    title: titled(lang, lang === "ar" ? "كتالوج قطع غيار مضخات الخرسانة والخلاطات" : "Spare Parts Catalog for Concrete Pumps & Mixers"), // Spare parts catalog for concrete pumps and mixers
+    title: titled(lang, lang === "ar" ? "كتالوج قطع غيار معدات ثقيلة" : "Heavy Equipment Spare Parts Catalog"), // Heavy equipment spare parts catalog
     description:
       lang === "ar"
-        ? "ابحث في كتالوج قطع الغيار برقم القطعة أو الاسم: محامل، فلاتر، أختام، صمامات، مكابس، معدات كهربائية وأكثر."
-        : "Search the spare parts catalog by part number or name: bearings, filters, seals, valves, pistons, electrical equipment and more.",
+        ? "كتالوج قطع غيار معدات ثقيلة: ابحث برقم القطعة أو الاسم عن محامل وفلاتر وأختام وصمامات وقطع كهربائية. السعر عند الطلب عبر واتساب." // Heavy equipment spare parts catalog: search by part number or name for bearings, filters, seals, valves and electrical parts. Price on request via WhatsApp.
+        : "Heavy equipment spare parts catalog: search by part number or name for bearings, filters, seals, valves, electrical parts. Price on request via WhatsApp.",
   });
 
 export function CatalogView({ lang }: { lang: Lang }) {
@@ -85,7 +85,7 @@ export function categoryMeta(lang: Lang, slug: string) {
   return pageMeta({
     lang,
     path: `/category/${slug}/`,
-    title: titled(lang, lang === "ar" ? `${c.ar} لمضخات الخرسانة والخلاطات` : `${c.en} for Concrete Pumps & Mixers`), // {category} for concrete pumps and mixers
+    title: titled(lang, lang === "ar" ? `${c.ar} لمعدات ثقيلة` : `${c.en} for Heavy Equipment`), // {category} for heavy equipment
     description: categoryMetaText(lang, slug),
     image: catOg(slug),
     imageSize: { w: 1200, h: 630 },
@@ -135,11 +135,11 @@ export const machinesMeta = (lang: Lang) =>
   pageMeta({
     lang,
     path: "/machines/",
-    title: titled(lang, lang === "ar" ? "قطع الغيار حسب الآلة أو العلامة" : "Spare Parts by Machine or Brand"), // Spare parts by machine or brand
+    title: titled(lang, lang === "ar" ? "قطع غيار معدات ثقيلة حسب الآلة أو العلامة" : "Heavy Equipment Spare Parts by Machine or Brand"), // Heavy equipment spare parts by machine or brand
     description:
       lang === "ar"
-        ? "اختر آلتك أو علامتك: بوتزمايستر، شوينغ، زينيث، سَني، سيفا وغيرها، وشاهد قطع غيارها في الرياض. السعر عند الطلب عبر واتساب." // Pick your machine or brand: Putzmeister, Schwing, Zenith, Sany, CIFA and more, and see its spare parts in Riyadh. Price on request via WhatsApp.
-        : "Pick your machine or brand, Putzmeister, Schwing, Zenith, Sany, CIFA and more, and see its spare parts in Riyadh. Price on request via WhatsApp.",
+        ? "قطع غيار معدات ثقيلة حسب الآلة أو العلامة: بوتزمايستر، شوينغ، زينيث، سَني، سيفا وغيرها، في الرياض. السعر عند الطلب عبر واتساب." // Heavy equipment spare parts by machine or brand: Putzmeister, Schwing, Zenith, Sany, CIFA and more, in Riyadh. Price on request via WhatsApp.
+        : "Heavy equipment spare parts by machine or brand: Putzmeister, Schwing, Zenith, Sany, CIFA and more, in Riyadh. Price on request via WhatsApp.",
   });
 
 export function MachinesIndexView({ lang }: { lang: Lang }) {

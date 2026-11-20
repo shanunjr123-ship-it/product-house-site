@@ -14,6 +14,9 @@ import { guideBySlug } from "./guides";
 //   Delivery        "شحن قطع غيار" 10-100 (generic); "توصيل قطع غيار معدات ثقيلة" 0-10
 //   Warranty/quote  "ضمان قطع الغيار" 0-10; "طلب عرض سعر قطع غيار" 0-10
 //   Caterpillar     "قطع غيار كتربلر" 100-1k; "قطع غيار معدات ثقيلة كتربلر" 10-100 (owner confirmed Caterpillar parts are carried)
+// Re-check, Nov 2026 (Saudi Arabia, all languages): "قطع غيار معدات ثقيلة" 1k-10k; "قطع غيار شيول" and "مضخة هيدروليك" 100-1k;
+//   "قطع غيار رافعات شوكية", "قطع غيار فوركلفت", "قطع غيار حفارات", "فلاتر هيدروليك", "خراطيم هيدروليك" 10-100;
+//   "قطع غيار مضخات الخرسانة", "قطع غيار بمب خرسانة", "قطع غيار بوتزمايستر" below 10. Loaders (شيول) and excavators are not in the catalogue, so they are not claimed.
 // Question-style searches have almost no measurable volume, so the questions follow the buyer's real objections and the
 // vocabulary above, not volume. Used, scrapyard, rental and for-sale terms are left out on purpose.
 
@@ -156,6 +159,15 @@ export const FAQ_GROUPS: FaqGroup[] = [
           en: "Yes, we supply Caterpillar spare parts. Send the part number or a photo on WhatsApp and we reply with the price and availability.",
         }),
         links: [{ to: "/machines/caterpillar/", label: { ar: "قطع كاتربيلر", /* Caterpillar parts */ en: "Caterpillar parts" } }],
+      },
+      {
+        q: { ar: "هل تتوفر قطع غيار الرافعات الشوكية (فوركلفت)؟", /* Do you have forklift spare parts ("فوركلفت" is the colloquial loan word)? */ en: "Do you have forklift spare parts?" },
+        a: () => ({
+          ar: "نعم، نوفّر قطع غيار الرافعات الشوكية لعلامات مثل تويوتا. أرسل رقم القطعة أو صورتها على واتساب ونرد عليك بالسعر والتوفر.",
+          // Yes, we supply forklift spare parts for makes such as Toyota. Send the part number or a photo on WhatsApp and we reply with the price and availability.
+          en: "Yes, we supply forklift spare parts for makes such as Toyota. Send the part number or a photo on WhatsApp and we reply with the price and availability.",
+        }),
+        links: [{ to: "/machines/forklift/", label: { ar: "قطع الرافعات الشوكية", /* Forklift parts */ en: "Forklift parts" } }],
       },
       {
         q: { ar: "هل تتوفر قطع غيار مضخات الخرسانة (اسبيرات البمب)؟", /* Are spare parts for concrete pumps available ("اسبيرات البمب" is the colloquial way to say pump spares)? */ en: "Do you have spare parts for concrete pumps?" },

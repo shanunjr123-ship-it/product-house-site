@@ -94,7 +94,7 @@ export function QuoteProvider({ children, lang }: { children: ReactNode; lang: L
   return (
     <QuoteCtx.Provider value={value}>
       {children}
-      <div aria-live="polite" className="pointer-events-none fixed inset-x-0 flex justify-center px-4" style={{ zIndex: 60, bottom: "calc(max(0.75rem, env(safe-area-inset-bottom)) + 5.5rem)" }}>
+      <div aria-live="polite" className="pointer-events-none fixed inset-x-0 top-[calc(env(safe-area-inset-top)+5.25rem)] flex justify-center px-4 lg:top-auto lg:bottom-6" style={{ zIndex: 60 }}>
         {toast && (
           <div key={toast.n} className={`toast glass-dark pointer-events-auto flex items-center gap-3 rounded-full py-2 ps-3 pe-2 text-sm font-medium ${toast.out ? "out" : ""}`} style={{ background: "linear-gradient(135deg, rgba(28,43,142,0.92), rgba(14,22,89,0.92))" }}>
             <span className="grid size-7 place-items-center rounded-full bg-wa">

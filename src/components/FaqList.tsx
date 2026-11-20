@@ -49,9 +49,9 @@ function Row({ q, a, links }: Item) {
       <div ref={body} className="overflow-hidden">
         <p className={`px-5 text-[0.9375rem] text-steel sm:max-w-[46rem] sm:px-7 ${links?.length ? "pb-3" : "pb-6"}`}>{a}</p>
         {links?.length ? (
-          <p className="flex flex-wrap gap-x-5 gap-y-1 px-5 pb-6 text-[0.9375rem] sm:px-7">
+          <p className="flex flex-wrap gap-x-5 gap-y-0 px-5 pb-3 text-[0.9375rem] sm:px-7">
             {links.map((l) => (
-              <Link key={l.href} href={l.href} className="text-brand hover:underline">
+              <Link key={l.href} href={l.href} className="inline-flex min-h-[44px] items-center text-brand hover:underline">
                 {l.label}
               </Link>
             ))}

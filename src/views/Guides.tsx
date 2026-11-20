@@ -11,7 +11,7 @@ import { GUIDES, guideBySlug, type Block, type Cluster, type Guide, type L } fro
 import { DICT } from "@/i18n/dict";
 import { byCode, catBySlug, pname } from "@/lib/catalog";
 import { abs, href, productPath, waLink } from "@/lib/links";
-import { jsonLdScript, pageMeta, titled } from "@/lib/seo";
+import { clipAt, jsonLdScript, pageMeta, titled, titledFit } from "@/lib/seo";
 import { Crumbs } from "./Lists";
 
 // Buying guides: plain-language articles that answer the questions buyers type into Google
@@ -20,8 +20,8 @@ import { Crumbs } from "./Lists";
 const T = {
   ar: {
     index: "المدونة", // Blog
-    indexH1: "مدونة قطع غيار مضخات الخرسانة والخلاطات", // Blog: spare parts for concrete pumps and mixers
-    indexDesc: "شروحات عملية من بيت المنتج في الرياض: أسماء أجزاء مضخة الخرسانة، أسباب الأعطال الشائعة، الصيانة، رولات الخلاطة، قطع بوتزمايستر وشوينغ، وكيف تطلب القطعة الصحيحة.", // Practical articles from Product House in Riyadh: concrete pump part names, common faults, maintenance, mixer rollers, Putzmeister and Schwing parts, and how to order the right part.
+    indexH1: "مدونة قطع غيار معدات ثقيلة", // Blog: heavy equipment spare parts
+    indexDesc: "شروحات قطع غيار معدات ثقيلة من بيت المنتج في الرياض: أجزاء مضخة الخرسانة، الأعطال الشائعة، الصيانة، قطع الخلاطات، وكيف تطلب القطعة الصحيحة.", // Heavy equipment spare parts guides from Product House in Riyadh: concrete pump parts, common faults, maintenance, mixer parts, and how to order the right part.
     indexLead: "مقالات قصيرة وواضحة تجيب عن أسئلة المقاولين والورش التي تصلنا كل يوم: ما اسم القطعة، لماذا ترتفع الحرارة، متى أستبدل، وكيف أطلب.", // Short, plain articles answering what contractors and workshops ask us every day: what the part is called, why it overheats, when to replace it, and how to order.
     quick: "الجواب المختصر", // The short answer
     toc: "في هذا المقال", // In this article
@@ -37,8 +37,8 @@ const T = {
   },
   en: {
     index: "Blog",
-    indexH1: "Blog: Concrete Pump & Mixer Spare Parts Guides",
-    indexDesc: "Practical articles from Product House in Riyadh: concrete pump part names, common faults, maintenance, mixer drum rollers, Putzmeister and Schwing parts, and how to order the right part.",
+    indexH1: "Blog: Heavy Equipment Spare Parts Guides",
+    indexDesc: "Heavy equipment spare parts guides from Product House, Riyadh: concrete pump parts, faults, maintenance, mixer parts and how to order.",
     indexLead: "Short, plain-language articles that answer what contractors and workshops ask us every day: what the part is called, why it overheats, when to replace it and how to order.",
     quick: "The short answer",
     toc: "In this article",
@@ -182,7 +182,9 @@ export const guideSlugs = () => GUIDES.map((g) => ({ slug: g.slug }));
 export function guideMeta(lang: Lang, slug: string) {
   const g = guideBySlug(slug);
   if (!g) return {};
-  return pageMeta({ lang, path: `/guides/${g.slug}/`, title: titled(lang, g.title[lang]), description: plain(g.desc[lang]) });
+  // "(Guide)" / "(دليل)" is added only when the title had to be shortened, so it never equals the machine-brand page of the same name.
+  const title = titledFit(lang, g.title[lang], 70, lang === "ar" ? "(دليل)" : "(Guide)");
+  return pageMeta({ lang, path: `/guides/${g.slug}/`, title, description: clipAt(plain(g.desc[lang]), 155) });
 }
 
 function Body({ b, lang }: { b: Block; lang: Lang }) {

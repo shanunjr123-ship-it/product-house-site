@@ -50,7 +50,7 @@ export default function Footer({ lang }: { lang: Lang }) {
     [d.navContact, "/contact/"],
     [d.navQuote, "/quote/"],
   ] as const;
-  const a = "rounded transition-colors duration-300 hover:text-brand";
+  const a = "inline-flex min-h-[44px] min-w-[44px] items-center rounded transition-colors duration-300 hover:text-brand";
   return (
     <footer className="relative isolate mt-10 overflow-hidden pb-28 md:pb-0">
       <div aria-hidden className="foot-orb foot-orb-a" />
@@ -114,12 +114,12 @@ export default function Footer({ lang }: { lang: Lang }) {
           <p className="text-base text-ink">{d.footVisit}</p>
           <p className="mt-2 text-[0.8125rem] leading-relaxed">{SITE.address[lang]}</p>
           <p className="text-[0.8125rem] leading-relaxed text-steel/80">{SITE.hours[lang]}</p>
-          <div className="mt-3 grid justify-items-start gap-2.5">
-            <a href={SITE.mapUrl} target="_blank" rel="noopener noreferrer" className={`${a} inline-flex items-center gap-2 text-brand`}>
+          <div className="mt-2 grid justify-items-start gap-0">
+            <a href={SITE.mapUrl} target="_blank" rel="noopener noreferrer" className={`${a} gap-2 text-brand`}>
               <GoogleMapsIcon size={22} />
               {d.openMapShort}
             </a>
-            <a href={`https://www.instagram.com/${SITE.instagram}`} target="_blank" rel="noopener noreferrer" className={`${a} inline-flex items-center gap-2 text-brand`}>
+            <a href={`https://www.instagram.com/${SITE.instagram}`} target="_blank" rel="noopener noreferrer" className={`${a} gap-2 text-brand`}>
               <InstagramIcon size={22} />
               {d.igFollow}
             </a>
@@ -128,7 +128,7 @@ export default function Footer({ lang }: { lang: Lang }) {
 
         <div className="text-sm text-steel">
           <p className="text-base text-ink">{d.footLinks}</p>
-          <ul className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1.5 md:grid-cols-1">
+          <ul className="mt-1 grid grid-cols-2 gap-x-4 gap-y-0 md:grid-cols-1">
             {links.map(([t, p]) => (
               <li key={p}>
                 <Link className={a} href={href(lang, p)} prefetch={false}>

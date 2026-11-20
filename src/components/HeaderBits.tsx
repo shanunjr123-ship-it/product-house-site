@@ -91,7 +91,7 @@ export function QuoteLink({ lang }: { lang: Lang }) {
   const { count } = useQuote();
   const d = DICT[lang];
   return (
-    <Link href={href(lang, "/quote/")} aria-label={count ? `${d.navQuote} (${count})` : d.navQuote} className="btn btn-signal relative !min-h-10 !px-3.5 text-sm md:!px-5">
+    <Link href={href(lang, "/quote/")} aria-label={count ? `${d.navQuote} (${count})` : d.navQuote} className="btn btn-signal relative !min-h-[44px] !px-3.5 text-sm md:!px-5">
       <ClipboardText size={20} weight="regular" aria-hidden />
       <span className="hidden md:inline">{d.navQuote}</span>
       {count > 0 && (

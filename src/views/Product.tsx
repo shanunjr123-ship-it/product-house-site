@@ -8,9 +8,9 @@ import PartIcon from "@/components/PartIcon";
 import { type Lang } from "@/config/site";
 import { DICT } from "@/i18n/dict";
 import { PRODUCTS, byCode, catBySlug, hasTagPage, label, pname, similar, tagBySlug } from "@/lib/catalog";
-import { abs, href, partMessage, productPath, telLink, waLink } from "@/lib/links";
+import { abs, href, partMessage, photoMessage, productPath, telLink, waLink } from "@/lib/links";
 import { SITE } from "@/config/site";
-import { BRAND, jsonLdScript, pageMeta } from "@/lib/seo";
+import { BRAND, clipAt, jsonLdScript, pageMeta } from "@/lib/seo";
 import { Crumbs } from "./Lists";
 
 export const productParams = () => PRODUCTS.map((p) => ({ code: p.code }));
@@ -25,7 +25,7 @@ const clip = (t: string, max: number) => {
 /** Meta description: name and part number first, then what it is, then the price line. Aims for 110 to 155 characters. */
 function snippet(lang: Lang, name: string, code: string, desc: string, ask: string) {
   const from = lang === "ar" ? "من بيت المنتج في الرياض." : "From Product House, Riyadh."; // From Product House in Riyadh.
-  const kind = lang === "ar" ? "قطع غيار مضخات الخرسانة والخلاطات." : "Concrete pump and mixer spare parts."; // Concrete pump and mixer spare parts.
+  const kind = lang === "ar" ? "قطع غيار معدات ثقيلة." : "Heavy equipment spare parts."; // Heavy equipment spare parts.
   let s = `${name} (${code}). ${desc} ${ask}`;
   if (s.length < 110) s = `${s} ${from}`;
   if (s.length < 105) s = `${s} ${kind}`;
@@ -42,7 +42,7 @@ export function productMeta(lang: Lang, code: string) {
   return pageMeta({
     lang,
     path: productPath(code),
-    title: `${name} (${p.code}) | ${BRAND[lang]}`,
+    title: `${clipAt(name, Math.max(30, 70 - (p.code.length + BRAND[lang].length + 7)))} (${p.code}) | ${BRAND[lang]}`,
     description:
       (desc && snippet(lang, name, p.code, desc, ask)) ||
       (lang === "ar"
@@ -70,7 +70,7 @@ export function ProductView({ lang, code }: { lang: Lang; code: string }) {
     <div className="wrap pb-6 pt-4">
       <Crumbs lang={lang} trail={[{ name: d.navCatalog, path: "/catalog/" }, { name: label(c, lang), path: `/category/${p.cat}/` }, { name: p.code }]} />
 
-      <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_1.05fr] lg:gap-10">
+      <div className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-5 lg:grid-cols-[1fr_1.05fr] lg:gap-10">
         <div className="bezel rise self-start">
           {p.image ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -79,14 +79,14 @@ export function ProductView({ lang, code }: { lang: Lang; code: string }) {
               <img src={p.image} alt={name} width={p.iw ?? 600} height={p.ih ?? 600} className="h-auto max-w-full" />
             </div>
           ) : (
-            <div className="plate grid min-h-[20rem] place-items-center bg-[radial-gradient(24rem_18rem_at_80%_0%,rgba(59,86,230,0.16),transparent_60%),linear-gradient(160deg,#fff,#eef1f8)] px-6 py-9 text-center lg:min-h-[28rem]">
+            <div className="plate grid place-items-center bg-[radial-gradient(24rem_18rem_at_80%_0%,rgba(59,86,230,0.16),transparent_60%),linear-gradient(160deg,#fff,#eef1f8)] px-5 py-5 text-center lg:min-h-[28rem] lg:px-6 lg:py-9">
               <div className="flex max-w-[22rem] flex-col items-center">
-                <span className="grid size-24 place-items-center rounded-[1.75rem] bg-white text-brand ring-1 ring-inset ring-brand/10">
-                  <PartIcon name={p.name} cat={p.cat} size={48} />
+                <span className="grid size-14 place-items-center rounded-2xl bg-white text-brand ring-1 ring-inset ring-brand/10 lg:size-24 lg:rounded-[1.75rem]">
+                  <PartIcon name={p.name} cat={p.cat} size={32} />
                 </span>
-                <p className="h-display mt-5 text-xl">{d.photoOnReq}</p>
-                <p className="mt-1.5 text-[0.95rem] text-steel">{d.photoOnReqBody}</p>
-                <a href={waLink(partMessage(lang, p.code, name))} target="_blank" rel="noopener noreferrer" className="btn btn-line mt-5 !min-h-11 !px-4 text-[0.95rem]">
+                <p className="h-display mt-3 text-lg lg:mt-5 lg:text-xl">{d.photoOnReq}</p>
+                <p className="mt-1 text-[0.95rem] text-steel">{d.photoOnReqBody}</p>
+                <a href={waLink(photoMessage(lang, p.code, name))} target="_blank" rel="noopener noreferrer" className="btn btn-line mt-4 !min-h-11 !px-4 text-[0.95rem] lg:mt-5">
                   <WhatsAppIcon size={20} className="text-[#25D366]" />
                   {d.askPartPhoto}
                 </a>
@@ -108,7 +108,7 @@ export function ProductView({ lang, code }: { lang: Lang; code: string }) {
             <div className="row px-5 py-4">
               <dt className="text-sm text-steel">{d.category}</dt>
               <dd>
-                <Link className="text-brand hover:underline" href={href(lang, `/category/${p.cat}/`)}>
+                <Link className="-my-3 inline-flex min-h-[44px] items-center text-brand hover:underline" href={href(lang, `/category/${p.cat}/`)}>
                   {label(c, lang)}
                 </Link>
               </dd>
@@ -129,7 +129,7 @@ export function ProductView({ lang, code }: { lang: Lang; code: string }) {
                 <dd className="flex flex-wrap gap-x-4">
                   {tags.map((t) =>
                     hasTagPage(t!.slug) ? (
-                      <Link key={t!.slug} className="text-brand hover:underline" href={href(lang, `/machines/${t!.slug}/`)}>
+                      <Link key={t!.slug} className="-my-3 inline-flex min-h-[44px] items-center text-brand hover:underline" href={href(lang, `/machines/${t!.slug}/`)}>
                         {label(t, lang)}
                       </Link>
                     ) : (

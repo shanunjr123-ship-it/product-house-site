@@ -44,10 +44,13 @@ export function categoryIntro(lang: Lang, slug: string) {
   const items = byCategory(slug);
   const brands = topBrands(items, 4, lang);
   const names = sampleNames(items.filter((p) => p.image), 3, lang);
+  // Pumps category: say how many are hydraulic pumps (Keyword Planner: "مضخة هيدروليك" 100-1K a month). Counted from the catalogue, never typed by hand.
+  const hyd = slug === "pumps" ? items.filter((p) => /hydraulic pump/i.test(p.name)).length : 0;
   if (lang === "ar") {
-    // {count} parts in {category} for concrete pumps, mixers and batching plants, supplied from Riyadh. Examples: ... Used on machines from ... {ask}
+    // {count} heavy equipment spare parts in {category}, supplied from Riyadh. Of these {h} are hydraulic pumps. Examples: ... Used on machines from ... {ask}
     return [
-      `${n(items.length, lang)} قطعة ضمن «${c.ar}» لمضخات الخرسانة والخلاطات ومحطات الخلط، تورّدها مؤسسة بيت المنتج من الرياض.`,
+      `${n(items.length, lang)} قطعة غيار معدات ثقيلة ضمن «${c.ar}»، تورّدها مؤسسة بيت المنتج من الرياض.`,
+      hyd >= 3 ? `منها ${n(hyd, lang)} مضخة هيدروليكية.` : "",
       names.length >= 2 ? `من أمثلتها: ${list(names, lang)}.` : "",
       brands.length ? `تُستخدم في آلات ${list(brands, lang)}.` : "",
       ASK.ar,
@@ -56,7 +59,8 @@ export function categoryIntro(lang: Lang, slug: string) {
       .join(" ");
   }
   return [
-    `${n(items.length, lang)} parts in the “${c.en}” category, for concrete pumps, truck mixers and batching plants, supplied from Riyadh by Product House Trading Est.`,
+    `${n(items.length, lang)} heavy equipment spare parts in the “${c.en}” category, supplied from Riyadh by Product House Trading Est.`,
+    hyd >= 3 ? `${n(hyd, lang)} of them are hydraulic pumps.` : "",
     names.length >= 2 ? `Examples: ${list(names, lang)}.` : "",
     brands.length ? `Used on machines from ${list(brands, lang)}.` : "",
     ASK.en,
@@ -85,7 +89,7 @@ export function machineMetaText(lang: Lang, slug: string) {
       // {brand} spare parts in Riyadh: {categories}. Send the part number or a photo on WhatsApp and we reply with the price.
       return `قطع غيار ${t.ar} في الرياض${cats.length ? `: ${list(cats, lang)}` : ""}. أرسل رقم القطعة أو صورتها على واتساب ونرد عليك بالسعر.`;
     }
-    return `${t.en} spare parts in Riyadh${cats.length ? `: ${list(cats, lang).toLowerCase()}` : ""}. Send the part number or a photo on WhatsApp and we reply with the price.`;
+    return `${t.en} spare parts in Riyadh${cats.length ? `: ${list(cats, lang)}` : ""}. Send the part number or a photo on WhatsApp and we reply with the price.`;
   };
   let k = 3;
   let text = build(k);
@@ -99,13 +103,20 @@ export function machineMetaText(lang: Lang, slug: string) {
 export function categoryMetaText(lang: Lang, slug: string) {
   const c = catBySlug(slug)!;
   const k = n(byCategory(slug).length, lang);
+  const hyd = slug === "pumps" ? byCategory(slug).filter((p) => /hydraulic pump/i.test(p.name)).length : 0;
   if (lang === "ar") {
-    // {k} parts in "{category}" for concrete pumps and mixers in Riyadh. Send the part number or a photo on WhatsApp and get the price.
-    return `${k} قطعة ضمن «${c.ar}» لمضخات الخرسانة والخلاطات في الرياض. أرسل رقم القطعة أو صورتها على واتساب ويصلك السعر.`;
+    // {k} heavy equipment spare parts in "{category}" in Riyadh, {h} of them hydraulic pumps. Send the part number or a photo on WhatsApp and get the price.
+    return `${k} قطعة غيار معدات ثقيلة ضمن «${c.ar}» في الرياض${hyd >= 3 ? `، منها ${n(hyd, lang)} مضخة هيدروليكية` : ""}. أرسل رقم القطعة أو صورتها على واتساب ويصلك السعر.`;
   }
-  const full = `${k} parts in “${c.en}” for concrete pumps and mixers in Riyadh. Send the part number or a photo on WhatsApp for the price.`;
-  return full.length <= 155 ? full : `${k} parts in “${c.en}” in Riyadh. Send the part number or a photo on WhatsApp for the price.`;
+  const full = `${k} heavy equipment spare parts in “${c.en}” in Riyadh${hyd >= 3 ? `, ${n(hyd, lang)} of them hydraulic pumps` : ""}. Send the part number or a photo on WhatsApp for the price.`;
+  return full.length <= 155 ? full : `${k} heavy equipment parts in “${c.en}”, Riyadh. Send a part number or photo on WhatsApp for the price.`;
 }
+
+/** Other spellings buyers type for a machine (Keyword Planner, Saudi Arabia: "قطع غيار فوركلفت" 10-100, "قطع غيار كتربلر" 100-1k, "قطع غيار كاتربيلر" 10-100). */
+const ALIAS: Record<string, { ar: string }> = {
+  forklift: { ar: "فوركلفت" }, // Forklift (English loan word, the usual colloquial form)
+  caterpillar: { ar: "كاتربيلر" }, // Caterpillar (full spelling; the page name uses the more searched short form "كتربلر")
+};
 
 export function machineIntro(lang: Lang, slug: string) {
   const t = tagBySlug(slug)!;
@@ -114,7 +125,7 @@ export function machineIntro(lang: Lang, slug: string) {
   if (lang === "ar") {
     // {count} spare parts for {brand}, in categories such as ..., supplied from Riyadh. {ask}
     return [
-      `${n(items.length, lang)} قطعة غيار ${t.ar}، تورّدها مؤسسة بيت المنتج من الرياض.`,
+      `${n(items.length, lang)} قطعة غيار ${t.ar}${ALIAS[slug] ? ` (${ALIAS[slug].ar})` : ""}، تورّدها مؤسسة بيت المنتج من الرياض.`, // N spare parts for {brand} ({colloquial spelling}), supplied from Riyadh by Product House.
       cats.length ? `أبرز الأقسام: ${list(cats, lang)}.` : "",
       ASK.ar,
     ]
@@ -145,10 +156,10 @@ export function catalogIntro(lang: Lang) {
   const top = cats.slice(0, 3).map((c) => label(c, lang));
   const total = PRODUCTS.length;
   if (lang === "ar") {
-    // {total} spare parts in {k} categories for concrete pumps, mixers and batching plants, including ... Search by part number or name. {ask}
-    return `${n(total, lang)} قطعة غيار في ${n(cats.length, lang)} قسمًا لمضخات الخرسانة والخلاطات ومحطات الخلط، منها ${list(top, lang)}. ابحث برقم القطعة أو الاسم. ${ASK.ar}`;
+    // {total} heavy equipment spare parts in {k} categories, including ... Search by part number or name. {ask}
+    return `${n(total, lang)} قطعة غيار معدات ثقيلة في ${n(cats.length, lang)} قسمًا، منها ${list(top, lang)}. ابحث برقم القطعة أو الاسم. ${ASK.ar}`;
   }
-  return `${n(total, lang)} spare parts in ${n(cats.length, lang)} categories for concrete pumps, mixers and batching plants, including ${list(top, lang)}. Search by part number or name. ${ASK.en}`;
+  return `${n(total, lang)} heavy equipment spare parts in ${n(cats.length, lang)} categories, including ${list(top, lang)}. Search by part number or name. ${ASK.en}`;
 }
 void TAGS;
 void CATEGORIES;

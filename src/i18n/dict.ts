@@ -2,7 +2,7 @@ import type { Lang } from "@/config/site";
 
 // English glosses sit next to every Arabic string. Arabic copy is a draft for the business to verify.
 const ar = {
-  brandLine: "قطع غيار مضخات الخرسانة والخلاطات", // Spare parts for concrete pumps and mixers
+  brandLine: "قطع غيار معدات ثقيلة في الرياض", // Heavy equipment spare parts in Riyadh
   navCatalog: "الكتالوج", // Catalog
   navMachines: "الآلات والعلامات", // Machines & brands
   navHeavy: "قطع غيار معدات ثقيلة", // Heavy equipment parts
@@ -18,7 +18,7 @@ const ar = {
   menu: "القائمة", // Menu
   switchLang: "English",
 
-  homeTitle: "مورّد قطع غيار مضخات الخرسانة والخلاطات ومحطات الخلط في الرياض", // Supplier of spare parts for concrete pumps, mixers and batching plants in Riyadh
+  homeTitle: "مورّد قطع غيار معدات ثقيلة في الرياض", // Heavy equipment spare parts supplier in Riyadh
   homeSub: "معدّتك متوقفة؟ أرسل رقم القطعة أو صورة القطعة القديمة، ويصلك السعر على واتساب.", // Equipment stopped? Send the part number or a photo of the old part, and the price reaches you on WhatsApp.
   brandsLbl: "قطع غيار للماركات التي تشغّلها", // Spare parts for the brands you run
   pumpHint: "اضغط على جزء المضخة الذي تحتاجه", // Tap the part of the pump you need
@@ -27,12 +27,13 @@ const ar = {
   searchPlaceholder: "رقم القطعة أو اسمها", // Part number or name
   searchBtn: "بحث", // Search
   shelfCaption: "رفوف المحل في الصناعية القديمة، الرياض", // Shop shelves, Old Industrial Area, Riyadh
-  catsTitle: "ابحث عن القطعة التي تحتاجها", // Find the part you need
+  catsTitle: "تصفّح قطع غيار معدات ثقيلة حسب القسم", // Browse heavy equipment spare parts by category
   itemsWord: "صنف", // item(s)
-  machinesTitle: "ابدأ من آلتك", // Start with your machine
-  visitTitle: "زورونا في المحل", // Visit us in the shop
+  machinesTitle: "قطع غيار معدات ثقيلة حسب الآلة أو العلامة", // Heavy equipment spare parts by machine or brand
+  machinesHome: "ابدأ من آلتك", // Start with your machine
+  visitTitle: "محل قطع غيار معدات ثقيلة في الصناعية القديمة، الرياض", // Heavy equipment spare parts shop in the Old Industrial Area, Riyadh
   openMap: "افتح الموقع في خرائط جوجل", // Open the location in Google Maps
-  howTitle: "كيف تطلب", // How to order
+  howTitle: "كيف تطلب قطعة غيار", // How to order a spare part
   step1: "ابحث أو أرسل صورة", // Search or send a photo
   step1d: "برقم القطعة أو اسمها، أو بصورة القطعة القديمة.", // By part number or name, or with a photo of the old part.
   step2: "أضف القطع إلى طلبك", // Add the parts to your request
@@ -53,13 +54,13 @@ const ar = {
   missingTitle: "لم تجد القطعة؟", // Can't find the part?
   missingBody: "أرسل لنا اسمها أو صورتها على واتساب ونبحث لك عنها.", // Send us its name or a photo on WhatsApp and we will look for it.
 
-  catalogTitle: "كتالوج قطع الغيار", // Spare parts catalog
+  catalogTitle: "كتالوج قطع غيار معدات ثقيلة", // Heavy equipment spare parts catalog
   allCats: "كل الأقسام", // All categories
   allTags: "كل الآلات والعلامات", // All machines and brands
   found: "عدد النتائج: {n}", // Results: {n}
   showMore: "عرض المزيد", // Show more
   noResults: "لا توجد نتائج. جرّب رقم القطعة فقط، أو اسأل عن القطعة على واتساب.", // No results. Try the part number only, or ask about the part on WhatsApp.
-  partsFor: "قطع {name}", // {name} parts
+  partsFor: "قطع غيار {name} في الرياض", // {name} spare parts in Riyadh
 
   partNo: "رقم القطعة", // Part number
   category: "القسم", // Category
@@ -75,7 +76,7 @@ const ar = {
   photoOnReq: "صورة القطعة عند الطلب", // Part photo on request
   photoOnReqBody: "نرسل لك صورة هذه القطعة بالتحديد على واتساب قبل أن تقرر.", // We send you a photo of this exact part on WhatsApp before you decide.
   askPartPhoto: "اطلب صورة القطعة", // Ask for the part photo
-  aboutBrowse: "تصفّح قطع الغيار حسب القسم", // Browse spare parts by category
+  aboutBrowse: "تصفّح قطع غيار معدات ثقيلة حسب القسم", // Browse heavy equipment spare parts by category
   sendPhoto: "أرسل لنا صورة القطعة التي لديك على واتساب لنتأكد من المطابقة.", // Send us a photo of the part you have on WhatsApp so we can check the match.
   home: "الرئيسية", // Home
 
@@ -89,11 +90,17 @@ const ar = {
   fCompany: "الشركة", // Company
   fCity: "المدينة", // City
   fNotes: "ملاحظات", // Notes
+  fReqHint: "الحقول المعلَّمة بـ * مطلوبة.", // Fields marked * are required.
+  fOptional: "اختياري", // optional
+  errName: "اكتب اسمك (حرفان على الأقل).", // Enter your name (at least 2 characters).
+  errCity: "اكتب مدينتك حتى نحدد التوصيل.", // Enter your city so we can work out delivery.
+  errQty: "الكمية من 1 إلى 9999.", // Quantity must be from 1 to 9999.
+  errSummary: "أكمل الحقول المطلوبة ثم أرسل الطلب.", // Complete the required fields, then send the request.
   sendQuote: "أرسل الطلب عبر واتساب", // Send the request via WhatsApp
   clearList: "تفريغ القائمة", // Clear the list
 
   aboutTitle: "من نحن", // About us
-  aboutBody: "مؤسسة بيت المنتج للتجارة في الرياض توفّر قطع غيار مضخات الخرسانة والخلاطات ومحطات الخلط، مع المحامل والفلاتر والأختام والصمامات والقطع الكهربائية التي تُبقيها تعمل.", // Product House Trading Est. in Riyadh supplies spare parts for concrete pumps, mixers and batching plants, with the bearings, filters, seals, valves and electrical parts that keep them running.
+  aboutBody: "مؤسسة بيت المنتج للتجارة في الرياض توفّر قطع غيار معدات ثقيلة، منها مضخات الخرسانة والخلاطات ومحطات الخلط والرافعات والرافعات الشوكية، مع المحامل والفلاتر والأختام والصمامات والقطع الكهربائية التي تُبقيها تعمل.", // Product House Trading Est. in Riyadh supplies heavy equipment spare parts, including for concrete pumps, mixers, batching plants, cranes and forklifts, with the bearings, filters, seals, valves and electrical parts that keep them running.
   aboutWho: "نخدم المقاولين ومحطات الخرسانة وشركات التأجير والورش والميكانيكيين.", // We serve contractors, concrete plants, rental companies, workshops and mechanics.
   aboutAuth: "موزّع معتمد لشركة بوتزمايستر (Putzmeister).", // Authorised distributor of Putzmeister.
   aboutDelivery: "نوفّر التوصيل داخل الرياض وخارجها.", // We deliver inside and outside Riyadh.
@@ -115,6 +122,7 @@ const ar = {
 
   waGreetOne: "السلام عليكم، أرغب بطلب سعر وتوفر القطعة التالية:", // Peace be upon you, I would like the price and availability of this part:
   waGreetMany: "السلام عليكم، أرغب بطلب سعر وتوفر القطع التالية:", // Peace be upon you, I would like the price and availability of these parts:
+  waPhotoOne: "السلام عليكم، أرغب بصورة للقطعة التالية:", // Peace be upon you, I would like a photo of this part:
   waGeneral: "السلام عليكم، أريد الاستفسار عن قطعة غيار.", // Peace be upon you, I would like to ask about a spare part.
   waPhoto: "السلام عليكم، سأرسل لكم صورة قطعة وأريد معرفة توفرها وسعرها.", // Peace be upon you, I will send you a photo of a part and want to know its availability and price.
   sendPhotoCta: "لا تعرف الرقم؟ أرسل صورة القطعة", // Don't know the number? Send a photo of the part
@@ -140,7 +148,7 @@ const ar = {
   statsTitle: "رفوفنا بالأرقام", // Our shelves, in numbers
   statsSub: "نعمل مع المقاولين ومحطات الخرسانة والورش.", // We work with contractors, concrete plants and workshops.
   brandsNote: "أسماء الماركات وشعاراتها ملك لأصحابها، وتُستخدم هنا لبيان الآلات التي تناسبها قطعنا فقط.", // Brand names and logos belong to their owners and are used here only to show which machines our parts fit.
-  faqTitle: "أسئلة شائعة", // Frequently asked questions
+  faqTitle: "أسئلة شائعة عن قطع غيار معدات ثقيلة", // Frequently asked questions about heavy equipment spare parts
   reviewsTitle: "آراء عملائنا", // What our customers say
   reviewsCount: "{n} تقييم على جوجل", // {n} reviews on Google
   reviewsCta: "قيّمنا على جوجل", // Rate us on Google
@@ -155,7 +163,7 @@ const ar = {
 type Dict = { [K in keyof typeof ar]: string };
 
 const en: Dict = {
-  brandLine: "Spare parts for concrete pumps and mixers",
+  brandLine: "Heavy equipment spare parts in Riyadh",
   navCatalog: "Catalog",
   navMachines: "Machines & brands",
   navHeavy: "Heavy equipment parts",
@@ -171,7 +179,7 @@ const en: Dict = {
   menu: "Menu",
   switchLang: "العربية",
 
-  homeTitle: "Spare parts supplier for concrete pumps, mixers and batching plants in Riyadh",
+  homeTitle: "Heavy equipment spare parts supplier in Riyadh",
   homeSub: "Machine down? Send the part number or a photo of the old part. We reply with the price on WhatsApp.",
   brandsLbl: "Parts for the brands you run",
   pumpHint: "Tap the pump part you need",
@@ -180,12 +188,13 @@ const en: Dict = {
   searchPlaceholder: "Part number or name",
   searchBtn: "Search",
   shelfCaption: "Shop shelves, Old Industrial Area, Riyadh",
-  catsTitle: "Find the part you need",
+  catsTitle: "Browse heavy equipment spare parts by category",
   itemsWord: "items",
-  machinesTitle: "Start with your machine",
-  visitTitle: "Visit the shop",
+  machinesTitle: "Heavy equipment spare parts by machine or brand",
+  machinesHome: "Start with your machine",
+  visitTitle: "Heavy equipment spare parts shop in the Old Industrial Area, Riyadh",
   openMap: "Open in Google Maps",
-  howTitle: "How to order",
+  howTitle: "How to order a spare part",
   step1: "Search or send a photo",
   step1d: "Part number, name, or a photo of the old part.",
   step2: "Add parts to your request",
@@ -206,13 +215,13 @@ const en: Dict = {
   missingTitle: "Can't find the part?",
   missingBody: "Send us the name or a photo on WhatsApp and we will look for it.",
 
-  catalogTitle: "Spare parts catalog",
+  catalogTitle: "Heavy equipment spare parts catalog",
   allCats: "All categories",
   allTags: "All machines and brands",
   found: "Results: {n}",
   showMore: "Show more",
   noResults: "No results. Try the part number only, or ask about the part on WhatsApp.",
-  partsFor: "{name} parts",
+  partsFor: "{name} spare parts in Riyadh",
 
   partNo: "Part number",
   category: "Category",
@@ -228,7 +237,7 @@ const en: Dict = {
   photoOnReq: "Part photo on request",
   photoOnReqBody: "We send you a photo of this exact part on WhatsApp before you decide.",
   askPartPhoto: "Ask for the part photo",
-  aboutBrowse: "Browse spare parts by category",
+  aboutBrowse: "Browse heavy equipment spare parts by category",
   sendPhoto: "Send us a photo of the part you have on WhatsApp and we will check the match.",
   home: "Home",
 
@@ -242,11 +251,17 @@ const en: Dict = {
   fCompany: "Company",
   fCity: "City",
   fNotes: "Notes",
+  fReqHint: "Fields marked * are required.",
+  fOptional: "optional",
+  errName: "Enter your name (at least 2 characters).",
+  errCity: "Enter your city so we can work out delivery.",
+  errQty: "Quantity must be from 1 to 9999.",
+  errSummary: "Complete the required fields, then send the request.",
   sendQuote: "Send the request on WhatsApp",
   clearList: "Clear the list",
 
   aboutTitle: "About us",
-  aboutBody: "Product House Trading Est. supplies spare parts for concrete pumps, mixers and batching plants from Riyadh, along with the bearings, filters, seals, valves and electrical parts that keep them running.",
+  aboutBody: "Product House Trading Est. supplies heavy equipment spare parts from Riyadh, including for concrete pumps, mixers, batching plants, cranes and forklifts, along with the bearings, filters, seals, valves and electrical parts that keep them running.",
   aboutWho: "We serve contractors, concrete plants, rental companies, workshops and mechanics.",
   aboutAuth: "Authorised Putzmeister distributor.",
   aboutDelivery: "We deliver inside and outside Riyadh.",
@@ -268,6 +283,7 @@ const en: Dict = {
 
   waGreetOne: "Hello, I would like the price and availability of this part:",
   waGreetMany: "Hello, I would like the price and availability of these parts:",
+  waPhotoOne: "Hello, I would like a photo of this part:",
   waGeneral: "Hello, I would like to ask about a spare part.",
   waPhoto: "Hello, I will send you a photo of a part. Please tell me if you have it and the price.",
   sendPhotoCta: "No part number? Send a photo",
@@ -293,7 +309,7 @@ const en: Dict = {
   statsTitle: "Our shelves, in numbers",
   statsSub: "We work with contractors, concrete plants and workshops.",
   brandsNote: "Brand names and logos belong to their owners and are used here only to show which machines our parts fit.",
-  faqTitle: "Frequently asked questions",
+  faqTitle: "Heavy equipment spare parts: frequently asked questions",
   reviewsTitle: "What our customers say",
   reviewsCount: "{n} reviews on Google",
   reviewsCta: "Rate us on Google",

@@ -8,7 +8,8 @@ import { href } from "@/lib/links";
 import { collectionJsonLd, jsonLdScript, pageMeta, titled } from "@/lib/seo";
 import { Crumbs } from "./Lists";
 
-// Landing page for the broad search "heavy equipment spare parts" (قطع غيار معدات ثقيلة, about 1,000 searches a month in Saudi Arabia).
+// Landing page for the form "قطع غيار المعدات الثقيلة" (with "ال", 100-1K searches a month in Saudi Arabia, Keyword Planner Nov 2026).
+// The home page owns the no-"ال" form "قطع غيار معدات ثقيلة" (1K-10K), so the two pages do not compete for one query.
 // It names only what the catalogue really holds, so visitors looking for other machines can tell at a glance.
 
 const PATH = "/heavy-equipment-parts/";
@@ -17,11 +18,11 @@ export const heavyMeta = (lang: Lang) =>
   pageMeta({
     lang,
     path: PATH,
-    title: titled(lang, lang === "ar" ? "قطع غيار معدات ثقيلة في الرياض" : "Heavy Equipment Spare Parts in Riyadh"), // Heavy equipment spare parts in Riyadh
+    title: titled(lang, lang === "ar" ? "قطع غيار المعدات الثقيلة في الرياض: الآلات والعلامات" : "Heavy Equipment Parts in Riyadh: Machines and Brands"), // The heavy equipment spare parts in Riyadh: machines and brands
     description:
       lang === "ar"
-        ? "قطع غيار معدات ثقيلة في الرياض: مضخات الخرسانة والخلاطات ومحطات الخلط ورافعات أطلس والرافعات الشوكية. محامل وأختام وفلاتر وصمامات. السعر عند الطلب عبر واتساب." // Heavy equipment spare parts in Riyadh: concrete pumps, mixers, batching plants, Atlas cranes and forklifts. Bearings, seals, filters and valves. Price on request via WhatsApp.
-        : "Heavy equipment spare parts in Riyadh for concrete pumps, mixers, batching plants, Atlas cranes and forklifts. Price on request via WhatsApp.",
+        ? "قطع غيار المعدات الثقيلة في الرياض: مضخات الخرسانة والخلاطات ومحطات الخلط ورافعات أطلس والرافعات الشوكية. السعر عند الطلب عبر واتساب." // The heavy equipment spare parts in Riyadh: concrete pumps, mixers, batching plants, Atlas cranes and forklifts. Price on request via WhatsApp.
+        : "Heavy equipment parts in Riyadh: concrete pumps, mixers, batching plants, Atlas cranes and forklifts. Price on request via WhatsApp.",
   });
 
 const n = (x: number, lang: Lang) => x.toLocaleString(lang === "ar" ? "ar-SA-u-nu-latn" : "en-US");
@@ -35,7 +36,7 @@ export function HeavyView({ lang }: { lang: Lang }) {
   const pumpBrands = ["putzmeister", "schwing", "cifa", "sany", "zoomlion", "zenith"].map((s) => tagBySlug(s)?.[lang]).filter(Boolean) as string[];
   const pumpList = pumpBrands.join(ar ? "، " : ", ");
 
-  const h1 = ar ? "قطع غيار معدات ثقيلة في الرياض" : "Heavy equipment spare parts in Riyadh"; // Heavy equipment spare parts in Riyadh
+  const h1 = ar ? "قطع غيار المعدات الثقيلة في الرياض" : "Heavy equipment parts in Riyadh"; // The heavy equipment spare parts in Riyadh
   const intro = ar
     ? `تورّد مؤسسة بيت المنتج للتجارة من الرياض ${n(PRODUCTS.length, lang)} قطعة غيار لمعدات الخرسانة والمعدات الثقيلة: مضخات الخرسانة، شاحنات الخلاطات، محطات الخلط، الرافعات المركّبة على الشاحنات (أطلس) والرافعات الشوكية. موزّع معتمد لبوتزمايستر. أرسل رقم القطعة أو صورتها على واتساب ويصلك السعر.` // Product House Trading Est. supplies N spare parts for concrete and heavy equipment from Riyadh: concrete pumps, truck mixers, batching plants, truck-mounted cranes (Atlas) and forklifts. Authorised Putzmeister distributor. Send the part number or a photo on WhatsApp and get the price.
     : `Product House Trading Est. supplies ${n(PRODUCTS.length, lang)} spare parts for concrete and heavy equipment from Riyadh: concrete pumps, truck mixers, batching plants, truck-mounted cranes (Atlas) and forklifts. Authorised Putzmeister distributor. Send the part number or a photo on WhatsApp for the price.`;

@@ -40,11 +40,11 @@ export const aboutMeta = (lang: Lang) =>
   pageMeta({
     lang,
     path: "/about/",
-    title: titled(lang, lang === "ar" ? "من نحن" : "About us"), // About us
+    title: titled(lang, lang === "ar" ? "من نحن: مورّد قطع غيار معدات ثقيلة" : "About Us: Heavy Equipment Spare Parts Supplier"), // About us: heavy equipment spare parts supplier
     description:
       lang === "ar"
-        ? "مؤسسة بيت المنتج للتجارة في الرياض توفّر قطع غيار مضخات الخرسانة والخلاطات ومحطات الخلط. موزّع معتمد لبوتزمايستر." // Product House Trading Est. in Riyadh supplies spare parts for concrete pumps, mixers and batching plants. Authorised Putzmeister distributor.
-        : "Product House Trading Est. supplies spare parts for concrete pumps, mixers and batching plants from Riyadh. Authorised Putzmeister distributor.",
+        ? "مؤسسة بيت المنتج للتجارة في الرياض توفّر قطع غيار معدات ثقيلة: مضخات الخرسانة والخلاطات والرافعات والرافعات الشوكية. موزّع معتمد لبوتزمايستر." // Product House Trading Est. in Riyadh supplies heavy equipment spare parts: concrete pumps, mixers, cranes and forklifts. Authorised Putzmeister distributor.
+        : "Product House Trading Est., Riyadh: heavy equipment spare parts for concrete pumps, mixers, cranes and forklifts. Authorised Putzmeister distributor.",
   });
 
 /** The About text, category links and storefront photo. Shown on /about/ and, on phones, under the Contact page (the phone tab bar has no About tab). */
@@ -112,8 +112,8 @@ export const contactMeta = (lang: Lang) =>
     title: titled(lang, lang === "ar" ? "تواصل معنا وموقعنا في الرياض" : "Contact & Location in Riyadh"), // Contact us and our location in Riyadh
     description:
       lang === "ar"
-        ? `${SITE.nameAr}، ${SITE.address.ar}. واتساب وهاتف ${SITE.phoneDisplay}. ${SITE.hours.ar}.` // {name}, {address}. WhatsApp and phone {number}. {hours}.
-        : `${SITE.nameEn}, ${SITE.address.en}. WhatsApp and phone ${SITE.phoneDisplay}. ${SITE.hours.en}.`,
+        ? `محل قطع غيار معدات ثقيلة: ${SITE.address.ar}. واتساب وهاتف ${SITE.phoneDisplay}. ${SITE.hours.ar}.` // Heavy equipment spare parts shop: {address}. WhatsApp and phone {number}. {hours}.
+        : `Heavy equipment spare parts shop: ${SITE.address.en}. WhatsApp and phone ${SITE.phoneDisplay}. ${SITE.hours.en}.`,
   });
 
 export function ContactView({ lang }: { lang: Lang }) {
@@ -121,9 +121,9 @@ export function ContactView({ lang }: { lang: Lang }) {
   const rows: [string, React.ReactNode][] = [
     [d.address, SITE.address[lang]],
     [d.hours, SITE.hours[lang]],
-    [d.phone, <a key="p" href={telLink()} className="text-brand hover:underline"><bdi dir="ltr">{SITE.phoneDisplay}</bdi></a>],
-    [d.emailLbl, <a key="e" href={`mailto:${SITE.email}`} className="text-brand hover:underline"><bdi dir="ltr">{SITE.email}</bdi></a>],
-    [d.instagramLbl, <a key="i" href={`https://www.instagram.com/${SITE.instagram}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-brand hover:underline"><InstagramIcon size={22} />{d.igFollow}</a>],
+    [d.phone, <a key="p" href={telLink()} className="inline-flex min-h-[44px] items-center text-brand hover:underline"><bdi dir="ltr">{SITE.phoneDisplay}</bdi></a>],
+    [d.emailLbl, <a key="e" href={`mailto:${SITE.email}`} className="inline-flex min-h-[44px] items-center text-brand hover:underline"><bdi dir="ltr">{SITE.email}</bdi></a>],
+    [d.instagramLbl, <a key="i" href={`https://www.instagram.com/${SITE.instagram}`} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-2 text-brand hover:underline"><InstagramIcon size={22} />{d.igFollow}</a>],
   ];
   return (
     <div className="wrap pb-6 pt-4">

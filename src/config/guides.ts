@@ -434,8 +434,8 @@ const BASE_GUIDES: Guide[] = [
       en: "How to Order Spare Parts from Product House in Riyadh",
     },
     desc: {
-      ar: "خطوات طلب قطع غيار مضخات الخرسانة والخلاطات من مؤسسة بيت المنتج للتجارة في الرياض: السعر على واتساب، التوصيل، أوقات الدوام والموقع.", // Steps to order concrete pump and mixer spare parts from Product House Trading Est. in Riyadh: price on WhatsApp, delivery, opening hours and location.
-      en: "How to order concrete pump and mixer spare parts from Product House Trading Est. in Riyadh: price on WhatsApp, delivery, opening hours and location.",
+      ar: "خطوات طلب قطع غيار معدات ثقيلة من مؤسسة بيت المنتج للتجارة في الرياض: السعر على واتساب، التوصيل، أوقات الدوام والموقع.", // Steps to order heavy equipment spare parts from Product House Trading Est. in Riyadh: price on WhatsApp, delivery, opening hours and location.
+      en: "How to order heavy equipment spare parts from Product House Trading Est. in Riyadh: price on WhatsApp, delivery, opening hours and location.",
     },
     answer: {
       ar: 'أرسل رقم القطعة أو صورتها إلى واتساب 0592112782، فنرد بالسعر والتوفر. الأسعار غير معروضة على الموقع. نوفّر التوصيل داخل الرياض وخارجها، والمحل في الصناعية القديمة بالعويدة من 8 صباحًا إلى 7 مساءً والجمعة إجازة.',

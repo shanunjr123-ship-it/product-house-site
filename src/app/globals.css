@@ -1769,8 +1769,8 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    height: 2.5rem;
-    min-width: 2.5rem;
+    height: 44px;
+    min-width: 44px;
     border-radius: 999px;
     color: var(--color-brand);
     background: rgba(28, 43, 142, 0.09);
@@ -1911,8 +1911,12 @@
     font-weight: 500;
   }
   .seg > * {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-width: 2.5rem;
-    padding: 0.4rem 0.75rem;
+    min-height: 44px; /* tap target */
+    padding: 0 0.75rem;
     text-align: center;
     border-radius: 999px;
     line-height: 1.4;
@@ -1983,14 +1987,19 @@
     transform-origin: top center;
   }
   html[data-scrolled] .nav-pill {
-    transform: scale(0.97);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 14px 36px -10px rgba(20, 31, 107, 0.35);
+  }
+  /* The slight shrink on scroll is desktop only: on a phone it would take the buttons under 44px. */
+  @media (min-width: 64rem) {
+    html[data-scrolled] .nav-pill {
+      transform: scale(0.97);
+    }
   }
   /* iOS-style toast */
   @keyframes toastIn {
     from {
       opacity: 0;
-      transform: translateY(24px) scale(0.94);
+      transform: translateY(var(--toast-y)) scale(0.94);
     }
     to {
       opacity: 1;
@@ -2000,11 +2009,18 @@
   @keyframes toastOut {
     to {
       opacity: 0;
-      transform: translateY(16px) scale(0.96);
+      transform: translateY(calc(var(--toast-y) * 0.66)) scale(0.96);
     }
   }
+  /* Phones: the toast sits under the header so it never covers the part rows or the tab bar; desktop keeps it at the bottom. */
   .toast {
+    --toast-y: -20px;
     animation: toastIn 0.6s var(--ease-bounce) both;
+  }
+  @media (min-width: 64rem) {
+    .toast {
+      --toast-y: 24px;
+    }
   }
   .toast.out {
     animation: toastOut 0.4s var(--ease-spring) both;

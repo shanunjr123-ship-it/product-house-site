@@ -25,12 +25,12 @@ export const homeMeta = (lang: Lang) =>
     path: "/",
     title:
       lang === "ar"
-        ? "مورّد قطع غيار مضخات الخرسانة والخلاطات في الرياض | مؤسسة بيت المنتج للتجارة" // Supplier of concrete pump and mixer spare parts in Riyadh | Product House
-        : "Concrete Pump & Mixer Spare Parts in Riyadh | Product House Trading Est.",
+        ? "مورّد قطع غيار معدات ثقيلة في الرياض | مؤسسة بيت المنتج للتجارة" // Heavy equipment spare parts supplier in Riyadh | Product House Trading Est.
+        : "Heavy Equipment Spare Parts Supplier in Riyadh | Product House",
     description:
       lang === "ar"
-        ? "قطع غيار مضخات الخرسانة والخلاطات ومحطات الخلط في الرياض. موزّع معتمد لبوتزمايستر. أرسل رقم القطعة أو صورتها على واتساب ويصلك السعر." // Spare parts for concrete pumps, mixers and batching plants in Riyadh. Authorised Putzmeister distributor. Send the part number or a photo on WhatsApp and get the price.
-        : "Concrete pump, mixer and batching plant spare parts in Riyadh. Authorised Putzmeister distributor. Send a part number or photo on WhatsApp for a price.",
+        ? "قطع غيار معدات ثقيلة في الرياض: مضخات الخرسانة والخلاطات والرافعات والرافعات الشوكية. موزّع معتمد لبوتزمايستر. أرسل رقم القطعة على واتساب." // Heavy equipment spare parts in Riyadh: concrete pumps, mixers, cranes and forklifts. Authorised Putzmeister distributor. Send the part number on WhatsApp.
+        : "Heavy equipment spare parts in Riyadh for concrete pumps, mixers, cranes and forklifts. Authorised Putzmeister distributor. Send a part number on WhatsApp.",
   });
 
 function SectionHead({ title, to, lang }: { title: string; to: string; lang: Lang }) {
@@ -38,7 +38,7 @@ function SectionHead({ title, to, lang }: { title: string; to: string; lang: Lan
   return (
     <div className="reveal flex items-end justify-between gap-4">
       <h2 className="h-display text-[clamp(1.6rem,3.6vw,2.4rem)]">{title}</h2>
-      <Link href={href(lang, to)} prefetch={false} className="link-arrow shrink-0 pb-1 text-base text-brand">
+      <Link href={href(lang, to)} prefetch={false} className="link-arrow inline-flex min-h-[44px] shrink-0 items-center text-base text-brand">
         {d.viewAll}
       </Link>
     </div>
@@ -133,7 +133,7 @@ export default function Home({ lang }: { lang: Lang }) {
 
       {/* Machines and brands */}
       <section className="wrap sec">
-        <SectionHead title={d.machinesTitle} to="/machines/" lang={lang} />
+        <SectionHead title={d.machinesHome} to="/machines/" lang={lang} />
         <ul className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3 lg:mt-7 lg:grid-cols-4 lg:gap-6">
           {tags.filter((t) => isMachineOem(t.slug) && logoForTag(t.slug)).slice(0, 12).map((t, i) => (
             <li key={t.slug} className="reveal" style={{ ["--d" as string]: i % 4 }}>

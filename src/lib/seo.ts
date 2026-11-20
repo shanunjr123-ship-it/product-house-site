@@ -6,6 +6,22 @@ import { abs } from "@/lib/links";
 export const BRAND = { ar: "بيت المنتج", en: "Product House" } as const; // Product House
 export const titled = (lang: Lang, page: string) => `${page} | ${BRAND[lang]}`;
 
+/** Cut at a word boundary, add an ellipsis. */
+export const clipAt = (t: string, max: number) => {
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max - 1);
+  const i = cut.lastIndexOf(" ");
+  return `${(i > max * 0.6 ? cut.slice(0, i) : cut).replace(/[\s,.;:،-]+$/, "")}…`;
+};
+
+/** Title for long article headings: keep the part before the colon, then clip so the whole <title> stays under `max`. */
+export function titledFit(lang: Lang, page: string, max = 70, tag = "") {
+  if (titled(lang, page).length <= max) return titled(lang, page);
+  const head = page.split(/[:：]/)[0].trim();
+  const base = head.length >= 20 ? head : page;
+  return titled(lang, clipAt(tag ? `${base} ${tag}` : base, max - (BRAND[lang].length + 3)));
+}
+
 const ID = { business: `${SITE.url}/#business`, site: `${SITE.url}/#website` };
 
 export function pageMeta(o: {
@@ -49,12 +65,12 @@ export function pageMeta(o: {
 
 const FACTS = {
   ar: {
-    desc: "مورّد قطع غيار مضخات الخرسانة والخلاطات ومحطات الخلط في الرياض، السعودية.", // Supplier of spare parts for concrete pumps, mixers and batching plants in Riyadh, Saudi Arabia.
-    known: ["قطع غيار مضخات الخرسانة", "قطع غيار الخلاطات", "قطع غيار محطات الخلط", "بوتزمايستر", "شوينغ", "زينيث", "سَني", "سيفا"],
+    desc: "مورّد قطع غيار معدات ثقيلة في الرياض، السعودية، منها مضخات الخرسانة والخلاطات ومحطات الخلط والرافعات والرافعات الشوكية.", // Supplier of heavy equipment spare parts in Riyadh, Saudi Arabia, including concrete pumps, mixers, batching plants, cranes and forklifts.
+    known: ["قطع غيار معدات ثقيلة", "قطع غيار مضخات الخرسانة", "قطع غيار الخلاطات", "قطع غيار محطات الخلط", "قطع غيار الرافعات", "قطع غيار الرافعات الشوكية", "بوتزمايستر", "شوينغ", "زينيث", "سَني", "سيفا"],
   },
   en: {
-    desc: "Supplier of spare parts for concrete pumps, mixers and batching plants in Riyadh, Saudi Arabia.",
-    known: ["Concrete pump spare parts", "Concrete mixer spare parts", "Batching plant spare parts", "Putzmeister", "Schwing", "Zenith", "Sany", "CIFA"],
+    desc: "Supplier of heavy equipment spare parts in Riyadh, Saudi Arabia, including concrete pumps, mixers, batching plants, cranes and forklifts.",
+    known: ["Heavy equipment spare parts", "Concrete pump spare parts", "Concrete mixer spare parts", "Batching plant spare parts", "Crane spare parts", "Forklift spare parts", "Putzmeister", "Schwing", "Zenith", "Sany", "CIFA"],
   },
 } as const;
 
@@ -70,6 +86,7 @@ export function storeJsonLd(lang: Lang) {
     image: `${SITE.url}/img/storefront.webp`,
     logo: `${SITE.url}/img/logo.png`,
     telephone: `+${SITE.whatsapp}`,
+    email: SITE.email,
     vatID: SITE.vat,
     taxID: SITE.vat,
     identifier: { "@type": "PropertyValue", name: lang === "ar" ? "السجل التجاري" : "Commercial registration", value: SITE.cr }, // Commercial registration
@@ -78,6 +95,7 @@ export function storeJsonLd(lang: Lang) {
         "@type": "ContactPoint",
         contactType: lang === "ar" ? "المبيعات" : "sales", // sales
         telephone: `+${SITE.whatsapp}`,
+        email: SITE.email,
         areaServed: "SA",
         availableLanguage: ["Arabic", "English"],
       },
@@ -107,7 +125,6 @@ export function storeJsonLd(lang: Lang) {
       name: lang === "ar" ? "كتالوج قطع الغيار" : "Spare parts catalog", // Spare parts catalog
       url: abs(lang, "/catalog/"),
     },
-    // The site publishes no email until the owner confirms one, so none is declared here.
   };
 }
 

@@ -19,6 +19,10 @@ export function partMessage(lang: Lang, code: string, name: string) {
   return `${d.waGreetOne}\n${code} — ${name}`;
 }
 
+export function photoMessage(lang: Lang, code: string, name: string) {
+  return `${DICT[lang].waPhotoOne}\n${code} — ${name}`;
+}
+
 export function quoteMessage(
   lang: Lang,
   lines: QuoteLine[],

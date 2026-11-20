@@ -181,7 +181,7 @@ export default function Ledger({ lang, rows: firstRows, flat = false, filters = 
                     </bdi>
                     <span className="text-sm text-steel sm:hidden">{label(catBySlug(r.cat), lang)}</span>
                   </span>
-                  <a href={href(lang, productPath(r.code))} className="col-start-2 min-w-0 text-start text-[1.0625rem] leading-snug [overflow-wrap:anywhere] hover:text-brand sm:col-start-auto sm:text-lg">
+                  <a href={href(lang, productPath(r.code))} className="col-start-2 min-w-0 text-start text-[1.0625rem] leading-snug [overflow-wrap:anywhere] hover:text-brand max-sm:-my-3 max-sm:py-3 sm:col-start-auto sm:text-lg">
                     <bdi dir="auto">{lang === "ar" && r.nameAr ? r.nameAr : r.name}</bdi>
                     <span className="mt-0.5 hidden text-sm text-steel sm:block">{label(catBySlug(r.cat), lang)}</span>
                   </a>

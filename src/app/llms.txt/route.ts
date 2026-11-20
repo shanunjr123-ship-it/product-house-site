@@ -13,7 +13,7 @@ export function GET() {
   const brands = tagCounts().filter((t) => isMachineOem(t.slug));
   const body = `# ${SITE.nameEn} (${SITE.nameAr})
 
-> Supplier of spare parts for concrete pumps, truck mixers and batching plants in Riyadh, Saudi Arabia. The catalogue lists ${PRODUCTS.length.toLocaleString("en-US")} parts. Prices are not published: they are given on request by WhatsApp. Authorised Putzmeister distributor.
+> Supplier of heavy equipment spare parts in Riyadh, Saudi Arabia, including concrete pumps, truck mixers, batching plants, cranes and forklifts. The catalogue lists ${PRODUCTS.length.toLocaleString("en-US")} parts. Prices are not published: they are given on request by WhatsApp. Authorised Putzmeister distributor.
 
 ## Facts
 - Business: ${SITE.nameEn} / ${SITE.nameAr}
