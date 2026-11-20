@@ -183,7 +183,7 @@ export const PUMP_GUIDES: Guide[] = [
           },
           {
             p: l(
-              "أرسلها على واتساب كما في [كيف تطلب](/guides/how-to-order/). لقطع بوتزمايستر راجع [قطع بوتزمايستر في الرياض](/guides/putzmeister-spare-parts-riyadh/)، ولقطع شوينغ [قطع شوينغ في الرياض](/guides/schwing-spare-parts-riyadh/).",
+              "أرسلها على واتساب كما في [كيف تطلب](/guides/how-to-order/). لقطع بوتزمايستر راجع [قطع بوتزمايستر في الرياض](/guides/putzmeister-spare-parts-riyadh/)، ولقطع شوينج [قطع شوينج في الرياض](/guides/schwing-spare-parts-riyadh/).",
               "Send them on WhatsApp as in [how to order](/guides/how-to-order/). For Putzmeister see [Putzmeister spare parts in Riyadh](/guides/putzmeister-spare-parts-riyadh/), and for Schwing [Schwing spare parts in Riyadh](/guides/schwing-spare-parts-riyadh/).",
             ),
           },
@@ -195,7 +195,7 @@ export const PUMP_GUIDES: Guide[] = [
     faq: [
       { q: l("كم تدوم لوحة النظارة وحلقة القطع؟", "How long do the spectacle plate and cutting ring last?"), a: l("لا يوجد رقم صادق يصلح للجميع. العمر يتغيّر حسب نوع الخلطة والركام وكمية الضخ، لذلك الأفضل فحصهما بانتظام واستبدالهما عند ظهور العلامات.", "There is no honest figure that fits everyone. Life depends on the mix, the aggregate and the volume pumped, so inspect them regularly and replace them when the signs appear.") },
       { q: l("هل أستبدل الحلقة فقط؟", "Can I replace only the ring?"), a: l("ممكن تقنيًا، لكن الأفضل استبدال الحلقة واللوحة معًا لأن القطعة الجديدة تتآكل بسرعة إذا احتكّت بقطعة متآكلة.", "It is possible, but replacing the ring and plate together is better, because a new part wears quickly against a worn one.") },
-      { q: l("هل توفّرون هذه القطع لبوتزمايستر وشوينغ؟", "Do you supply these parts for Putzmeister and Schwing?"), a: l("الكتالوج يعرض لوحات وحلقات لمضخات بوتزمايستر وشوينغ. أرسل ماركة المضخة وموديلها أو صورة القطعة لنؤكد المطابقة.", "The catalogue lists plates and rings for Putzmeister and Schwing pumps. Send the pump make and model or a photo of the part and we confirm the match.") },
+      { q: l("هل توفّرون هذه القطع لبوتزمايستر وشوينج؟", "Do you supply these parts for Putzmeister and Schwing?"), a: l("الكتالوج يعرض لوحات وحلقات لمضخات بوتزمايستر وشوينج. أرسل ماركة المضخة وموديلها أو صورة القطعة لنؤكد المطابقة.", "The catalogue lists plates and rings for Putzmeister and Schwing pumps. Send the pump make and model or a photo of the part and we confirm the match.") },
       { q: l("ماذا أفحص معهما عند الاستبدال؟", "What else should I check when replacing them?"), a: l("حلقة الدفع وكُم التآكل والأختام في بيت صمام S، لأنها تعمل مع اللوحة والحلقة وتتآكل في الظروف نفسها.", "The thrust ring, the wear sleeve and the seals in the S-valve housing, because they work with the plate and ring and wear in the same conditions.") },
     ],
   },
@@ -555,7 +555,7 @@ export const PUMP_GUIDES: Guide[] = [
     faq: [
       { q: l("هل أنظّف الفلتر وأعيد استعماله؟", "Can I clean a filter and reuse it?"), a: l("يعتمد على النوع. العناصر الورقية وألياف الزجاج تُستبدل ولا تُنظّف، وبعض العناصر المعدنية يسمح الدليل بتنظيفها. اتبع دليل الآلة.", "It depends on the type. Paper and glass-fibre elements are replaced, not cleaned, and some metal elements may be cleaned if the manual allows it. Follow the machine manual.") },
       { q: l("ماذا يعني الرمز 10U في بعض الأسماء؟", "What does 10U mean in some names?"), a: l("عادةً يشير إلى درجة الترشيح بالميكرون. اطلب الفلتر برقمه الكامل وليس بهذه الدرجة وحدها.", "It usually refers to the filtration rating in microns. Order the filter by its full number, not by this rating alone.") },
-      { q: l("هل الفلتر نفسه يناسب بوتزمايستر وشوينغ؟", "Is the same filter suitable for Putzmeister and Schwing?"), a: l("لا يمكن الافتراض. الأرقام تختلف بين الماركات، فأرسل الرقم أو صورة الفلتر وموديل الآلة.", "You cannot assume so. Numbers differ between makes, so send the number or a photo of the filter and the machine model.") },
+      { q: l("هل الفلتر نفسه يناسب بوتزمايستر وشوينج؟", "Is the same filter suitable for Putzmeister and Schwing?"), a: l("لا يمكن الافتراض. الأرقام تختلف بين الماركات، فأرسل الرقم أو صورة الفلتر وموديل الآلة.", "You cannot assume so. Numbers differ between makes, so send the number or a photo of the filter and the machine model.") },
       { q: l("هل فلتر جديد يصلح مضخة مزعجة الصوت؟", "Will a new filter fix a noisy pump?"), a: l("أحيانًا إذا كان السبب انسداد السحب أو الفلتر، لكن الضجيج قد يعني أيضًا تآكلًا. افحص الفلاتر أولًا لأنها الأرخص.", "Sometimes, if the cause is a blocked suction strainer or filter, but noise can also mean wear. Check the filters first because they are the cheapest.") },
     ],
   },

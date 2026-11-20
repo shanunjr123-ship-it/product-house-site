@@ -67,7 +67,7 @@ const CLUSTERS: { id: Cluster; title: L; blurb: L }[] = [
   },
   {
     id: "brands",
-    title: { ar: "بوتزمايستر وشوينغ", /* Putzmeister and Schwing */ en: "Putzmeister and Schwing" },
+    title: { ar: "بوتزمايستر وشوينج", /* Putzmeister and Schwing */ en: "Putzmeister and Schwing" },
     blurb: { ar: "كيف تحدد موديل الآلة وتطلب القطعة الصحيحة لكل ماركة.", /* How to identify the model and order the right part for each make. */ en: "How to identify the model and order the right part for each make." },
   },
   {

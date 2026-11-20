@@ -114,6 +114,8 @@ export function categoryMetaText(lang: Lang, slug: string) {
 
 /** Other spellings buyers type for a machine (Keyword Planner, Saudi Arabia: "قطع غيار فوركلفت" 10-100, "قطع غيار كتربلر" 100-1k, "قطع غيار كاتربيلر" 10-100). */
 const ALIAS: Record<string, { ar: string }> = {
+  putzmeister: { ar: "بوتسماستر" }, // Putzmeister (the spelling buyers type; "بوتسماستر" 10-100 a month)
+  schwing: { ar: "شيفنج" }, // Schwing (colloquial spelling, 10-100 a month)
   forklift: { ar: "فوركلفت" }, // Forklift (English loan word, the usual colloquial form)
   caterpillar: { ar: "كاتربيلر" }, // Caterpillar (full spelling; the page name uses the more searched short form "كتربلر")
 };

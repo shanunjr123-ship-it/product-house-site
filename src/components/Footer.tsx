@@ -23,7 +23,7 @@ const catalogMb = (() => {
 // Brands the shop supplies for: [English, Arabic]. Decorative marquee only (aria-hidden); the Arabic is a transliteration of the brand name.
 const BRANDS: [string, string][] = [
   ["Putzmeister", "بوتزمايستر"],
-  ["Schwing", "شوينغ"],
+  ["Schwing", "شوينج"],
   ["Zenith", "زينيث"],
   ["Atlas", "أطلس"],
   ["CIFA", "سيفا"],

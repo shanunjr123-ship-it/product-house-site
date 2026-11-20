@@ -44,7 +44,7 @@ export const FAQ: Faq[] = [
     q: { ar: "لأي آلات وماركات تتوفر القطع؟", /* Which machines and brands do the parts fit? */ en: "Which machines and brands do the parts fit?" },
     home: true,
     a: () => ({
-      ar: "قطع لبوتزمايستر وشوينغ وكاتربيلر وسَني وزوملاين وسيفا وسيكوما وغيرها. افتح صفحة «الآلات» واختر آلتك لتشاهد قطعها.",
+      ar: "قطع لبوتزمايستر وشوينج وكاتربيلر وسَني وزوملاين وسيفا وسيكوما وغيرها. افتح صفحة «الآلات» واختر آلتك لتشاهد قطعها.",
       // Parts for Putzmeister, Schwing, Caterpillar, Sany, Zoomlion, CIFA, Sicoma and more. Open the Machines page and pick your machine to see its parts.
       en: "Parts for Putzmeister, Schwing, Caterpillar, Sany, Zoomlion, CIFA, Sicoma and more. Open the Machines page and pick your machine to see its parts.",
     }),

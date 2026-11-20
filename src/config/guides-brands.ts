@@ -88,7 +88,7 @@ export const BRAND_GUIDES: Guide[] = [
     faq: [
       { q: l("هل أنتم موزّع معتمد لبوتزمايستر؟", "Are you an authorised Putzmeister distributor?"), a: l("نعم، مؤسسة بيت المنتج للتجارة موزّع معتمد لبوتزمايستر في الرياض.", "Yes, Product House Trading Est. is an authorised Putzmeister distributor in Riyadh.") },
       { q: l("أين أجد موديل مضخة بوتزمايستر؟", "Where do I find the model of a Putzmeister pump?"), a: l("على لوحة بيانات معدنية مثبتة في الآلة. إذا لم تجدها فأرسل صورة المضخة والقطعة القديمة وسنساعدك على تحديد الموديل.", "On a metal data plate fixed to the machine. If you cannot find it, send a photo of the pump and the old part and we help you identify the model.") },
-      { q: l("هل تتوفر لديكم ماركات أخرى غير بوتزمايستر؟", "Do you carry brands other than Putzmeister?"), a: l("نعم، الكتالوج يضم أيضًا قطعًا لشوينغ وسيفا وسَني وزينيث وزوملاين وغيرها. راجع [صفحة الماركات](/machines/).", "Yes, the catalogue also lists parts for Schwing, CIFA, Sany, Zenith, Zoomlion and others. See the [brands page](/machines/).") },
+      { q: l("هل تتوفر لديكم ماركات أخرى غير بوتزمايستر؟", "Do you carry brands other than Putzmeister?"), a: l("نعم، الكتالوج يضم أيضًا قطعًا لشوينج وسيفا وسَني وزينيث وزوملاين وغيرها. راجع [صفحة الماركات](/machines/).", "Yes, the catalogue also lists parts for Schwing, CIFA, Sany, Zenith, Zoomlion and others. See the [brands page](/machines/).") },
       { q: l("هل الرقم بين القوسين مهم؟", "Does the number in brackets matter?"), a: l("نعم، هو الرقم المرجعي للشركة المصنّعة حين نملكه. ذكره عند الطلب يقلّل احتمال الخطأ.", "Yes, it is the maker's reference number where we have it. Quoting it when you order reduces the chance of a mistake.") },
       { q: l("هل الأسعار على الموقع؟", "Are the prices on the site?"), a: l("لا. نرد بالسعر والتوفر عند إرسال رقم القطعة أو صورتها على واتساب.", "No. We reply with price and availability when you send the part number or photo on WhatsApp.") },
     ],
@@ -100,19 +100,19 @@ export const BRAND_GUIDES: Guide[] = [
     date: DATE,
     cluster: "brands",
     title: l(
-      "قطع غيار شوينغ في الرياض: كيف تحدد القطعة وتطلبها من أول مرة",
+      "قطع غيار شوينج في الرياض: كيف تحدد القطعة وتطلبها من أول مرة",
       "Schwing Spare Parts in Riyadh: How to Identify the Part and Order It First Time",
     ),
     desc: l(
-      "كيف تطلب قطع غيار مضخات شوينغ من الرياض: المقاسات في أسماء القطع (DN وغيرها)، أي القطع تُطلب أكثر، وماذا ترسل لنحدد القطعة.",
+      "كيف تطلب قطع غيار مضخات شوينج من الرياض: المقاسات في أسماء القطع (DN وغيرها)، أي القطع تُطلب أكثر، وماذا ترسل لنحدد القطعة.",
       "How to order Schwing pump spare parts from Riyadh: the sizes in part names (DN and others), which parts are asked for most, and what to send so we identify the part.",
     ),
     answer: l(
-      "لطلب قطعة شوينغ صحيحة أرسل موديل المضخة، واسم القطعة مع المقاس المكتوب في اسمها (مثل 210 أو 230)، وصورة القطعة القديمة. الكتالوج يضم قطع تآكل وأسطوانات ضخ وأسطوانات ومحامل مقلّب ومراوح وبطاريات لشوينغ.",
+      "لطلب قطعة شوينج صحيحة أرسل موديل المضخة، واسم القطعة مع المقاس المكتوب في اسمها (مثل 210 أو 230)، وصورة القطعة القديمة. الكتالوج يضم قطع تآكل وأسطوانات ضخ وأسطوانات ومحامل مقلّب ومراوح وبطاريات لشوينج.",
       "To order the right Schwing part, send the pump model, the part name with the size in its name (such as 210 or 230), and a photo of the old part. The catalogue lists Schwing wear parts, delivery cylinders, agitator bearings, fans and batteries.",
     ),
     intro: l(
-      "قطع شوينغ كثيرة المقاسات، والمقاس هو أهم معلومة في الطلب. هذا الدليل يوضح كيف تقرأ الأسماء وماذا ترسل.",
+      "قطع شوينج كثيرة المقاسات، والمقاس هو أهم معلومة في الطلب. هذا الدليل يوضح كيف تقرأ الأسماء وماذا ترسل.",
       "Schwing parts come in many sizes, and the size is the most important piece of information in an order. This guide shows how to read the names and what to send.",
     ),
     sections: [
@@ -159,7 +159,7 @@ export const BRAND_GUIDES: Guide[] = [
           },
           {
             p: l(
-              "تصفّح [كل قطع شوينغ](/machines/schwing/) أو أرسل الرقم أو الصورة على واتساب ونرد بالسعر والتوفر، كما في [كيف تطلب](/guides/how-to-order/).",
+              "تصفّح [كل قطع شوينج](/machines/schwing/) أو أرسل الرقم أو الصورة على واتساب ونرد بالسعر والتوفر، كما في [كيف تطلب](/guides/how-to-order/).",
               "Browse [all Schwing parts](/machines/schwing/) or send the number or photo on WhatsApp and we reply with price and availability, as in [how to order](/guides/how-to-order/).",
             ),
           },
@@ -169,10 +169,10 @@ export const BRAND_GUIDES: Guide[] = [
     codes: ["201010-007", "201010-008", "201010-224", "201010-237", "201010-012", "201010-272"],
     cats: ["wear", "pistons", "bearings", "cooling", "pumps", "electrical"],
     faq: [
-      { q: l("كيف أقرأ المقاس في اسم قطعة شوينغ؟", "How do I read the size in a Schwing part name?"), a: l("الرقم في الاسم، مثل 210 أو 230، هو مقاس القطعة. قارنه بمقاس قطعتك القديمة وأرسل لنا الصورة لنؤكد.", "The number in the name, such as 210 or 230, is the size of the part. Compare it to your old part and send us the photo so we confirm.") },
-      { q: l("هل توفّرون كل قطع شوينغ؟", "Do you supply every Schwing part?"), a: l("لا نعد بذلك. الكتالوج يعرض ما لدينا، وإذا لم تجد قطعتك فأرسل صورتها ونرد بما هو متوفر.", "We do not promise that. The catalogue shows what we have, and if you do not find your part, send a photo and we reply with what is available.") },
+      { q: l("كيف أقرأ المقاس في اسم قطعة شوينج؟", "How do I read the size in a Schwing part name?"), a: l("الرقم في الاسم، مثل 210 أو 230، هو مقاس القطعة. قارنه بمقاس قطعتك القديمة وأرسل لنا الصورة لنؤكد.", "The number in the name, such as 210 or 230, is the size of the part. Compare it to your old part and send us the photo so we confirm.") },
+      { q: l("هل توفّرون كل قطع شوينج؟", "Do you supply every Schwing part?"), a: l("لا نعد بذلك. الكتالوج يعرض ما لدينا، وإذا لم تجد قطعتك فأرسل صورتها ونرد بما هو متوفر.", "We do not promise that. The catalogue shows what we have, and if you do not find your part, send a photo and we reply with what is available.") },
       { q: l("ما الرقم بين القوسين مثل (10072694)؟", "What is the number in brackets such as (10072694)?"), a: l("هو الرقم المرجعي للشركة المصنّعة حين نملكه. ذكره عند الطلب يقلّل احتمال الخطأ.", "It is the maker's reference number where we have it. Quoting it when you order reduces the chance of a mistake.") },
-      { q: l("هل المراوح والبطاريات متوفرة لشوينغ؟", "Are fans and batteries available for Schwing?"), a: l("الكتالوج يضم مراوح 24 فولت وبطاريات لشوينغ. أرسل الرقم أو الصورة لنؤكد التوفر.", "The catalogue lists 24 V fans and batteries for Schwing. Send the number or a photo and we confirm availability.") },
+      { q: l("هل المراوح والبطاريات متوفرة لشوينج؟", "Are fans and batteries available for Schwing?"), a: l("الكتالوج يضم مراوح 24 فولت وبطاريات لشوينج. أرسل الرقم أو الصورة لنؤكد التوفر.", "The catalogue lists 24 V fans and batteries for Schwing. Send the number or a photo and we confirm availability.") },
     ],
   },
 

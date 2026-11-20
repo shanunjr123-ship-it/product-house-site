@@ -18,7 +18,7 @@ const ar = {
   menu: "القائمة", // Menu
   switchLang: "English",
 
-  homeTitle: "مورّد قطع غيار معدات ثقيلة في الرياض", // Heavy equipment spare parts supplier in Riyadh
+  homeTitle: "قطع غيار مضخات وخلاطات الخرسانة والمعدات الثقيلة في الرياض", // Spare parts for concrete pumps, mixers and heavy equipment in Riyadh
   homeSub: "معدّتك متوقفة؟ أرسل رقم القطعة أو صورة القطعة القديمة، ويصلك السعر على واتساب.", // Equipment stopped? Send the part number or a photo of the old part, and the price reaches you on WhatsApp.
   brandsLbl: "قطع غيار للماركات التي تشغّلها", // Spare parts for the brands you run
   pumpHint: "اضغط على جزء المضخة الذي تحتاجه", // Tap the part of the pump you need
@@ -179,7 +179,7 @@ const en: Dict = {
   menu: "Menu",
   switchLang: "العربية",
 
-  homeTitle: "Heavy equipment spare parts supplier in Riyadh",
+  homeTitle: "Concrete pump, mixer and heavy equipment spare parts in Riyadh",
   homeSub: "Machine down? Send the part number or a photo of the old part. We reply with the price on WhatsApp.",
   brandsLbl: "Parts for the brands you run",
   pumpHint: "Tap the pump part you need",

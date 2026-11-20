@@ -66,7 +66,7 @@ export function pageMeta(o: {
 const FACTS = {
   ar: {
     desc: "مورّد قطع غيار معدات ثقيلة في الرياض، السعودية، منها مضخات الخرسانة والخلاطات ومحطات الخلط والرافعات والرافعات الشوكية.", // Supplier of heavy equipment spare parts in Riyadh, Saudi Arabia, including concrete pumps, mixers, batching plants, cranes and forklifts.
-    known: ["قطع غيار معدات ثقيلة", "قطع غيار مضخات الخرسانة", "قطع غيار الخلاطات", "قطع غيار محطات الخلط", "قطع غيار الرافعات", "قطع غيار الرافعات الشوكية", "بوتزمايستر", "شوينغ", "زينيث", "سَني", "سيفا"],
+    known: ["قطع غيار معدات ثقيلة", "قطع غيار مضخات الخرسانة", "قطع غيار الخلاطات", "قطع غيار محطات الخلط", "قطع غيار الرافعات", "قطع غيار الرافعات الشوكية", "بوتزمايستر", "شوينج", "زينيث", "سَني", "سيفا"],
   },
   en: {
     desc: "Supplier of heavy equipment spare parts in Riyadh, Saudi Arabia, including concrete pumps, mixers, batching plants, cranes and forklifts.",

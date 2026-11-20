@@ -145,7 +145,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         q: { ar: "لأي آلات وماركات تتوفر القطع؟", /* Which machines and brands do the parts fit? */ en: "Which machines and brands do the parts fit?" },
         a: () => ({
-          ar: "قطع لبوتزمايستر (وتُكتب أيضًا بوتسماستر) وشوينغ (وتُكتب أيضًا شيفنج) وسَني وزوملاين وسيفا وسيكوما وغيرها. افتح صفحة «الآلات» واختر آلتك لتشاهد قطعها.",
+          ar: "قطع لبوتزمايستر (وتُكتب أيضًا بوتسماستر) وشوينج (وتُكتب أيضًا شيفنج) وسَني وزوملاين وسيفا وسيكوما وغيرها. افتح صفحة «الآلات» واختر آلتك لتشاهد قطعها.",
           // Parts for Putzmeister (also spelled "Butsmaster"), Schwing (also spelled "Shifing"), Sany, Zoomlion, CIFA, Sicoma and more. Open the Machines page and pick your machine to see its parts. (The alternative spellings are how Saudi buyers type these names.)
           en: "Parts for Putzmeister, Schwing, Sany, Zoomlion, CIFA, Sicoma and more. Open the Machines page and pick your machine to see its parts.",
         }),

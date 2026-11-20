@@ -25,12 +25,12 @@ export const homeMeta = (lang: Lang) =>
     path: "/",
     title:
       lang === "ar"
-        ? "مورّد قطع غيار معدات ثقيلة في الرياض | مؤسسة بيت المنتج للتجارة" // Heavy equipment spare parts supplier in Riyadh | Product House Trading Est.
-        : "Heavy Equipment Spare Parts Supplier in Riyadh | Product House",
+        ? "قطع غيار مضخات وخلاطات الخرسانة والمعدات الثقيلة بالرياض | بيت المنتج" // Spare parts for concrete pumps, mixers and heavy equipment in Riyadh | Product House
+        : "Concrete Pump, Mixer & Heavy Equipment Parts, Riyadh | Product House",
     description:
       lang === "ar"
-        ? "قطع غيار معدات ثقيلة في الرياض: مضخات الخرسانة والخلاطات والرافعات والرافعات الشوكية. موزّع معتمد لبوتزمايستر. أرسل رقم القطعة على واتساب." // Heavy equipment spare parts in Riyadh: concrete pumps, mixers, cranes and forklifts. Authorised Putzmeister distributor. Send the part number on WhatsApp.
-        : "Heavy equipment spare parts in Riyadh for concrete pumps, mixers, cranes and forklifts. Authorised Putzmeister distributor. Send a part number on WhatsApp.",
+        ? "قطع غيار مضخات الخرسانة (البمب) والخلاطات ومحطات الخلط والرافعات والرافعات الشوكية في الرياض. موزّع معتمد لبوتزمايستر. أرسل رقم القطعة على واتساب." // Spare parts for concrete pumps ("البمب" is the colloquial word), mixers, batching plants, cranes and forklifts in Riyadh. Authorised Putzmeister distributor. Send the part number on WhatsApp.
+        : "Concrete pump, mixer, crane, forklift and heavy equipment spare parts in Riyadh. Authorised Putzmeister distributor. Send a part number on WhatsApp.",
   });
 
 function SectionHead({ title, to, lang }: { title: string; to: string; lang: Lang }) {

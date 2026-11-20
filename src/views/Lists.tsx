@@ -138,7 +138,7 @@ export const machinesMeta = (lang: Lang) =>
     title: titled(lang, lang === "ar" ? "قطع غيار معدات ثقيلة حسب الآلة أو العلامة" : "Heavy Equipment Spare Parts by Machine or Brand"), // Heavy equipment spare parts by machine or brand
     description:
       lang === "ar"
-        ? "قطع غيار معدات ثقيلة حسب الآلة أو العلامة: بوتزمايستر، شوينغ، زينيث، سَني، سيفا وغيرها، في الرياض. السعر عند الطلب عبر واتساب." // Heavy equipment spare parts by machine or brand: Putzmeister, Schwing, Zenith, Sany, CIFA and more, in Riyadh. Price on request via WhatsApp.
+        ? "قطع غيار معدات ثقيلة حسب الآلة أو العلامة: بوتزمايستر، شوينج، زينيث، سَني، سيفا وغيرها، في الرياض. السعر عند الطلب عبر واتساب." // Heavy equipment spare parts by machine or brand: Putzmeister, Schwing, Zenith, Sany, CIFA and more, in Riyadh. Price on request via WhatsApp.
         : "Heavy equipment spare parts by machine or brand: Putzmeister, Schwing, Zenith, Sany, CIFA and more, in Riyadh. Price on request via WhatsApp.",
   });
 
