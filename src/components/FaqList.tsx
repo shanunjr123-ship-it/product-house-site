@@ -1,13 +1,14 @@
 "use client";
 
 import { Plus } from "@phosphor-icons/react";
+import Link from "next/link";
 import { useRef } from "react";
 
-type Item = { q: string; a: string };
+type Item = { q: string; a: string; links?: { href: string; label: string }[] };
 
 const EASE = "cubic-bezier(0.32, 0.72, 0, 1)";
 
-function Row({ q, a }: Item) {
+function Row({ q, a, links }: Item) {
   const det = useRef<HTMLDetailsElement>(null);
   const body = useRef<HTMLDivElement>(null);
   const anim = useRef<Animation | null>(null);
@@ -46,7 +47,16 @@ function Row({ q, a }: Item) {
         <Plus size={22} aria-hidden className="faq-ico shrink-0 text-brand" />
       </summary>
       <div ref={body} className="overflow-hidden">
-        <p className="px-5 pb-6 text-[0.9375rem] text-steel sm:max-w-[46rem] sm:px-7">{a}</p>
+        <p className={`px-5 text-[0.9375rem] text-steel sm:max-w-[46rem] sm:px-7 ${links?.length ? "pb-3" : "pb-6"}`}>{a}</p>
+        {links?.length ? (
+          <p className="flex flex-wrap gap-x-5 gap-y-1 px-5 pb-6 text-[0.9375rem] sm:px-7">
+            {links.map((l) => (
+              <Link key={l.href} href={l.href} className="text-brand hover:underline">
+                {l.label}
+              </Link>
+            ))}
+          </p>
+        ) : null}
       </div>
     </details>
   );

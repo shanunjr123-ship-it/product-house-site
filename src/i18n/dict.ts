@@ -7,6 +7,8 @@ const ar = {
   navMachines: "الآلات والعلامات", // Machines & brands
   navHeavy: "قطع غيار معدات ثقيلة", // Heavy equipment parts
   navGuides: "المدونة", // Blog
+  navFaq: "الأسئلة الشائعة", // FAQ
+  faqAll: "عرض كل الأسئلة الشائعة", // View all frequently asked questions
   tabMachines: "الآلات", // Machines
   toastAdded: "أُضيفت إلى طلب السعر", // Added to the price request
   toastView: "عرض", // View
@@ -144,10 +146,10 @@ const ar = {
   reviewsCta: "قيّمنا على جوجل", // Rate us on Google
   reviewsSource: "تقييم على جوجل", // Google review
   reviewsInvite: "اشتريت منا؟ شاركنا رأيك على خرائط جوجل، فهو يساعد غيرك في الاختيار.", // Bought from us? Share your opinion on Google Maps; it helps others choose.
-  statYears: "سنة خبرة في قطع غيار المعدات الثقيلة", // years of experience in heavy-equipment spare parts
+  statYears: "سنة في قطع غيار المعدات الثقيلة", // years in heavy-equipment spare parts
   statParts: "قطعة غيار مسجّلة في الكتالوج", // spare parts listed in the catalog
-  statCustomers: "عميل من المقاولين والورش", // customers from contractors and workshops
-  statReply: "دقائق متوسط الرد على واتساب", // minutes average reply time on WhatsApp
+  statTypes: "نوعًا من قطع الغيار", // types of spare parts
+  statBrands: "علامة آلات نوفّر لها قطعًا", // machine brands we supply parts for
 } as const;
 
 type Dict = { [K in keyof typeof ar]: string };
@@ -158,6 +160,8 @@ const en: Dict = {
   navMachines: "Machines & brands",
   navHeavy: "Heavy equipment parts",
   navGuides: "Blog",
+  navFaq: "FAQ",
+  faqAll: "View all frequently asked questions",
   tabMachines: "Machines",
   toastAdded: "Added to price request",
   toastView: "View",
@@ -297,8 +301,8 @@ const en: Dict = {
   reviewsInvite: "Bought from us? Share your experience on Google Maps; it helps the next buyer choose.",
   statYears: "years in heavy-equipment spare parts",
   statParts: "spare parts listed in the catalog",
-  statCustomers: "contractor and workshop customers",
-  statReply: "minutes average WhatsApp reply time",
+  statTypes: "types of spare parts",
+  statBrands: "machine brands we supply parts for",
 };
 
 export const DICT: Record<Lang, Dict> = { ar, en };

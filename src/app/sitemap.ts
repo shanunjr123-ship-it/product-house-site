@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { PRODUCTS, categoryCounts, tagCounts } from "@/lib/catalog";
+import { FAQ_UPDATED } from "@/config/faq-page";
 import { GUIDES } from "@/config/guides";
 import { CAT_COVER, MACHINE_PHOTO, catOg, machineOg } from "@/config/photos";
 import { SITE } from "@/config/site";
@@ -14,7 +15,7 @@ const MODIFIED = "2026-11-06";
 const PHOTOS_ADDED = "2026-11-17";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const top = ["/", "/catalog/", "/machines/", "/heavy-equipment-parts/", "/guides/", "/about/", "/contact/"];
+  const top = ["/", "/catalog/", "/machines/", "/heavy-equipment-parts/", "/guides/", "/faq/", "/about/", "/contact/"];
   const paths = [
     ...top,
     ...GUIDES.map((g) => `/guides/${g.slug}/`),
@@ -36,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const guideDate = (p: string) => {
     const slug = p.match(/^\/guides\/([^/]+)\/$/)?.[1];
     if (slug) return GUIDES.find((g) => g.slug === slug)?.updated ?? GUIDES.find((g) => g.slug === slug)?.date;
+    if (p === "/faq/") return FAQ_UPDATED;
     return p === "/guides/" ? [...GUIDES].map((g) => g.updated ?? g.date).sort().at(-1) : undefined;
   };
   return paths.flatMap((p) =>

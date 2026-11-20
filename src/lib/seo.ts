@@ -149,6 +149,21 @@ export function collectionJsonLd(o: { lang: Lang; path: string; name: string; de
   };
 }
 
+/** The FAQ page: every question and answer as FAQPage data, tied to the site and the business, with the date it was last reviewed. */
+export function faqPageJsonLd(o: { lang: Lang; path: string; name: string; modified: string; items: { q: string; a: string }[] }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    name: o.name,
+    url: abs(o.lang, o.path),
+    inLanguage: o.lang,
+    dateModified: o.modified,
+    isPartOf: { "@id": ID.site },
+    about: { "@id": ID.business },
+    mainEntity: o.items.map((it) => ({ "@type": "Question", name: it.q, acceptedAnswer: { "@type": "Answer", text: it.a } })),
+  };
+}
+
 export const breadcrumbJsonLd = (items: { name: string; url?: string }[]) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",

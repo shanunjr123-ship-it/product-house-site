@@ -23,11 +23,12 @@ export function NavLinks({ lang }: { lang: Lang }) {
     [d.navCatalog, "/catalog/"],
     [d.navMachines, "/machines/"],
     [d.navGuides, "/guides/"],
+    [d.navFaq, "/faq/"],
     [d.navAbout, "/about/"],
     [d.navContact, "/contact/"],
   ] as const;
   return (
-    <nav aria-label="Main" className="mx-auto hidden items-center gap-1 xl:flex">
+    <nav aria-label="Main" className="mx-auto hidden shrink-0 items-center gap-0.5 xl:flex">
       {links.map(([t, p]) => {
         const on = isActive(bare, p);
         return (
@@ -35,7 +36,7 @@ export function NavLinks({ lang }: { lang: Lang }) {
             key={p}
             href={href(lang, p)}
             aria-current={on ? "page" : undefined}
-            className={`whitespace-nowrap rounded-full px-4 py-1.5 text-base transition-colors duration-300 ${on ? "bg-brand/10 text-brand" : "text-ink/75 hover:bg-brand/5 hover:text-brand"}`}
+            className={`whitespace-nowrap rounded-full px-3 py-1.5 text-[0.9375rem] transition-colors duration-300 ${on ? "bg-brand/10 text-brand" : "text-ink/75 hover:bg-brand/5 hover:text-brand"}`}
           >
             {t}
           </Link>
@@ -77,9 +78,9 @@ export function LangSwitch({ lang }: { lang: Lang }) {
 export function CallLink({ lang }: { lang: Lang }) {
   const d = DICT[lang];
   return (
-    <a href={telLink()} aria-label={`${d.call}: ${SITE.phoneDisplay}`} className="call-btn min-[1366px]:px-4">
+    <a href={telLink()} aria-label={`${d.call}: ${SITE.phoneDisplay}`} className="call-btn shrink-0 whitespace-nowrap min-[1440px]:px-4">
       <PhoneIcon size={19} />
-      <span className="t-num hidden text-[0.95rem] min-[1366px]:inline">
+      <span className="t-num hidden whitespace-nowrap text-[0.95rem] min-[1440px]:inline">
         <bdi dir="ltr">{SITE.phoneLocal}</bdi>
       </span>
     </a>

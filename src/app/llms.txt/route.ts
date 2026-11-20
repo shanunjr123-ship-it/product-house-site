@@ -1,3 +1,4 @@
+import { FAQ_COUNT } from "@/config/faq-page";
 import { GUIDES } from "@/config/guides";
 import { SITE } from "@/config/site";
 import { PRODUCTS, categoryCounts, label, tagCounts } from "@/lib/catalog";
@@ -32,6 +33,7 @@ export function GET() {
 - [Heavy equipment spare parts in Riyadh](${abs("en", "/heavy-equipment-parts/")}) ([Arabic](${abs("ar", "/heavy-equipment-parts/")})): concrete pumps, mixers, batching plants, Atlas cranes, forklifts
 - [Blog: spare parts guides](${abs("en", "/guides/")}) ([Arabic](${abs("ar", "/guides/")})): ${GUIDES.length} plain-language articles on concrete pump parts, faults, maintenance, mixers, Putzmeister and Schwing parts, and how to order
 ${GUIDES.map((g) => `  - [${g.title.en}](${abs("en", `/guides/${g.slug}/`)}) / ${g.title.ar}: ${g.answer.en.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")}`).join("\n")}
+- [Frequently asked questions](${abs("en", "/faq/")}) ([Arabic](${abs("ar", "/faq/")})): ${FAQ_COUNT} answers: ordering, delivery, original parts, warranty, returns, payment and VAT invoices, plus concrete pump parts, hydraulics, filters, maintenance, faults and how to identify a part
 - [Contact and location](${abs("en", "/contact/")}) ([Arabic](${abs("ar", "/contact/")}))
 - [About](${abs("en", "/about/")}) ([Arabic](${abs("ar", "/about/")}))
 - [Full catalogue as PDF](${SITE.url}/downloads/product-house-parts-catalog.pdf)

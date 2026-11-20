@@ -1,6 +1,6 @@
 "use client";
 
-import { Article, Gear, House, Info, List, MapPin, SquaresFour, X } from "@phosphor-icons/react";
+import { Article, Gear, House, Info, List, MapPin, Question, SquaresFour, X } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { Lang } from "@/config/site";
@@ -34,6 +34,7 @@ export default function MobileMenu({ lang }: { lang: Lang }) {
     [d.navCatalog, "/catalog/", SquaresFour],
     [d.navMachines, "/machines/", Gear],
     [d.navGuides, "/guides/", Article],
+    [d.navFaq, "/faq/", Question],
     [d.navAbout, "/about/", Info],
     [d.navContact, "/contact/", MapPin],
   ] as const;

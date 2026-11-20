@@ -381,7 +381,7 @@ export function GuideView({ lang, slug }: { lang: Lang; slug: string }) {
           <h2 id="g-cats" className="h-display text-[clamp(1.4rem,3vw,1.9rem)]">
             {t.cats}
           </h2>
-          <ul className="mt-3 flex flex-wrap gap-2 text-start">
+          <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-3 text-start">
             {cats.map((c) => (
               <li key={c.slug}>
                 <Link href={href(lang, `/category/${c.slug}/`)} className="surface inline-block rounded-full px-4 py-2 text-[0.95rem] hover:text-brand">

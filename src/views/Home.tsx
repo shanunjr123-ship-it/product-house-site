@@ -1,5 +1,5 @@
 import WhatsAppIcon from "@/components/WhatsAppIcon";
-import { CalendarCheck, ChatCircleText, Check, Package, UsersThree } from "@phosphor-icons/react/dist/ssr";
+import { CalendarCheck, Check, Package, SquaresFour, Tag } from "@phosphor-icons/react/dist/ssr";
 import MapEmbed, { directionsUrl } from "@/components/MapEmbed";
 import PhoneIcon from "@/components/PhoneIcon";
 import Link from "next/link";
@@ -11,7 +11,7 @@ import GoogleMapsIcon from "@/components/GoogleMapsIcon";
 import Faq from "@/components/Faq";
 import Reviews from "@/components/Reviews";
 import StatsOdometer from "@/components/StatsOdometer";
-import { STATS } from "@/config/stats";
+import { STATS, yearsInBusiness } from "@/config/stats";
 import { SITE, type Lang } from "@/config/site";
 import { DICT } from "@/i18n/dict";
 import { BRAND_LOGOS, isMachineOem, logoForTag } from "@/lib/brands";
@@ -143,7 +143,7 @@ export default function Home({ lang }: { lang: Lang }) {
         </ul>
       </section>
 
-      {/* Stats: rolling-digit card. Values come from src/config/stats.ts (most are still placeholders). */}
+      {/* Stats: rolling-digit card. Values come from src/config/stats.ts (all counted or confirmed). */}
       <section className="wrap sec" aria-labelledby="stats-h">
         <div className="stats-card surface reveal">
           <div className="max-w-2xl text-start">
@@ -156,11 +156,10 @@ export default function Home({ lang }: { lang: Lang }) {
             <StatsOdometer
               items={STATS.map((s) => ({
                 id: s.key,
-                value: s.value ?? PRODUCTS.length,
-                prefix: s.prefix,
+                value: { years: yearsInBusiness(), parts: PRODUCTS.length, types: cats.filter((c) => c.slug !== "other").length, brands: tags.filter((t) => isMachineOem(t.slug)).length }[s.key],
                 suffix: s.suffix,
-                label: { years: d.statYears, parts: d.statParts, customers: d.statCustomers, reply: d.statReply }[s.key],
-                icon: { years: <CalendarCheck size={22} aria-hidden />, parts: <Package size={22} aria-hidden />, customers: <UsersThree size={22} aria-hidden />, reply: <ChatCircleText size={22} aria-hidden /> }[s.key],
+                label: { years: d.statYears, parts: d.statParts, types: d.statTypes, brands: d.statBrands }[s.key],
+                icon: { years: <CalendarCheck size={22} aria-hidden />, parts: <Package size={22} aria-hidden />, types: <SquaresFour size={22} aria-hidden />, brands: <Tag size={22} aria-hidden /> }[s.key],
               }))}
             />
           </div>

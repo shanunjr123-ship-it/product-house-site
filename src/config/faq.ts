@@ -1,22 +1,31 @@
 import { SITE, type Lang } from "./site";
 
-// FAQ shown on the home page and published as FAQPage structured data.
+// FAQ items. Only those marked home: true appear on the home page (with FAQPage structured data built from the same text);
+// the full set is on /faq/. The five on the home page follow the Keyword Planner data: the theme and brand searches
+// ("قطع غيار معدات ثقيلة", brand names), "original parts", price requests and delivery.
 // Every answer here is a fact confirmed by the owner. Where a fact depends on the part (warranty, delivery cost and time,
 // sourcing time) the answer says so instead of giving one figure.
 
-export type Faq = { q: Record<Lang, string>; a: (n: number) => Record<Lang, string> };
+export type Faq = {
+  q: Record<Lang, string>;
+  a: (n: number) => Record<Lang, string>;
+  /** Shown on the home page. The full list lives on /faq/. */
+  home?: true;
+};
 
 export const FAQ: Faq[] = [
   {
     q: { ar: "ماذا تبيعون في مؤسسة بيت المنتج للتجارة؟", /* What do you sell at Product House Trading Est.? */ en: "What does Product House Trading Est. sell?" },
+    home: true,
     a: (n) => ({
-      ar: `قطع غيار مضخات الخرسانة وخلاطات الخرسانة ومحطات الخلط: رومان بلي، سلاسل، فلاتر، خراطيم، جوانات، صمامات، فايبريتر، تروس وغيرها. أكثر من ${(Math.floor(n / 100) * 100).toLocaleString("en-US")} قطعة تختار منها.`,
-      // Spare parts for concrete pumps, truck mixers and batching plants: bearings, chains, filters, hoses, seals, valves, vibrators, gears and more. Over N parts to choose from.
-      en: `Spare parts for concrete pumps, truck mixers and batching plants: bearings, chains, filters, hoses, seals, valves, vibrators, gears and more. Over ${(Math.floor(n / 100) * 100).toLocaleString("en-US")} parts to choose from.`,
+      ar: `قطع غيار مضخات الخرسانة وخلاطات الخرسانة ومحطات الخلط ومعدات ثقيلة أخرى: رومان بلي، سلاسل، فلاتر، خراطيم، جوانات، صمامات، فايبريتر، تروس وغيرها. أكثر من ${(Math.floor(n / 100) * 100).toLocaleString("en-US")} قطعة تختار منها.`,
+      // Spare parts for concrete pumps, truck mixers, batching plants and other heavy equipment: bearings, chains, filters, hoses, seals, valves, vibrators, gears and more. Over N parts to choose from.
+      en: `Spare parts for concrete pumps, truck mixers, batching plants and other heavy equipment: bearings, chains, filters, hoses, seals, valves, vibrators, gears and more. Over ${(Math.floor(n / 100) * 100).toLocaleString("en-US")} parts to choose from.`,
     }),
   },
   {
     q: { ar: "كيف أعرف سعر القطعة؟", /* How do I find out the price of a part? */ en: "How do I get the price of a part?" },
+    home: true,
     a: () => ({
       ar: `الأسعار عند الطلب. أرسل رقم القطعة أو صورتها على واتساب ${SITE.phoneDisplay}، ونرد عليك بالسعر والتوفر.`,
       // Prices are on request. Send the part number or a photo on WhatsApp and we reply with price and availability.
@@ -33,14 +42,16 @@ export const FAQ: Faq[] = [
   },
   {
     q: { ar: "لأي آلات وماركات تتوفر القطع؟", /* Which machines and brands do the parts fit? */ en: "Which machines and brands do the parts fit?" },
+    home: true,
     a: () => ({
-      ar: "قطع لبوتزمايستر وشوينغ وسَني وزوملاين وسيفا وسيكوما وغيرها. افتح صفحة «الآلات» واختر آلتك لتشاهد قطعها.",
-      // Parts for Putzmeister, Schwing, Sany, Zoomlion, CIFA, Sicoma and more. Open the Machines page and pick your machine to see its parts.
-      en: "Parts for Putzmeister, Schwing, Sany, Zoomlion, CIFA, Sicoma and more. Open the Machines page and pick your machine to see its parts.",
+      ar: "قطع لبوتزمايستر وشوينغ وكاتربيلر وسَني وزوملاين وسيفا وسيكوما وغيرها. افتح صفحة «الآلات» واختر آلتك لتشاهد قطعها.",
+      // Parts for Putzmeister, Schwing, Caterpillar, Sany, Zoomlion, CIFA, Sicoma and more. Open the Machines page and pick your machine to see its parts.
+      en: "Parts for Putzmeister, Schwing, Caterpillar, Sany, Zoomlion, CIFA, Sicoma and more. Open the Machines page and pick your machine to see its parts.",
     }),
   },
   {
     q: { ar: "هل توصّلون خارج الرياض؟", /* Do you deliver outside Riyadh? */ en: "Do you deliver outside Riyadh?" },
+    home: true,
     a: () => ({
       ar: "نعم، نوفّر التوصيل داخل الرياض وخارجها. اكتب لنا المدينة على واتساب لنؤكد لك الطريقة.",
       // Yes, we deliver inside and outside Riyadh. Tell us the city on WhatsApp and we confirm how.
@@ -65,6 +76,7 @@ export const FAQ: Faq[] = [
   },
   {
     q: { ar: "هل القطع أصلية؟", /* Are the parts original? */ en: "Are your parts original?" },
+    home: true,
     a: () => ({
       ar: "نعم، جميع القطع التي نبيعها أصلية.",
       // Yes, all the parts we sell are original.

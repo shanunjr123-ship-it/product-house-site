@@ -1,17 +1,16 @@
-// Numbers for the home-page stats band.
-// DUMMY: every entry marked DUMMY is a placeholder. Replace with the client's real figures before launch.
-// `real: true` means the value is computed from the catalog and is already correct.
-export type StatDef = {
-  key: "years" | "parts" | "customers" | "reply";
-  value: number | null; // null = taken from the catalog size
-  prefix?: string;
-  suffix?: string;
-  real?: boolean;
-};
+// Numbers for the home-page stats band. Every value is real: the years come from the confirmed opening date,
+// the rest are counted from the catalogue when the site is built.
+export type StatDef = { key: "years" | "parts" | "types" | "brands"; suffix?: string };
 
-export const STATS: StatDef[] = [
-  { key: "years", value: 15, suffix: "+" }, // DUMMY: years in business
-  { key: "parts", value: null, suffix: "+", real: true }, // real: number of parts in the catalog
-  { key: "customers", value: 850, suffix: "+" }, // DUMMY: contractors and workshops served
-  { key: "reply", value: 10, prefix: "<" }, // DUMMY: average WhatsApp reply time in minutes
-];
+/** Opening date confirmed by the owner. */
+export const OPENED = "2010-04-05";
+
+/** Full years since the opening date, counted on the day the site is built. */
+export function yearsInBusiness(now = new Date()) {
+  const o = new Date(OPENED);
+  let y = now.getUTCFullYear() - o.getUTCFullYear();
+  if (now.getUTCMonth() < o.getUTCMonth() || (now.getUTCMonth() === o.getUTCMonth() && now.getUTCDate() < o.getUTCDate())) y--;
+  return y;
+}
+
+export const STATS: StatDef[] = [{ key: "years" }, { key: "parts", suffix: "+" }, { key: "types" }, { key: "brands" }];
