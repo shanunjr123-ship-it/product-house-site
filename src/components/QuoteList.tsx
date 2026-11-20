@@ -7,6 +7,7 @@ import { useRef, useState, type FormEvent } from "react";
 import type { Lang } from "@/config/site";
 import { DICT } from "@/i18n/dict";
 import { href, quoteMessage, waLink } from "@/lib/links";
+import { track } from "@/lib/track";
 import { useQuote } from "./QuoteProvider";
 
 const field = "h-12 w-full rounded-2xl bg-paper px-4 outline-none ring-1 ring-inset ring-brand/10 transition-shadow focus:bg-white focus:ring-2 focus:ring-brand-bright";
@@ -106,6 +107,7 @@ export default function QuoteList({ lang }: { lang: Lang }) {
       (er.name ? refs.name : refs.city).current?.focus();
       return;
     }
+    track("quote_submit", { items: lines.length, units: lines.reduce((n, l) => n + l.qty, 0), lang }); // price request sent to WhatsApp
     const w = window.open(link, "_blank");
     if (w) w.opener = null;
     else window.location.href = link;

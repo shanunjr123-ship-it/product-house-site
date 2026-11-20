@@ -13,8 +13,8 @@ declare global {
 
 /**
  * Google Analytics 4. Loads only when SITE.gaId is set. Besides page views it records the two actions that
- * matter for this business: a tap on WhatsApp (whatsapp_click) and on the phone number (call_click).
- * In GA4, mark both events as key events to see them as conversions.
+ * matter for this business: a tap on WhatsApp (whatsapp_click), on the phone number (call_click), a part added to the price-request list (add_to_quote) and the price request sent (quote_submit, see src/lib/track.ts).
+ * In GA4, mark whatsapp_click, call_click and quote_submit as key events to see them as conversions.
  */
 export default function Analytics() {
   const id = SITE.gaId;

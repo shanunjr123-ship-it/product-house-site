@@ -6,6 +6,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import type { Lang } from "@/config/site";
 import { DICT } from "@/i18n/dict";
 import { href } from "@/lib/links";
+import { track } from "@/lib/track";
 
 export type QItem = { code: string; name: string; nameAr: string; qty: number };
 type Ctx = {
@@ -82,6 +83,7 @@ export function QuoteProvider({ children, lang }: { children: ReactNode; lang: L
       add: (it) => {
         if (items.some((i) => i.code === it.code) || items.length >= MAX_LINES) return;
         persist([...items, { ...it, qty: 1 }]);
+        track("add_to_quote", { item_id: it.code }); // part added to the price-request list
         setToast((x) => ({ n: (x?.n ?? 0) + 1, out: false }));
       },
       remove: (code) => persist(items.filter((i) => i.code !== code)),
