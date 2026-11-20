@@ -1,0 +1,751 @@
+[
+  [
+    "tap<44 m375 home-ar",
+    [
+      {
+        "tag": "A",
+        "t": "تخطَّ إلى المحتوى",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      }
+    ]
+  ],
+  [
+    "overflow m375 home-ar",
+    "none"
+  ],
+  [
+    "tap<44 m375 home-en",
+    [
+      {
+        "tag": "A",
+        "t": "Skip to content",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      }
+    ]
+  ],
+  [
+    "overflow m375 home-en",
+    "none"
+  ],
+  [
+    "tap<44 m375 catalog-ar",
+    [
+      {
+        "tag": "A",
+        "t": "تخطَّ إلى المحتوى",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      }
+    ]
+  ],
+  [
+    "overflow m375 catalog-ar",
+    "none"
+  ],
+  [
+    "tap<44 m375 product-noimg-ar",
+    [
+      {
+        "tag": "A",
+        "t": "تخطَّ إلى المحتوى",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      }
+    ]
+  ],
+  [
+    "overflow m375 product-noimg-ar",
+    "none"
+  ],
+  [
+    "tap<44 m375 product-en",
+    [
+      {
+        "tag": "A",
+        "t": "Skip to content",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      }
+    ]
+  ],
+  [
+    "overflow m375 product-en",
+    "none"
+  ],
+  [
+    "tap<44 m375 quote-empty-ar",
+    [
+      {
+        "tag": "A",
+        "t": "تخطَّ إلى المحتوى",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      }
+    ]
+  ],
+  [
+    "overflow m375 quote-empty-ar",
+    "none"
+  ],
+  [
+    "tap<44 m375 faq-ar",
+    [
+      {
+        "tag": "A",
+        "t": "تخطَّ إلى المحتوى",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      }
+    ]
+  ],
+  [
+    "overflow m375 faq-ar",
+    "none"
+  ],
+  [
+    "tap<44 m375 contact-ar",
+    [
+      {
+        "tag": "A",
+        "t": "تخطَّ إلى المحتوى",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      }
+    ]
+  ],
+  [
+    "overflow m375 contact-ar",
+    "none"
+  ],
+  [
+    "console/network problems m375",
+    [
+      "FAILED https://www.googletagmanager.com/gtag/js?id=G-XYP5LWH4RW",
+      "error: Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "FAILED http://localhost:4173/",
+      "FAILED http://localhost:4173/quote/",
+      "FAILED http://localhost:4173/catalog/",
+      "FAILED http://localhost:4173/machines/",
+      "FAILED http://localhost:4173/guides/",
+      "FAILED http://localhost:4173/about/",
+      "FAILED http://localhost:4173/contact/",
+      "FAILED http://localhost:4173/faq/",
+      "FAILED http://localhost:4173/en/",
+      "FAILED http://localhost:4173/en/catalog/",
+      "FAILED http://localhost:4173/en/machines/",
+      "FAILED http://localhost:4173/en/quote/",
+      "FAILED http://localhost:4173/en/guides/",
+      "FAILED http://localhost:4173/en/faq/",
+      "FAILED http://localhost:4173/en/about/",
+      "FAILED http://localhost:4173/en/contact/",
+      "FAILED http://localhost:4173/category/hoses/",
+      "FAILED http://localhost:4173/en/machines/putzmeister/",
+      "FAILED http://localhost:4173/en/category/wear/",
+      "FAILED https://www.google.com/maps?q=24.6288804,46.7597082&z=17&hl=ar&output=embed"
+    ]
+  ],
+  [
+    "tap<44 d1440 home-ar",
+    [
+      {
+        "tag": "A",
+        "t": "تخطَّ إلى المحتوى",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      },
+      {
+        "tag": "A",
+        "t": "الكتالوج",
+        "w": 81,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "الآلات والعلامات",
+        "w": 135,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "المدونة",
+        "w": 78,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "الأسئلة الشائعة",
+        "w": 135,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "من نحن",
+        "w": 80,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "تواصل معنا",
+        "w": 105,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      }
+    ]
+  ],
+  [
+    "overflow d1440 home-ar",
+    "none"
+  ],
+  [
+    "tap<44 d1440 home-en",
+    [
+      {
+        "tag": "A",
+        "t": "Skip to content",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      },
+      {
+        "tag": "A",
+        "t": "Catalog",
+        "w": 82,
+        "h": 40,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "Machines & brands",
+        "w": 163,
+        "h": 40,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "Blog",
+        "w": 59,
+        "h": 40,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "FAQ",
+        "w": 58,
+        "h": 40,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "About",
+        "w": 70,
+        "h": 40,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "Contact",
+        "w": 83,
+        "h": 40,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      }
+    ]
+  ],
+  [
+    "overflow d1440 home-en",
+    "none"
+  ],
+  [
+    "tap<44 d1440 catalog-ar",
+    [
+      {
+        "tag": "A",
+        "t": "تخطَّ إلى المحتوى",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      },
+      {
+        "tag": "A",
+        "t": "الكتالوج",
+        "w": 81,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "الآلات والعلامات",
+        "w": 135,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "المدونة",
+        "w": 78,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "الأسئلة الشائعة",
+        "w": 135,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "من نحن",
+        "w": 80,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "تواصل معنا",
+        "w": 105,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      }
+    ]
+  ],
+  [
+    "overflow d1440 catalog-ar",
+    "none"
+  ],
+  [
+    "tap<44 d1440 product-noimg-ar",
+    [
+      {
+        "tag": "A",
+        "t": "تخطَّ إلى المحتوى",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      },
+      {
+        "tag": "A",
+        "t": "الكتالوج",
+        "w": 81,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "الآلات والعلامات",
+        "w": 135,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "المدونة",
+        "w": 78,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "الأسئلة الشائعة",
+        "w": 135,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "من نحن",
+        "w": 80,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "تواصل معنا",
+        "w": 105,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      }
+    ]
+  ],
+  [
+    "overflow d1440 product-noimg-ar",
+    "none"
+  ],
+  [
+    "tap<44 d1440 product-en",
+    [
+      {
+        "tag": "A",
+        "t": "Skip to content",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      },
+      {
+        "tag": "A",
+        "t": "Catalog",
+        "w": 82,
+        "h": 40,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "Machines & brands",
+        "w": 163,
+        "h": 40,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "Blog",
+        "w": 59,
+        "h": 40,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "FAQ",
+        "w": 58,
+        "h": 40,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "About",
+        "w": 70,
+        "h": 40,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "Contact",
+        "w": 83,
+        "h": 40,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      }
+    ]
+  ],
+  [
+    "overflow d1440 product-en",
+    "none"
+  ],
+  [
+    "tap<44 d1440 quote-empty-ar",
+    [
+      {
+        "tag": "A",
+        "t": "تخطَّ إلى المحتوى",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      },
+      {
+        "tag": "A",
+        "t": "الكتالوج",
+        "w": 81,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "الآلات والعلامات",
+        "w": 135,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "المدونة",
+        "w": 78,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "الأسئلة الشائعة",
+        "w": 135,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "من نحن",
+        "w": 80,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "تواصل معنا",
+        "w": 105,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      }
+    ]
+  ],
+  [
+    "overflow d1440 quote-empty-ar",
+    "none"
+  ],
+  [
+    "tap<44 d1440 faq-ar",
+    [
+      {
+        "tag": "A",
+        "t": "تخطَّ إلى المحتوى",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      },
+      {
+        "tag": "A",
+        "t": "الكتالوج",
+        "w": 81,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "الآلات والعلامات",
+        "w": 135,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "المدونة",
+        "w": 78,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "الأسئلة الشائعة",
+        "w": 135,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "من نحن",
+        "w": 80,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "تواصل معنا",
+        "w": 105,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      }
+    ]
+  ],
+  [
+    "overflow d1440 faq-ar",
+    "none"
+  ],
+  [
+    "tap<44 d1440 contact-ar",
+    [
+      {
+        "tag": "A",
+        "t": "تخطَّ إلى المحتوى",
+        "w": 1,
+        "h": 1,
+        "cls": "sr-only focus:not-sr-only focus:fixed focus:start-"
+      },
+      {
+        "tag": "A",
+        "t": "الكتالوج",
+        "w": 81,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "الآلات والعلامات",
+        "w": 135,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "المدونة",
+        "w": 78,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "الأسئلة الشائعة",
+        "w": 135,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "من نحن",
+        "w": 80,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      },
+      {
+        "tag": "A",
+        "t": "تواصل معنا",
+        "w": 105,
+        "h": 43,
+        "cls": "whitespace-nowrap rounded-full px-3 py-1.5 text-[0"
+      }
+    ]
+  ],
+  [
+    "overflow d1440 contact-ar",
+    "none"
+  ],
+  [
+    "console/network problems d1440",
+    [
+      "FAILED https://www.googletagmanager.com/gtag/js?id=G-XYP5LWH4RW",
+      "error: Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+      "FAILED http://localhost:4173/",
+      "FAILED http://localhost:4173/catalog/",
+      "FAILED http://localhost:4173/machines/",
+      "FAILED http://localhost:4173/guides/",
+      "FAILED http://localhost:4173/faq/",
+      "FAILED http://localhost:4173/about/",
+      "FAILED http://localhost:4173/contact/",
+      "FAILED http://localhost:4173/quote/",
+      "FAILED http://localhost:4173/en/",
+      "FAILED http://localhost:4173/en/catalog/",
+      "FAILED http://localhost:4173/en/machines/",
+      "FAILED http://localhost:4173/en/guides/",
+      "FAILED http://localhost:4173/en/faq/",
+      "FAILED http://localhost:4173/en/about/",
+      "FAILED http://localhost:4173/en/quote/",
+      "FAILED http://localhost:4173/en/contact/",
+      "FAILED http://localhost:4173/category/hoses/",
+      "FAILED http://localhost:4173/en/category/wear/",
+      "FAILED http://localhost:4173/en/machines/putzmeister/",
+      "FAILED https://www.google.com/maps?q=24.6288804,46.7597082&z=17&hl=ar&output=embed"
+    ]
+  ],
+  [
+    "toast box ar",
+    {
+      "top": 95,
+      "bottom": 151
+    }
+  ],
+  [
+    "quote errors after empty send ar",
+    [
+      "اكتب اسمك (حرفان على الأقل).",
+      "اكتب مدينتك حتى نحدد التوصيل.",
+      "أكمل الحقول المطلوبة ثم أرسل الطلب.",
+      ""
+    ]
+  ],
+  [
+    "focus after failed send ar",
+    "name"
+  ],
+  [
+    "errors after valid fill ar",
+    "none"
+  ],
+  [
+    "wa url ar",
+    "https://wa.me/966592112782?text=السلام عليكم، أرغب بطلب سعر وتوفر القطع التالية:\n1) 201010-001 — حلقة التآكل Duro 22 – بوتزمايستر × 1\n\nالاسم: Ahmed Test\nالمدينة: Riyadh"
+  ],
+  [
+    "qty cleared message ar",
+    [
+      "الكمية من 1 إلى 9999.",
+      ""
+    ]
+  ],
+  [
+    "tap<44 m375 quote-filled ar",
+    "none"
+  ],
+  [
+    "overflow m375 quote-filled ar",
+    "none"
+  ],
+  [
+    "toast box en",
+    {
+      "top": 89,
+      "bottom": 142
+    }
+  ],
+  [
+    "quote errors after empty send en",
+    [
+      "Enter your name (at least 2 characters).",
+      "Enter your city so we can work out delivery.",
+      "Complete the required fields, then send the request.",
+      ""
+    ]
+  ],
+  [
+    "focus after failed send en",
+    "name"
+  ],
+  [
+    "errors after valid fill en",
+    "none"
+  ],
+  [
+    "wa url en",
+    "https://wa.me/966592112782?text=Hello, I would like the price and availability of these parts:\n1) 201010-001 — Wear Ring Duro 22 – Putzmeister × 1\n\nName: Ahmed Test\nCity: Riyadh"
+  ],
+  [
+    "qty cleared message en",
+    [
+      "Quantity must be from 1 to 9999.",
+      ""
+    ]
+  ],
+  [
+    "tap<44 m375 quote-filled en",
+    "none"
+  ],
+  [
+    "overflow m375 quote-filled en",
+    "none"
+  ],
+  [
+    "wa links on product page",
+    [
+      "https://wa.me/966592112782?text=السلام عليكم، أرغب بصورة للقطعة التالية:\n201010-051 — خرطوم النهاية",
+      "https://wa.me/966592112782?text=السلام عليكم، أرغب بطلب سعر وتوفر القطعة التالية:\n201010-051 — خرطوم النهاية",
+      "https://wa.me/966592112782?text=السلام عليكم، أريد الاستفسار عن قطعة غيار.",
+      "https://wa.me/966592112782?text=السلام عليكم، أريد الاستفسار عن قطعة غيار.",
+      "https://wa.me/966592112782?text=السلام عليكم، أريد الاستفسار عن قطعة غيار."
+    ]
+  ],
+  [
+    "schema Store email",
+    {
+      "email": "sales@producthousetrading.com",
+      "contactPointEmail": "sales@producthousetrading.com"
+    }
+  ]
+]
